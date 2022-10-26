@@ -1,0 +1,4669 @@
+<div data-drupal-views-infinite-scroll-content-wrapper="" class="views-infinite-scroll-content-wrapper clearfix">    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/24/69/devnyacement.jpg?itok=Z3XU8w4p 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/24/69/devnyacement.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-12-07-2022">
+
+          <span class="hc-link__text">Pioneering CCUS in Bulgaria: HeidelbergCement’s ANRAV project selected by EU Innovation Fund </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  13 July 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-06/Luftaufnahme_Heidelberg.jpg?itok=a-a1KUEt 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-06/Luftaufnahme_Heidelberg.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-23-06-2022">
+
+          <span class="hc-link__text">“Circular City Heidelberg”: HeidelbergCement is part of Europe's first municipal urban mining project</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  23 June 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-05/slite-ccs.jpg?h=e60f132c&amp;itok=Pek5wQfz 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-05/slite-ccs.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-30-05-2022">
+
+          <span class="hc-link__text">Key contribution to HeidelbergCement’s ambitious new sustainability targets: CCS project in Sweden takes next step</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  30 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-25-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement links financing to the sector´s most ambitious climate targets for the first time</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  25 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-04/capital-markets-day-2022.jpg?h=e60781ec&amp;itok=iiTFvN3j 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-04/capital-markets-day-2022.jpg" data-link="on">
+</picture>
+
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-24-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement sets new standards for sustainability targets: By 2030, specific CO2 emissions to be reduced by a further 30%</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement enters joint venture constructing the world’s largest calcined clay plant in Ghana</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/22/f7/zementverladung_11_hc_ret_1.jpg?h=6c9cf455&amp;itok=1bm_S6pf 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/22/f7/zementverladung_11_hc_ret_1.jpg" data-link="on">
+</picture>
+
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement joins First Movers Coalition </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-05/Mobile%20Pilotanlage_Selektive%20Trennung.jpg?itok=09e2TVQM 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-05/Mobile%20Pilotanlage_Selektive%20Trennung.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement receives German Innovation Award for Climate and Environment (IKU)</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-03/werk-hannover_0.jpg?h=885fba0d&amp;itok=pyHQqZBh 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-03/werk-hannover_0.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pi-23-03-2022">
+
+          <span class="hc-link__text">Green light for LEILAC 2 carbon capture project at HeidelbergCement’s plant in Hanover, Germany</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  23 March 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-02/cdp-supplier-engagement.jpg?h=2e27dbb3&amp;itok=v_9ALWpt 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-02/cdp-supplier-engagement.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-02-2022">
+
+          <span class="hc-link__text">CDP celebrates HeidelbergCement as “Supplier Engagement Leader”</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 February 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-01/Lehigh-Cement-Edmonton-Plant.jpg?h=f72c4ab4&amp;itok=-TFTUJss 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-01/Lehigh-Cement-Edmonton-Plant.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-27-01-2022">
+
+          <span class="hc-link__text">HeidelbergCement and Enbridge team up to advance full-scale CO2 storage project in Canada</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  27 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-01/ecocrete_der_nachhaltige_beton.jpg?h=8d0c55dc&amp;itok=TUY04mhg 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-01/ecocrete_der_nachhaltige_beton.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-20-01-2022">
+
+          <span class="hc-link__text">Significant CO2 reduction: HeidelbergCement expands sustainable concrete portfolio in Germany under EcoCrete brand</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  20 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/71/93/cdp-a-list-2021.jpg?h=3da018cc&amp;itok=5iEXSlzm 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/71/93/cdp-a-list-2021.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-07-12-2021">
+
+          <span class="hc-link__text">HeidelbergCement maintains global climate leadership with 3rd CDP 'A' rating in a row</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  7 December 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ad/34/ahk-norwegen_steinmeier.jpg?itok=sEHUNmCB 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ad/34/ahk-norwegen_steinmeier.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-08-11-2021">
+
+          <span class="hc-link__text">HeidelbergCement CEO underlines focus on CCU/S during state visit of the German Federal President to Norway</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  8 November 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ff/85/hanson_ribblesdale_hydrogen.jpg?itok=AubW1h5J 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ff/85/hanson_ribblesdale_hydrogen.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-01-10-2021">
+
+          <span class="hc-link__text">HeidelbergCement produces cement with climate-neutral fuel mix using hydrogen technology</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 October 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/a4/86/gorazdze-plant.jpg?itok=-UUjhn_S 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/a4/86/gorazdze-plant.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-17-09-2021">
+
+          <span class="hc-link__text">Project ACCSESS: HeidelbergCement to pilot carbon capture project in Eastern Europe</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  17 September 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/9f/ca/zementwerk_schelklingen.jpg?itok=R5PVBypQ 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/9f/ca/zementwerk_schelklingen.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-07-2021">
+
+          <span class="hc-link__text">HeidelbergCement signs “Business Ambition for 1.5°C” and joins “Race To Zero” campaign of the UN</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 July 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/3a/2b/nachhaltigkeitsbericht-2020.jpg?h=d2f57263&amp;itok=u84l1qVM 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/3a/2b/nachhaltigkeitsbericht-2020.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-14-06-2021">
+
+          <span class="hc-link__text">HeidelbergCement publishes Sustainability Report 2020</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  14 June 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/31/a4/slite-ccs.jpg?itok=2Hb4ADoe 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/31/a4/slite-ccs.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-02-06-2021">
+
+          <span class="hc-link__text">HeidelbergCement to build the world’s first carbon-neutral cement plant </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  2 June 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/a2/0b/qla-2022.jpg?itok=eue4ih_o 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/a2/0b/qla-2022.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-11-05-2021">
+
+          <span class="hc-link__text">Quarry Life Award: HeidelbergCement opens its quarries for unique biodiversity competition</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  11 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+<div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/70/44/forteras_capture_and_use_cementitious_plant.jpg?itok=zqu-FMNL 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/70/44/forteras_capture_and_use_cementitious_plant.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-12-03-2021">
+
+          <span class="hc-link__text">HeidelbergCement pioneers new carbon capture technology in Redding, USA</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  12 March 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/8b/8d/padeswood-aerial.jpg?itok=5_4eRmgr 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/8b/8d/padeswood-aerial.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-02-03-2021">
+
+          <span class="hc-link__text">HeidelbergCement joins CCS consortium in the UK to create the world’s first low-carbon industrial cluster </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  2 March 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/8c/7d/werk_hannover_pan_3424.jpg?itok=1caBqC8Y 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/8c/7d/werk_hannover_pan_3424.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-01-02-2021">
+
+          <span class="hc-link__text">Next industrial scale-up of a CO2 capture technology: LEILAC 2 pilot project will be located at HeidelbergCement's Hanover cement plant</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 February 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/7c/2e/witnica_ppa.jpg?itok=ZiwzhjxC 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/7c/2e/witnica_ppa.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-01-2021">
+
+          <span class="hc-link__text">HeidelbergCement increases its share of green power in Poland</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 January 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/brevik_carbon_capture.jpg?itok=LM3JxdQm 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/brevik_carbon_capture.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-12-2020">
+
+          <span class="hc-link__text">HeidelbergCement to install the world's first full-scale CCS facility in a cement plant</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 December 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/e7/65/climate_stamp_2020.png?h=a33f13a6&amp;itok=cfHJK3uv 1x" media="(min-width: 320px)" type="image/png">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/e7/65/climate_stamp_2020.png" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-08-12-2020">
+
+          <span class="hc-link__text">HeidelbergCement confirms climate change leadership with CDP 'A' rating</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  8 December 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/80/c1/stiftung-2-grad.jpg?itok=Smx4EdPf 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/80/c1/stiftung-2-grad.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-25-11-2020">
+
+          <span class="hc-link__text">HeidelbergCement joins Foundation 2°</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  25 November 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/53/9d/airvault.jpg?itok=IR_JnVtX 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/53/9d/airvault.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-11-2020-france">
+
+          <span class="hc-link__text">HeidelbergCement invests around €400 million into the modernisation and reorganisation of its cement sites in France </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 November 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/b1/f4/c4c.png?itok=5wZjwn4U 1x" media="(min-width: 320px)" type="image/png">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/b1/f4/c4c.png" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-11-2020">
+
+          <span class="hc-link__text">Pilot project of four cement manufacturers plans to use captured CO2 as a raw material for the production of synthetic fuels</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 November 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/61/88/brevik_carboncapture_project.jpg?itok=5ZVZEkyL 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/61/88/brevik_carboncapture_project.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-09-2020">
+
+          <span class="hc-link__text">Norwegian Government selects HeidelbergCement’s carbon capture project in Norway</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 September 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/f8/df/geseke-werk-heidelbergcement.jpg?itok=mvCTy_GU 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/f8/df/geseke-werk-heidelbergcement.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-09-2020">
+
+          <span class="hc-link__text">HeidelbergCement presents new strategy "Beyond 2020" and pushes climate goals</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 September 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/werk_lengfurt_2691a.jpg?itok=CpRIJuPp 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/werk_lengfurt_2691a.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-25-06-2020">
+
+          <span class="hc-link__text">HeidelbergCement publishes Sustainability Report 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 June 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/8b/af/brevik-plant-norcem.jpg?itok=Zx3tVH3s 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/8b/af/brevik-plant-norcem.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-17-06-2020">
+
+          <span class="hc-link__text">HeidelbergCement takes the next step towards CO2 capture and storage (CCS) in Brevik, Norway </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  17 June 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/fb/2a/heidelbergcement-hauptverwaltung.jpg?itok=Ep3sXMvn 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/fb/2a/heidelbergcement-hauptverwaltung.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-06-2020">
+
+          <span class="hc-link__text">HeidelbergCement joins the Europe Regional Network of the World Green Building Council as official partner</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 June 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/43/c1/leilac-1.jpg?h=780fd29d&amp;itok=IGpsuaQK 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/43/c1/leilac-1.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-30-03-2020">
+
+          <span class="hc-link__text">HeidelbergCement and partners drive innovative CO2 separation</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  30 March 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ea/58/ribblesdale-plant-hanson.jpg?itok=mIC5t7El 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ea/58/ribblesdale-plant-hanson.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-26-02-2020">
+
+          <span class="hc-link__text">HeidelbergCement researches use of climate-neutral fuels in the United Kingdom</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  26 February 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ff/a2/heidelbergcement-a-rating-by-cdp-2019-for-climate-protection-commitment.jpg?itok=_ixQfTwN 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ff/a2/heidelbergcement-a-rating-by-cdp-2019-for-climate-protection-commitment.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-20-01-2020">
+
+          <span class="hc-link__text">HeidelbergCement receives “A” rating for commitment to climate protection</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  20 January 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-11-12-2019">
+
+          <span class="hc-link__text">Cement Producers have founded an Oxyfuel Research Corporation</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  11 December 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/e0/14/lehigh_hanson_-_cc_announcement.jpg?itok=cW_0drug 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/e0/14/lehigh_hanson_-_cc_announcement.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-11-2019">
+
+          <span class="hc-link__text">HeidelbergCement researching full-scale carbon capture and storage (CCS) in Canada</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 November 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/57/a3/signing_memorandum_of_understanding_hc-equinor-5-9-2019-arne_reidar_mortensen-copyright-equinor.jpg?itok=rx_m9lUT 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/57/a3/signing_memorandum_of_understanding_hc-equinor-5-9-2019-arne_reidar_mortensen-copyright-equinor.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-05-09-2019">
+
+          <span class="hc-link__text">HeidelbergCement and Equinor sign a memorandum of understanding on CO2 capture and storage</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  5 September 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ec/b3/aggregates-site.jpg?itok=LQew0drd 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ec/b3/aggregates-site.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-24-07-2019">
+
+          <span class="hc-link__text">HeidelbergCement releases Sustainability Report 2018</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 July 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ce/97/iss-oekom_prime_label.png?itok=lHDGqfkt 1x" media="(min-width: 320px)" type="image/png">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ce/97/iss-oekom_prime_label.png" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-13-06-2019">
+
+          <span class="hc-link__text">HeidelbergCement labelled as “Prime” in ISS-oekom Corporate Rating</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  13 June 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-13-05-2019">
+
+          <span class="hc-link__text">HeidelbergCement first cement company to receive approval for science-based CO2 reduction targets</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  13 May 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-01-2019">
+
+          <span class="hc-link__text">HeidelbergCement achieves top position in sustainability rating </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 January 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-7-12-2018">
+
+          <span class="hc-link__text">The Quarry Life Award – a unique approach to innovative biodiversity management</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  7 December 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-09-10-2018">
+
+          <span class="hc-link__text">HeidelbergCement and BirdLife International renew partnership</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  9 October 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-07-2018">
+
+          <span class="hc-link__text">HeidelbergCement publishes Group Sustainability Report 2017</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 July 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-20-11-2017">
+
+          <span class="hc-link__text">HeidelbergCement and EMBL explore solutions in CO2 reduction</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  20 November 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-11-10-2017">
+
+          <span class="hc-link__text">HeidelbergCement renews its commitment to sustainability </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  11 October 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-07-2017">
+
+          <span class="hc-link__text">HeidelbergCement publishes Group Sustainability Report 2016</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 July 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-06-2017">
+
+          <span class="hc-link__text">HeidelbergCement and RWTH Aachen investigate in binding CO2 in minerals </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 June 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-05-2017">
+
+          <span class="hc-link__text">Quarry Life Award 2018: HeidelbergCement launches the fourth edition of its competition promoting biodiversity</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 May 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-9-12-2016">
+
+          <span class="hc-link__text">The Quarry Life Award 2016: HeidelbergCement honors international projects that promote biodiversity </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  9 December 2016</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/heidelbergcement-explores-new-technology-to-capture-co2">
+
+          <span class="hc-link__text">HeidelbergCement explores new technology to capture CO2</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 April 2016</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/qla2016-450-project-proposals">
+
+          <span class="hc-link__text">Quarry Life Award: more than 450 project proposals to promote species diversity</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 March 2016</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/heidelbergcement-and-birdlife-international-renew-their-partnership">
+
+          <span class="hc-link__text">HeidelbergCement and BirdLife International renew their partnership</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  17 March 2015</li>
+      </ul>
+    </div>
+</div>
+
+
+</div></div>

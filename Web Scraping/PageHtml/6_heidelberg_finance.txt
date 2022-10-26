@@ -1,0 +1,5420 @@
+<div data-drupal-views-infinite-scroll-content-wrapper="" class="views-infinite-scroll-content-wrapper clearfix">    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-07/Halbjahresfinanzbericht-22_1.jpg?h=ccfae16d&amp;itok=Po9pBUac 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-07/Halbjahresfinanzbericht-22_1.jpg" data-link="on">
+</picture>
+
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-07-2022">
+
+          <span class="hc-link__text">HeidelbergCement half-year results:  significant revenue growth, high energy costs almost offset in the second quarter</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 July 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-25-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement links financing to the sector´s most ambitious climate targets for the first time</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  25 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement enters joint venture constructing the world’s largest calcined clay plant in Ghana</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/ce/d9/mtr_exterior_shot_a36896.jpg?h=aec1a1b5&amp;itok=KBAJZY-6 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/ce/d9/mtr_exterior_shot_a36896.jpg" data-link="on">
+</picture>
+
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-11-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement achieves significant revenue growth in a difficult market environment</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  11 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-05/Giatec-SmartRock-3-Sensor.jpg?itok=pXlDioXy 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-05/Giatec-SmartRock-3-Sensor.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement invests in concrete technology company Giatec Scientific</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-04-05-2022">
+
+          <span class="hc-link__text">HeidelbergCement expands its ready-mixed concrete business in the Czech Republic</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  4 May 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-04-04-2022">
+
+          <span class="hc-link__text">HeidelbergCement further strengthens U.S. footprint: acquisition in Metro Atlanta area</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  4 April 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-24-03-2022">
+
+          <span class="hc-link__text">HeidelbergCement increases dividend </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 March 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/projects_rempel_golden_ears_bridge_profile_photo.jpg?h=9da70f5a&amp;itok=_z79l7MD 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/projects_rempel_golden_ears_bridge_profile_photo.jpg" data-link="on">
+</picture>
+
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-24-02-2022">
+
+          <span class="hc-link__text">Despite high energy prices: HeidelbergCement with strong results in 2021</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 February 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-31-01-2022">
+
+          <span class="hc-link__text">Ad-hoc release: Revenue and earnings growth above guidance and market expectations – HeidelbergCement publishes preliminary business figures for 2021</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  31 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-13-01-2022">
+
+          <span class="hc-link__text">HeidelbergCement continues share buyback programme</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  13 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/2022-01/US-Pacific-Northwest_0.jpg?h=cb2971e2&amp;itok=_sAtjz5O 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/2022-01/US-Pacific-Northwest_0.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-01-2022">
+
+          <span class="hc-link__text">HeidelbergCement accelerates growth in core markets: Significant acquisition in the U.S. Pacific Northwest</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/10/e7/leocem.jpg?itok=oTeIpq7U 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/10/e7/leocem.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-01-12-2021">
+
+          <span class="hc-link__text">Portfolio optimisation continues: HeidelbergCement sells business in Sierra Leone</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 December 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-10-11-2021">
+
+          <span class="hc-link__text">HeidelbergCement announces further major divestments of assets in Spain</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  10 November 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-04-11-2021">
+
+          <span class="hc-link__text">Results of the first nine months 2021 significantly above previous year</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  4 November 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-26-10-2021">
+
+          <span class="hc-link__text">HeidelbergCement further strengthens business in Tanzania</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  26 October 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/8b/8d/padeswood-aerial.jpg?itok=5_4eRmgr 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/8b/8d/padeswood-aerial.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-20-10-2021">
+
+          <span class="hc-link__text">HeidelbergCement one step closer to CCS in UK: HyNet North West project receives government funding</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  20 October 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-04-10-2021">
+
+          <span class="hc-link__text">HeidelbergCement continues portfolio optimisation: divestiture of several assets in Spain</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  4 October 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/48/02/command-alkon.jpg?h=3d638f31&amp;itok=42uaErfF 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/48/02/command-alkon.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-09-2021">
+
+          <span class="hc-link__text">HeidelbergCement partners with leading software investment firm Thoma Bravo and invests in Command Alkon to build the digital ecosystem for the Heavy Building Materials industry</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 September 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/19/75/3d-haus-beckum.jpg?itok=8bmYgXzw 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/19/75/3d-haus-beckum.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-07-2021">
+
+          <span class="hc-link__text">HeidelbergCement with excellent half-year results 2021</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 July 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+<div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-07-2021">
+
+          <span class="hc-link__text">Ad-hoc: HeidelbergCement decides on share buyback programme with a total volume of up to €1 billion </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 July 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/7f/5b/heidelbergcement-innenhof-neue-hauptverwaltung-raphael-neff.jpg?itok=4dweuH9V 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/7f/5b/heidelbergcement-innenhof-neue-hauptverwaltung-raphael-neff.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-27-05-2021">
+
+          <span class="hc-link__text">HeidelbergCement announces major changes in the Managing Board</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  27 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-24-05-2021">
+
+          <span class="hc-link__text">Major step in portfolio optimization: HeidelbergCement sells its U.S. West region business for USD 2.3 billion</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-06-05-2021">
+
+          <span class="hc-link__text">HeidelbergCement virtual Annual General Meeting 2021: Climate protection as central theme</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  6 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-05-05-2021-q1">
+
+          <span class="hc-link__text">HeidelbergCement with significant margin increases in all regions in the first quarter of 2021</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  5 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-05-05-2021">
+
+          <span class="hc-link__text">Next step in portfolio optimisation: HeidelbergCement realigns its Greek business</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  5 May 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-04-2021">
+
+          <span class="hc-link__text">After S&amp;P, Moody’s now also raises HeidelbergCement rating to Baa2</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 April 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-04-2021-adhoc">
+
+          <span class="hc-link__text">Ad-hoc: Preliminary results of HeidelbergCement in the first quarter of 2021 significantly above market expectations</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 April 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-04-2021">
+
+          <span class="hc-link__text">S&amp;P ugrades rating of HeidelbergCement to BBB with stable outlook</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 April 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/d7/90/jahresabschluss.jpg?itok=7A13NEvP 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/d7/90/jahresabschluss.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-03-2021">
+
+          <span class="hc-link__text">HeidelbergCement with strong result in 2020 </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 March 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-23-02-2021">
+
+          <span class="hc-link__text">HeidelbergCement closes 2020 financial year with record results</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  23 February 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/8c/7d/werk_hannover_pan_3424.jpg?itok=1caBqC8Y 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/8c/7d/werk_hannover_pan_3424.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-01-02-2021">
+
+          <span class="hc-link__text">Next industrial scale-up of a CO2 capture technology: LEILAC 2 pilot project will be located at HeidelbergCement's Hanover cement plant</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 February 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/7c/2e/witnica_ppa.jpg?itok=ZiwzhjxC 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/7c/2e/witnica_ppa.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-01-2021">
+
+          <span class="hc-link__text">HeidelbergCement increases its share of green power in Poland</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 January 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-27-01-2021">
+
+          <span class="hc-link__text">First step in portfolio optimisation – HeidelbergCement sells Kuwait business</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  27 January 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-05-11-2020">
+
+          <span class="hc-link__text">HeidelbergCement with significant increase in result in the third quarter of 2020</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  5 November 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+<figure class="hc-figure hc-teaser__figure">
+
+
+
+
+<div class="hc-slider__item hc-slider--with-image">
+
+
+
+
+<figure class="hc-figure">
+
+
+
+<picture class="hc-picture">
+            <source srcset="/sites/default/files/styles/teaser_image_25/public/assets/images/f8/df/geseke-werk-heidelbergcement.jpg?itok=mvCTy_GU 1x" media="(min-width: 320px)" type="image/jpeg">
+
+<img class="hc-image js-linked" src="/sites/default/files/assets/images/f8/df/geseke-werk-heidelbergcement.jpg" data-link="on">
+</picture>
+
+
+
+
+            </figure>
+
+
+
+
+          </div>
+
+
+
+        </figure>
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-09-2020">
+
+          <span class="hc-link__text">HeidelbergCement presents new strategy "Beyond 2020" and pushes climate goals</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 September 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-30-07-2020">
+
+          <span class="hc-link__text">HeidelbergCement achieves good half-year results for 2020 in challenging environment</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  30 July 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-14-07-2020">
+
+          <span class="hc-link__text">Ad-hoc: Preliminary results of HeidelbergCement in the second quarter of 2020 above market expectations</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  14 July 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-06-07-2020">
+
+          <span class="hc-link__text">Ad-hoc: Revaluation of asset portfolio at HeidelbergCement </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  6 July 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-04-06-2020">
+
+          <span class="hc-link__text">HeidelbergCement successfully holds virtual Annual General Meeting</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  4 June 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-07-05-2020">
+
+          <span class="hc-link__text">HeidelbergCement makes a good start to 2020 - expense reductions of €1 billion thanks to COPE action plan</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  7 May 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-17-04-2020">
+
+          <span class="hc-link__text">Covid-19: HeidelbergCement decides on further measures</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  17 April 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-02-04-2020">
+
+          <span class="hc-link__text">HeidelbergCement issues a Eurobond with a volume of €650 million</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  2 April 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-03-2020">
+
+          <span class="hc-link__text">HeidelbergCement concludes the 2019 business year successfully</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 March 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-02-2020">
+
+          <span class="hc-link__text">HeidelbergCement with good revenue and results growth in business year 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 February 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-31-01-2020">
+
+          <span class="hc-link__text">Dr. Dominik von Achten becomes the new Chairman of the Managing Board of HeidelbergCement</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  31 January 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-29-11-2019-a">
+
+          <span class="hc-link__text">HeidelbergCement further reduces its stake in Ciments du Maroc</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  29 November 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-07-11-2019-heidelbergcement-remains-on-a-solid-growth-path-in-the-first-nine-months">
+
+          <span class="hc-link__text">HeidelbergCement remains on a solid growth path in the first nine months of 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  7 November 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-27-09-2019">
+
+          <span class="hc-link__text">HeidelbergCement strengthens cement footprint in North America</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  26 September 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-30-07-2019">
+
+          <span class="hc-link__text">Good result for HeidelbergCement in the first half of 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  30 July 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-06-2019">
+
+          <span class="hc-link__text">HeidelbergCement strengthens vertical integration in central France</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 June 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-06-2019">
+
+          <span class="hc-link__text">HeidelbergCement issues a Eurobond at historically favourable conditions</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 June 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-12-06-2019">
+
+          <span class="hc-link__text">Christoph Beumelburg is new Head of Group Communication &amp; Investor Relations at HeidelbergCement</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  12 June 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-09-05-2019-agm">
+
+          <span class="hc-link__text">HeidelbergCement – Annual General Meeting</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  9 May 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-09-05-2019">
+
+          <span class="hc-link__text">Quarterly Statement January to March 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  9 May 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-08-04-2019">
+
+          <span class="hc-link__text">HeidelbergCement makes further progress with portfolio optimisation</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  8 April 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-03-2019">
+
+          <span class="hc-link__text">HeidelbergCement successfully concluded the business year 2018</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 March 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-02-2019">
+
+          <span class="hc-link__text">HeidelbergCement reduces its stake in Ciments du Maroc</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 February 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-02-2019-board">
+
+          <span class="hc-link__text">HeidelbergCement decides on Managing Board successions</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 February 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-02-2019">
+
+          <span class="hc-link__text">HeidelbergCement reports preliminary figures for Q4 and the whole of 2018</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 February 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-14-01-2019">
+
+          <span class="hc-link__text">HeidelbergCement makes good progress with portfolio optimisation</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  14 January 2019</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-08-11-2018">
+
+          <span class="hc-link__text">HeidelbergCement Publishes Q3 2018 Results</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  8 November 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-21-09-2018">
+
+          <span class="hc-link__text">HeidelbergCement to sell White Cement plant in Egypt</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  21 September 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-02-08-2018">
+
+          <span class="hc-link__text">HeidelbergCement issues a Eurobond</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  2 August 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-31-07-2018">
+
+          <span class="hc-link__text">HeidelbergCement grows sales volume, revenue and profit for the period in the second quarter of 2018</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  31 July 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-12-06-2018">
+
+          <span class="hc-link__text">Vision 2020: HeidelbergCement updates financial targets and strategic priorities</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  12 June 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-09-05-2018-agm">
+
+          <span class="hc-link__text">HeidelbergCement – Annual General Meeting</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  9 May 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-04-2018">
+
+          <span class="hc-link__text">HeidelbergCement issues a Eurobond</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 April 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-22-03-2018">
+
+          <span class="hc-link__text">HeidelbergCement reports record year 2017</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  22 March 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-20-02-2018">
+
+          <span class="hc-link__text">HeidelbergCement reports preliminary figures for Q4 and the full year 2017 </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  20 February 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-14-02-2018">
+
+          <span class="hc-link__text">HeidelbergCement to sell stake in Lehigh White Cement Company in the USA</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  14 February 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-31-01-2018">
+
+          <span class="hc-link__text">HeidelbergCement acquires recycled construction materials and asphalt business in Australia</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  31 January 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-01-2018">
+
+          <span class="hc-link__text">HeidelbergCement signs new five year €3 billion revolving credit facility </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 January 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-12-2017">
+
+          <span class="hc-link__text">HeidelbergCement to sell its calcium silicate unit business</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 December 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-08-11-2017">
+
+          <span class="hc-link__text">HeidelbergCement reports results for the third quarter of 2017 </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  8 November 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-19-09-2017">
+
+          <span class="hc-link__text">HeidelbergCement to grow its position in Italy</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 September 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-01-08-2017">
+
+          <span class="hc-link__text">HeidelbergCement reports results for the second quarter of 2017</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  1 August 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-30-06-2017">
+
+          <span class="hc-link__text">HeidelbergCement finalizes acquisition of Cemex’s Pacific Northwest Materials Business </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  30 June 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-03-2017">
+
+          <span class="hc-link__text">HeidelbergCement issues a Eurobond</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 March 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-16-03-2017">
+
+          <span class="hc-link__text">HeidelbergCement publishes 2016 consolidated financial statements</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  16 March 2017</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/heidelbergcement-achieved-high-acceptance-rate-in-mandatory-tender-offer-to-italcementi-shareholders">
+
+          <span class="hc-link__text">HeidelbergCement achieved high acceptance rate in mandatory tender offer to Italcementi shareholders </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  2 October 2016</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/sale-of-building-products-business-completed">
+
+          <span class="hc-link__text">Sale of Building Products Business completed</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  13 March 2015</li>
+      </ul>
+    </div>
+</div>
+
+
+</div><div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/plant-inaugurations-in-africa">
+
+          <span class="hc-link__text">Plant inaugurations in Africa</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  11 March 2015</li>
+      </ul>
+    </div>
+</div>
+
+
+</div></div>

@@ -1,0 +1,733 @@
+<div data-drupal-views-infinite-scroll-content-wrapper="" class="views-infinite-scroll-content-wrapper clearfix">    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-31-01-2022">
+
+          <span class="hc-link__text">Ad-hoc release: Revenue and earnings growth above guidance and market expectations – HeidelbergCement publishes preliminary business figures for 2021</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  31 January 2022</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-28-07-2021">
+
+          <span class="hc-link__text">Ad-hoc: HeidelbergCement decides on share buyback programme with a total volume of up to €1 billion </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 July 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-15-04-2021-adhoc">
+
+          <span class="hc-link__text">Ad-hoc: Preliminary results of HeidelbergCement in the first quarter of 2021 significantly above market expectations</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 April 2021</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-14-07-2020">
+
+          <span class="hc-link__text">Ad-hoc: Preliminary results of HeidelbergCement in the second quarter of 2020 above market expectations</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  14 July 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-06-07-2020">
+
+          <span class="hc-link__text">Ad-hoc: Revaluation of asset portfolio at HeidelbergCement </span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  6 July 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-12-02-2020">
+
+          <span class="hc-link__text">HeidelbergCement reports preliminary results for business year 2019</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  12 February 2020</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/pr-18-10-2018">
+
+          <span class="hc-link__text">Ad Hoc: HeidelbergCement partially adapts outlook for 2018</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  18 October 2018</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/ad-hoc-italcementi">
+
+          <span class="hc-link__text">Ad hoc: HeidelbergCement AG acquires 45% of the shares in Italcementi S.p.A.</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  28 July 2015</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/ad-hoc-heidelbergcement-to-sell-its-north-american-and-uk-building-products-business">
+
+          <span class="hc-link__text">Ad hoc: HeidelbergCement to sell its North American and UK Building Products Business</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  24 December 2014</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/ad-hoc-heidelbergcement-ag-refrains-from-bidding-process-for-assets-of-lafarge-and-holcim">
+
+          <span class="hc-link__text">Ad hoc: HeidelbergCement AG refrains from bidding process for assets of Lafarge and Holcim</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  3 November 2014</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/ad-hoc-federal-court-of-justice-in-germany-confirms-in-essence-the-verdict-in-the-german-cartel-proceedings">
+
+          <span class="hc-link__text">Ad hoc: Federal Court of Justice in Germany confirms in essence the verdict in the German cartel proceedings</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  19 April 2013</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+    <div>
+
+
+
+<div class="hc-teaser hc-teaser--columns hc-teaser--search-main hc-search-list__item" data-js-teaser="js-teaser-linked">
+
+
+  <div class="hc-teaser__content">
+
+<h3 class="hc-heading hc-heading--3 hc-teaser__title">
+
+
+<a class="hc-link hc-link--themed" href="/en/ad-hoc-heidelbergcement-intends-to-distribute-increased-dividend-payments-of-eur-025-per-share">
+
+          <span class="hc-link__text">Ad hoc: HeidelbergCement intends to distribute increased dividend payments of EUR 0.25 per share</span>
+
+          </a>
+      </h3>
+
+
+
+
+
+
+<ul class="hc-list hc-list--text hc-list--horizontal hc-list--meta hc-teaser__list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--bold hc-list__item--small">
+  Press Release</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="hc-list__item hc-list__item--lowlight hc-list__item--small">
+  15 March 2011</li>
+      </ul>
+    </div>
+</div>
+
+
+</div>
+</div>
