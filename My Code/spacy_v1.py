@@ -3,6 +3,7 @@ import spacy
 
 # loading of choosen model
 nlp = spacy.load("en_core_web_sm")
+#nlp = spacy.load("en_core_web_trf", disable=["tagger", "parser", "attribute_ruler", "lemmatizer"])
 
 # running model on text and printing recognized entities
 #doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
