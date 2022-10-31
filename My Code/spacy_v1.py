@@ -1,13 +1,32 @@
-# import
+#import pandas as pd
+from tqdm import tqdm
 import spacy
+from spacy.tokens import DocBin
+import json
+from spacy import displacy
 
-# loading of choosen model
-nlp = spacy.load("en_core_web_sm")
-#nlp = spacy.load("en_core_web_trf", disable=["tagger", "parser", "attribute_ruler", "lemmatizer"])
+nlp = spacy.blank("en") # load a new spacy model
+db = DocBin() # create a DocBin object
 
-# running model on text and printing recognized entities
-#doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
-doc = nlp("* EUR 75 m loan for two supported projects (‘Steelanol’ and ‘Torero’), worth EUR 215m in total, which are set to reduce up to 350,000 tonnes of CO2 emissions[i] per year in the first phase.   * CO2-reduction equivalent to greenhouse gas emissions of a quarter of a million passenger vehicles being driven for one year.[ii]   * EIB investment supported by InnovFin Energy Demonstration Projects and financed under Horizon 2020 and the NER 300 funding programme of the European Commission.")
+with open('./data/annotated_relations.jsonl', 'r') as json_file:
+    json_list = list(json_file)
 
-for ent in doc.ents:
-    print(ent.text, ent.start_char, ent.end_char, ent.label_)
+for json_str in tqdm(json_list):
+    result = json.loads(json_str)
+    doc = nlp.make_doc(result["text"]) # create doc object from text
+    ents = []
+    for ent in result["entities"]: # add character indexes
+        start = ent["start_offset"]
+        end = ent["end_offset"]
+        label = ent["label"]
+        span = doc.char_span(start, end, label=label, alignment_mode="contract")
+        if span is None:
+            print("Skipping entity")
+        else:
+            ents.append(span)
+    doc.spans["sc"] = ents
+    db.add(doc)
+
+db.to_disk("./train.spacy") # save the docbin object
+
+#displacy.serve(doc, style="span")
