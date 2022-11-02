@@ -74,15 +74,11 @@ commands:
       - "python scripts/evaluate_token.py ./training/model-best ./corpus/eval.spacy \
         --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
         --spans-key ${vars.spans_key}"
-      #- "python scripts/evaluate_char.py ./training/model-best ./corpus/eval.spacy \
-      #  --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
-      #  --spans-key ${vars.spans_key}"
     deps:
       - "training/model-best"
-      - "assets/tsd_test.csv"
+      - "assets/cc_test.jsonl"
       - "corpus/eval.spacy"
       - "scripts/evaluate_token.py"
-      - "scripts/evaluate_char.py"
     outputs:
       - "metrics/${vars.config}.json"
 
@@ -92,13 +88,13 @@ commands:
       - "python -m spacy package ./training/model-best ./packages \
       --name ${vars.package_name} \
       --version ${vars.package_version} \
-      --code ./scripts/evaluate_char.py"
+      --code ./scripts/evaluate_token.py"
       - "pip install --ignore-installed \
       ./packages/en_${vars.package_name}-${vars.package_version}/dist/\
       en_${vars.package_name}-${vars.package_version}.tar.gz"
     deps:
       - "training/model-best"
-      - "scripts/evaluate_char.py"
+      - "scripts/evaluate_token.py"
     outputs:
       - packages/en_${vars.package_name}-${vars.package_version}
 
