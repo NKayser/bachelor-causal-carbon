@@ -14,21 +14,11 @@ vars:
 directories: ["assets", "training", "configs", "metrics", "corpus", "packages"]
 
 assets:
-  - dest: "assets/cc_train.jsonl"
+  - dest: "assets"
     git:
       repo: "https://github.com/NKayser/bachelor-causal-carbon"
       branch: "main"
-      path: "My\ Code/data/cc_train.jsonl"
-  - dest: "assets/cc_trial.jsonl"
-    git:
-      repo: "https://github.com/NKayser/bachelor-causal-carbon"
-      branch: "main"
-      path: "My\ Code/data/cc_trial.jsonl"
-  - dest: "assets/cc_test.jsonl"
-    git:
-      repo: "https://github.com/NKayser/bachelor-causal-carbon"
-      branch: "main"
-      path: "My\ Code/data/cc_test.jsonl"
+      path: "My\ Code/data/split"
 
 workflows:
   all:
