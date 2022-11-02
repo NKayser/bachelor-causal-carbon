@@ -6,10 +6,9 @@ vars:
   config: "config"
   gpu: -1
   lang: "en"
-  spans_key: "txs"
-  code: "scripts/evaluate_char.py"
+  spans_key: "sc"
   package_name: "spacy_causal_carbon"
-  package_version: "1.0.0"
+  package_version: "0.0.0"
 
 directories: ["assets", "training", "configs", "metrics", "corpus", "packages"]
 
