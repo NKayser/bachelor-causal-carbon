@@ -48,7 +48,6 @@ commands:
     help: "Train the pipeline"
     script:
       - "python -m spacy train configs/${vars.config}.cfg -o training/ \
-        --code ${vars.code} \
         --gpu-id ${vars.gpu} \
         --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy"
     deps:
@@ -73,10 +72,10 @@ commands:
     help: "Evaluate on the test data and save the metrics"
     script:
       - "python scripts/evaluate_token.py ./training/model-best ./corpus/eval.spacy \
-        --output ./metrics/${vars.config}.json --code ${vars.code} --gpu-id ${vars.gpu} \
+        --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
         --spans-key ${vars.spans_key}"
       #- "python scripts/evaluate_char.py ./training/model-best ./corpus/eval.spacy \
-      #  --output ./metrics/${vars.config}.json --code ${vars.code} --gpu-id ${vars.gpu} \
+      #  --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
       #  --spans-key ${vars.spans_key}"
     deps:
       - "training/model-best"
