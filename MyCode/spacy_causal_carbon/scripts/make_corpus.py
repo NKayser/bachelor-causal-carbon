@@ -3,17 +3,18 @@ from tqdm import tqdm
 from spacy.tokens import DocBin
 import json
 
+
 def create_docbin(fname: str, basename: str, nlp):
     with open(fname, 'r') as json_file:
         json_list = list(json_file)
 
-    db = DocBin() # create a DocBin object
+    db = DocBin()  # create a DocBin object
 
     for json_str in tqdm(json_list):
         result = json.loads(json_str)
-        doc = nlp.make_doc(result["text"]) # create doc object from text
+        doc = nlp.make_doc(result["text"])  # create doc object from text
         ents = []
-        for ent in result["entities"]: # add character indexes
+        for ent in result["entities"]:  # add character indexes
             start = ent["start_offset"]
             end = ent["end_offset"]
             label = ent["label"]
@@ -22,10 +23,11 @@ def create_docbin(fname: str, basename: str, nlp):
                 print("Skipping entity")
             else:
                 ents.append(span)
-        doc.spans["sc"] = ents # span groups: might modify later to make core references one group
+        doc.spans["sc"] = ents  # span groups: might modify later to make core references one group
         db.add(doc)
 
-    db.to_disk(f"./corpus/{basename}.spacy") # save the docbin object
+    db.to_disk(f"./corpus/{basename}.spacy")  # save the docbin object
+
 
 def main():
     nlp = spacy.load("en_core_web_sm")
@@ -33,3 +35,6 @@ def main():
     create_docbin("assets/cc_train.jsonl", 'train', nlp)
     create_docbin("assets/cc_trial.jsonl", 'dev', nlp)
     create_docbin("assets/cc_test.jsonl", 'eval', nlp)
+
+
+main()
