@@ -8,19 +8,27 @@ vars:
   lang: "en"
   spans_key: "txs"
   code: "scripts/evaluate_char.py"
-  package_name: "causal_carbon"
+  package_name: "spacy_causal_carbon"
   package_version: "1.0.0"
 
 directories: ["assets", "training", "configs", "metrics", "corpus", "packages"]
 
 assets:
-  -
-    dest: "assets"
-    description: "Own labeled data"
+  - dest: "assets/cc_train.jsonl"
     git:
-      repo: "https://github.com/ipavlopoulos/toxic_spans"
-      branch: "master"
-      path: "SemEval2021/data"
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "My\ Code/data/cc_train.jsonl"
+  - dest: "assets/cc_trial.jsonl"
+    git:
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "My\ Code/data/cc_trial.jsonl"
+  - dest: "assets/cc_test.jsonl"
+    git:
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "My\ Code/data/cc_test.jsonl"
 
 workflows:
   all:
