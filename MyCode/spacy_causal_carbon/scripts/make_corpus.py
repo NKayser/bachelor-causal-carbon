@@ -19,7 +19,7 @@ def create_docbin(fname: str, basename: str, nlp):
             end = ent["end_offset"]
             label = ent["label"]
             span = doc.char_span(start, end, label=label, alignment_mode="contract")
-            if span is None or len(nlp(span.text)) > 6:
+            if span is None or len(nlp(span.text)) > 6 or label != "technology":
                 print("Skipping entity")
             else:
                 ents.append(span)
