@@ -19,8 +19,9 @@ def create_docbin(fname: str, basename: str, nlp):
             end = ent["end_offset"]
             label = ent["label"]
             span = doc.char_span(start, end, label=label, alignment_mode="contract")
-            if span is None or len(nlp(span.text)) > 6 or label != "technology":
-                print("Skipping entity")
+            if span is None or len(nlp(span.text)) > 6 or label != "timeline":
+                #print("Skipping entity")
+                continue
             else:
                 ents.append(span)
         doc.spans["sc"] = ents  # span groups: might modify later to make core references one group
