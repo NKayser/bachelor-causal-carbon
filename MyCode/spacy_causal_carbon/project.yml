@@ -17,7 +17,7 @@ assets:
     git:
       repo: "https://github.com/NKayser/bachelor-causal-carbon"
       branch: "main"
-      path: "My\ Code/data/split"
+      path: "MyCode/data/split"
 
 workflows:
   all:
