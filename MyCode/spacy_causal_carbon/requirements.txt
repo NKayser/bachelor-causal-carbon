@@ -1,4 +1,5 @@
 spacy >= 3.1.0, <4.0.0
+spacy-experimental
 #pandas
 #jupyterlab
 #seaborn

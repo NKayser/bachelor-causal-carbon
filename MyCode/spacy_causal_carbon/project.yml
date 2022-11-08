@@ -9,6 +9,7 @@ vars:
   spans_key: "sc"
   package_name: "spacy_causal_carbon"
   package_version: "0.0.0"
+  model: "best"
 
 directories: ["assets", "training", "configs", "metrics", "corpus", "packages"]
 
@@ -71,11 +72,11 @@ commands:
   - name: evaluate
     help: "Evaluate on the test data and save the metrics"
     script:
-      - "python scripts/evaluate_token.py ./training/model-best ./corpus/eval.spacy \
+      - "python scripts/evaluate_token.py ./training/model-${vars.model} ./corpus/eval.spacy \
         --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
         --spans-key ${vars.spans_key}"
     deps:
-      - "training/model-best"
+      - "training/model-${vars.model}"
       - "assets/cc_test.jsonl"
       - "corpus/eval.spacy"
       - "scripts/evaluate_token.py"

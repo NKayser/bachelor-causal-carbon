@@ -46,8 +46,8 @@ def create_docbin(fname: str, basename: str, nlp):
                 if label == "core reference":
                     relations = get_relations_from_ent(relations, id)
                     to_ents = get_to_ents_from_relations(entities, relations)
-                    print(str(text_id) + ", len: " + str(len(relations)) + ", " + str(relations) + ": " + span.text)
-                doc_ents.append(span)
+                    #print(str(text_id) + ", len: " + str(len(relations)) + ", " + str(relations) + ": " + span.text)
+                #doc_ents.append(span)
             if label != "cause" and label != "effect":
                 # get sentence of that ent
                 # label this sentence as relevant
