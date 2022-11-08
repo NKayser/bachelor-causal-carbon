@@ -27,8 +27,10 @@ def create_docbin(fname: str, basename: str, nlp):
 
     for json_str in tqdm(json_list):
         result = json.loads(json_str)
-        doc = nlp.make_doc(result["text"])  # create doc object from text
+        #doc = nlp.make_doc(result["text"])  # create doc object from text
+        doc = nlp(result["text"])
         doc_ents = []
+        text_id = result["id"]
         entities = result["entities"]
         relations = result["relations"]
         for ent in entities:  # add character indexes
@@ -44,8 +46,27 @@ def create_docbin(fname: str, basename: str, nlp):
                 if label == "core reference":
                     relations = get_relations_from_ent(relations, id)
                     to_ents = get_to_ents_from_relations(entities, relations)
-                    print(str(len(relations)) + ", " + str(to_ents) + ": " + span.text)
+                    print(str(text_id) + ", len: " + str(len(relations)) + ", " + str(relations) + ": " + span.text)
                 doc_ents.append(span)
+            if label != "cause" and label != "effect":
+                # get sentence of that ent
+                # label this sentence as relevant
+                for sent in doc.sents:
+                    if span.text in sent.text:
+                        sent_start = doc.text.index(sent.text)
+                        sent_end = sent_start + len(sent.text)
+                        sent_span = doc.char_span(sent_start, sent_end, label="relevant")
+
+                        if sent.text == sent_span.text:
+                            doc_ents.append(sent_span)
+                        else:
+                            print("Sentence matching error")
+                            print("Span: "+ span.text)
+                            print("Sent: " + sent.text)
+                            print("Start: " + str(sent_start))
+                            print("End: " + str(sent_end))
+                            print("New sent: " + str())
+                            assert False
         doc.spans["sc"] = doc_ents  # span groups: might modify later to make core references one group
         db.add(doc)
 
