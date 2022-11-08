@@ -42,20 +42,20 @@ def create_docbin(fname: str, basename: str, nlp):
             if span is None:# or len(nlp(span.text)) > 6 or label != "emissions":
                 #print("Skipping entity")
                 continue
-            else:
-                if label == "core reference":
-                    relations = get_relations_from_ent(relations, id)
-                    to_ents = get_to_ents_from_relations(entities, relations)
+            #else:
+                #if label == "core reference":
+                    #relations = get_relations_from_ent(relations, id)
+                    #to_ents = get_to_ents_from_relations(entities, relations)
                     #print(str(text_id) + ", len: " + str(len(relations)) + ", " + str(relations) + ": " + span.text)
                 #doc_ents.append(span)
-            if label != "cause" and label != "effect":
+            if True: #label != "cause" and label != "effect":
                 # get sentence of that ent
                 # label this sentence as relevant
                 for sent in doc.sents:
                     if span.text in sent.text:
                         sent_start = doc.text.index(sent.text)
                         sent_end = sent_start + len(sent.text)
-                        sent_span = doc.char_span(sent_start, sent_end, label="relevant")
+                        sent_span = doc.char_span(sent_start, sent_end, label="sent_"+label)
 
                         if sent.text == sent_span.text:
                             doc_ents.append(sent_span)
@@ -74,7 +74,10 @@ def create_docbin(fname: str, basename: str, nlp):
 
 
 def main():
-    nlp = spacy.load("en_core_web_sm")
+    #nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.blank("en")
+    nlp.add_pipe("sentencizer")
+    print(nlp.pipeline)
 
     create_docbin("assets/cc_train.jsonl", 'train', nlp)
     create_docbin("assets/cc_trial.jsonl", 'dev', nlp)
