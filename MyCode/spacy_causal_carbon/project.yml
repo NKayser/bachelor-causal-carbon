@@ -4,7 +4,7 @@ spacy_version: ">=3.1.0,<4.0.0"
 
 vars:
   config: "config"
-  gpu: -1
+  gpu: 0
   lang: "en"
   spans_key: "sc"
   package_name: "spacy_causal_carbon"

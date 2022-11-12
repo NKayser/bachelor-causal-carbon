@@ -20,7 +20,7 @@ def get_to_ents_from_relations(ents, rels):
 
 
 def create_docbin(fname: str, basename: str, nlp):
-    with open(fname, 'r') as json_file:
+    with open(fname, 'r', encoding="utf8") as json_file:
         json_list = list(json_file)
 
     db = DocBin()  # create a DocBin object
@@ -29,6 +29,8 @@ def create_docbin(fname: str, basename: str, nlp):
         result = json.loads(json_str)
         #doc = nlp.make_doc(result["text"])  # create doc object from text
         doc = nlp(result["text"])
+        doc.cats["positive"] = False
+        doc.cats["negative"] = True
         doc_ents = []
         text_id = result["id"]
         entities = result["entities"]
@@ -48,6 +50,9 @@ def create_docbin(fname: str, basename: str, nlp):
                     #to_ents = get_to_ents_from_relations(entities, relations)
                     #print(str(text_id) + ", len: " + str(len(relations)) + ", " + str(relations) + ": " + span.text)
                 #doc_ents.append(span)
+            if label == "technology":
+                doc.cats["positive"] = True
+                doc.cats["negative"] = False
             if True: #label != "cause" and label != "effect":
                 # get sentence of that ent
                 # label this sentence as relevant
@@ -74,6 +79,7 @@ def create_docbin(fname: str, basename: str, nlp):
 
 
 def main():
+    spacy.require_gpu(0)
     #nlp = spacy.load("en_core_web_sm")
     nlp = spacy.blank("en")
     nlp.add_pipe("sentencizer")
