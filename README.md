@@ -4,7 +4,7 @@ To run spacy project:
 
 * cd to MyCode/spacy-causal-carbon
 * `pip install -r requirements.txt`
-** A cuda version and torch is also needed, but these needs to be compatible with each other. Get installation command from https://pytorch.org/get-started/locally/
+* A cuda version and torch is also needed, but these need to be compatible with each other. Get installation command from https://pytorch.org/get-started/locally/
 * Maybe required in the future, maybe also en_core_web_lg, en_core_web_trf: `python -m spacy download en_core_web_sm`
 * `python -m spacy project assets`
 * `python -m spacy project run corpus`
