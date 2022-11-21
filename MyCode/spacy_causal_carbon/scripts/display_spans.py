@@ -17,22 +17,22 @@ sentences = [
 with open("assets/cc_test.jsonl", 'r') as json_file:
     json_list = list(json_file)
 
-texts = "\n=========================\n".join([json.loads(json_str)["text"] for json_str in json_list])
+texts = "\n ".join([json.loads(json_str)["text"] for json_str in json_list])
 
 # Define a colour for our span category (default is grey)
-colors = {'carbon investment': '#7aecec',
-        'status': '#7aecec',
-        'effect': '#7aecec',
-        'cause': '#7aecec',
-        'core reference': '#7aecec',
-        'financial information': '#7aecec',
-        'emissions': '#7aecec',
-        'location': '#7aecec',
-        'technology': '#7aecec',
-        'timeline': '#7aecec'}
+colors = {'sent_carbon investment': '#f00000',
+        'sent_status': '#0f00f0',
+        'sent_effect': '#00f000',
+        'sent_cause': '#000f00',
+        'sent_core reference': '#0000f0',
+        'sent_financial information': '#00000f',
+        'sent_emissions': '#f0000f',
+        'sent_location': '#f000f0',
+        'sent_technology': '#f00f00',
+        'sent_timeline': '#f0f000'}
 # If other than the default 'sc', define the used spans-key and set colors
 options={'spans_key':'sc', 'colors': colors}
 
 
 doc = nlp(texts)
-displacy.serve(doc, style="span") #, options=options)
+displacy.serve(doc, style="span", options=options)
