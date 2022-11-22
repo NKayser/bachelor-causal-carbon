@@ -1,0 +1,11 @@
+spacy >= 3.1.0, <4.0.0
+spacy-experimental
+thinc[torch]
+spacy[transformers]
+GPUtil
+#pandas
+#jupyterlab
+#seaborn
+#pytest
+#pytest-html
+#--extra-index-url https://pypi.ngc.nvidia.com

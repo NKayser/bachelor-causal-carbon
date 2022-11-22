@@ -1,6 +1,6 @@
 # bachelor-causal-carbon
 
-To run spacy project:
+## To run spacy-causal-carbon project:
 
 * cd to MyCode/spacy-causal-carbon
 * `pip install -r requirements.txt`
@@ -15,3 +15,10 @@ To run spacy project:
 There is also a display_spans script to get a better idea of how the spans were labeled.
 
 I understood spacy better after reading this tutorial: https://cees-roele.medium.com/detecting-toxic-spans-with-spacy-c5533786bbf8
+
+
+## To run spacy_textcat project:
+
+* Run make_corpus script
+* `python -m spacy train configs/config.cfg --gpu-id 0 -o models`
+* `python -m spacy evaluate models/model-best corpus/textcat_test.spacy --gpu-id 0`
