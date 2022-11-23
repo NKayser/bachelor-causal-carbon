@@ -21,6 +21,9 @@ train_db = DocBin()
 dev_db = DocBin()
 test_db = DocBin()
 
+# keep track of number of positive/negative articles
+distribution = [0, 0, 0, 0, 0, 0]
+
 for json_str in tqdm(json_list):
     result = json.loads(json_str)
     doc = nlp(result["text"])
@@ -51,12 +54,36 @@ for json_str in tqdm(json_list):
     # manual split
     if ran1 < splits[0]:
         train_db.add(doc)
+        if label == "positive":
+            distribution[0] += 1
+        else:
+            distribution[1] += 1
     elif ran1 > splits[1]:
         test_db.add(doc)
+        if label == "positive":
+            distribution[2] += 1
+        else:
+            distribution[3] += 1
     else:
         dev_db.add(doc)
+        if label == "positive":
+            distribution[4] += 1
+        else:
+            distribution[5] += 1
 
 # save the docbin objects
 train_db.to_disk(f"../corpus/textcat_train.spacy")
 dev_db.to_disk(f"../corpus/textcat_dev.spacy")
 test_db.to_disk(f"../corpus/textcat_test.spacy")
+
+# print distribution
+print("Train:\t" + str(distribution[0]) + " pos, " + str(distribution[1]) + " neg")
+print("Dev:\t" + str(distribution[2]) + " pos, " + str(distribution[3]) + " neg")
+print("Test:\t" + str(distribution[4]) + " pos, " + str(distribution[5]) + " neg")
+
+# Train:	89 pos, 122 neg
+# Dev:	    30 pos, 34 neg
+# Test:	    11 pos, 22 neg
+
+# same results after rerunning it -> random seed works
+# Test set too small?
