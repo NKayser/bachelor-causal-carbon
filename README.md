@@ -2,7 +2,7 @@
 
 ## To run spacy-causal-carbon project:
 
-* cd to MyCode/spacy-causal-carbon
+* `cd .\MyCode\spacy-causal-carbon\`
 * `pip install -r requirements.txt`
 * A cuda version and torch is also needed, but these need to be compatible with each other. Get installation command from https://pytorch.org/get-started/locally/
 * Maybe required in the future, maybe also en_core_web_lg, en_core_web_trf: `python -m spacy download en_core_web_sm`
@@ -19,6 +19,13 @@ I understood spacy better after reading this tutorial: https://cees-roele.medium
 
 ## To run spacy_textcat project:
 
+* `cd .\MyCode\spacy_textcat\`
 * Run make_corpus script
+
+Train:
 * `python -m spacy train configs/config.cfg --gpu-id 0 -o models`
+* For cross validation (change number): `python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_0 --paths.train corpus/textcat_cval_0_train.spacy --paths.dev corpus/textcat_cval_0_dev.spacy`
+
+Evaluate:
 * `python -m spacy evaluate models/model-best corpus/textcat_test.spacy --gpu-id 0`
+* Cross validation: `python -m spacy evaluate models/cval_0/model-best corpus/textcat_cval_0_test.spacy --gpu-id 0 -o results/cval_0.json`

@@ -1,3 +1,6 @@
+MyCode/spacy_causal_carbon/training/
+MyCode/spacy_textcat/models/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
