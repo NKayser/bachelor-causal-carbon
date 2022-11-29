@@ -3,30 +3,30 @@
   "token_p":1.0,
   "token_r":1.0,
   "token_f":1.0,
-  "cats_score":0.877757901,
+  "cats_score":0.4109195402,
   "cats_score_desc":"macro F",
-  "cats_micro_p":0.8780487805,
-  "cats_micro_r":0.8780487805,
-  "cats_micro_f":0.8780487805,
-  "cats_macro_p":0.8773809524,
-  "cats_macro_r":0.8791866029,
-  "cats_macro_f":0.877757901,
-  "cats_macro_auc":0.9330143541,
+  "cats_micro_p":0.512195122,
+  "cats_micro_r":0.512195122,
+  "cats_micro_f":0.512195122,
+  "cats_macro_p":0.7435897436,
+  "cats_macro_r":0.5454545455,
+  "cats_macro_f":0.4109195402,
+  "cats_macro_auc":0.9688995215,
   "cats_f_per_type":{
     "positive":{
-      "p":0.85,
-      "r":0.8947368421,
-      "f":0.8717948718
+      "p":0.4871794872,
+      "r":1.0,
+      "f":0.6551724138
     },
     "negative":{
-      "p":0.9047619048,
-      "r":0.8636363636,
-      "f":0.8837209302
+      "p":1.0,
+      "r":0.0909090909,
+      "f":0.1666666667
     }
   },
   "cats_auc_per_type":{
-    "positive":0.9330143541,
-    "negative":0.9330143541
+    "positive":0.9688995215,
+    "negative":0.9688995215
   },
-  "speed":5417.2426948522
+  "speed":5618.0998598285
 }
