@@ -11,7 +11,7 @@
   "cats_macro_p":0.6388888889,
   "cats_macro_r":0.5514285714,
   "cats_macro_f":0.4257486879,
-  "cats_macro_auc":0.606,
+  "cats_macro_auc":0.5025714286,
   "cats_f_per_type":{
     "positive":{
       "p":0.4444444444,
@@ -25,8 +25,8 @@
     }
   },
   "cats_auc_per_type":{
-    "positive":0.6131428571,
-    "negative":0.5988571429
+    "positive":0.5062857143,
+    "negative":0.4988571429
   },
-  "speed":1267.3305368727
+  "speed":5393.0751266324
 }
