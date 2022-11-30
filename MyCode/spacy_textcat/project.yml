@@ -1,0 +1,85 @@
+title: "Spacy textcat"
+description: "Textcat"
+
+vars:
+  config: "config"
+  gpu: 0
+  lang: "en"
+  package_name: "spacy_textcat"
+  package_version: "0.0.0"
+  model: "best"
+
+directories: ["assets", "models", "configs", "results", "corpus", "packages"]
+
+assets:
+  - dest: "assets"
+    git:
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "MyCode/data"
+
+workflows:
+  all:
+    - corpus
+    - train
+
+commands:
+
+  - name: corpus
+    help: "Convert the data to spaCy's format"
+    script:
+      - "python scripts/make_corpus.py"
+    deps:
+      - "scripts/make_corpus.py"
+      - "assets/textcat_all.jsonl"
+    outputs:
+      - "corpus/textcat_train.spacy"
+      - "corpus/textcat_dev.spacy"
+      - "corpus/textcat_eval.spacy"
+
+  - name: train
+    help: "Train the pipeline"
+    script:
+      - "python -m spacy train configs/${vars.config}.cfg -o training/ \
+        --gpu-id ${vars.gpu} \
+        --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy"
+    deps:
+      - "corpus/textcat_train.spacy"
+      - "corpus/textcat_dev.spacy"
+      - "configs/${vars.config}.cfg"
+    outputs:
+      - "models/model-best"
+
+  - name: crossvalidation
+    help: "Run Crossvalidation with 6 buckets"
+    script:
+      - "python -m spacy init fill-config configs/base_config.cfg configs/config.cfg"
+      - "python scripts/make_corpus_for_cross_validation.py"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_0 --paths.train corpus/textcat_cval_0_train.spacy --paths.dev corpus/textcat_cval_0_dev.spacy"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_1 --paths.train corpus/textcat_cval_1_train.spacy --paths.dev corpus/textcat_cval_1_dev.spacy"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_2 --paths.train corpus/textcat_cval_2_train.spacy --paths.dev corpus/textcat_cval_2_dev.spacy"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_3 --paths.train corpus/textcat_cval_3_train.spacy --paths.dev corpus/textcat_cval_3_dev.spacy"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_4 --paths.train corpus/textcat_cval_4_train.spacy --paths.dev corpus/textcat_cval_4_dev.spacy"
+      - "python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_5 --paths.train corpus/textcat_cval_5_train.spacy --paths.dev corpus/textcat_cval_5_dev.spacy"
+      - "python -m spacy evaluate models/cval_0/model-best corpus/textcat_cval_0_test.spacy --gpu-id 0 -o results/cval_0.json"
+      - "python -m spacy evaluate models/cval_1/model-best corpus/textcat_cval_1_test.spacy --gpu-id 0 -o results/cval_1.json"
+      - "python -m spacy evaluate models/cval_2/model-best corpus/textcat_cval_2_test.spacy --gpu-id 0 -o results/cval_2.json"
+      - "python -m spacy evaluate models/cval_3/model-best corpus/textcat_cval_3_test.spacy --gpu-id 0 -o results/cval_3.json"
+      - "python -m spacy evaluate models/cval_4/model-best corpus/textcat_cval_4_test.spacy --gpu-id 0 -o results/cval_4.json"
+      - "python -m spacy evaluate models/cval_5/model-best corpus/textcat_cval_5_test.spacy --gpu-id 0 -o results/cval_5.json"
+    deps:
+      - "assets/textcat_all.jsonl"
+      - "scripts/make_corpus_for_cross_validation.py"
+    outputs:
+      - "models/cval_0/model-best"
+      - "models/cval_1/model-best"
+      - "models/cval_2/model-best"
+      - "models/cval_3/model-best"
+      - "models/cval_4/model-best"
+      - "models/cval_5/model-best"
+      - "results/cval_0.json"
+      - "results/cval_1.json"
+      - "results/cval_2.json"
+      - "results/cval_3.json"
+      - "results/cval_4.json"
+      - "results/cval_5.json"

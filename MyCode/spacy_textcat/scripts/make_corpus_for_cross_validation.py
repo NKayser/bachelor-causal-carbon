@@ -12,7 +12,7 @@ nlp = spacy.blank("en")
 random.seed(0)
 include_neg_prob = 0.2
 num_of_buckets = 6 # make 4 train, 1 dev, 1 test
-fname = "../assets/textcat_all.jsonl"
+fname = "assets/textcat_all.jsonl"
 
 with open(fname, 'r', encoding="utf8") as json_file:
     json_list = list(json_file)
@@ -67,16 +67,16 @@ for i in range(0, num_of_buckets):
 # iterate through buckets which will become train set
 # next bucket will become dev set
 for i in range(0, num_of_buckets):
-    dbs[i].to_disk(f"../corpus/textcat_cval_{i}_test.spacy")
+    dbs[i].to_disk(f"corpus/textcat_cval_{i}_test.spacy")
     val_bucket = (i + 1) % num_of_buckets
-    dbs[val_bucket].to_disk(f"../corpus/textcat_cval_{i}_dev.spacy")
+    dbs[val_bucket].to_disk(f"corpus/textcat_cval_{i}_dev.spacy")
 
     train_db = DocBin()
     for j in range(2, num_of_buckets):
         to_merge = (i + j) % num_of_buckets
         train_db.merge(dbs[to_merge])
 
-    train_db.to_disk(f"../corpus/textcat_cval_{i}_train.spacy")
+    train_db.to_disk(f"corpus/textcat_cval_{i}_train.spacy")
 
 
 # Bucket 0:	22 pos, 37 neg
