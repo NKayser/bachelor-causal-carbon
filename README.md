@@ -10,7 +10,7 @@
 * `python -m spacy project run corpus`
 * When changing base_config: `python -m spacy init fill-config configs/base_config.cfg configs/config.cfg`
 * `python -m spacy project run train`
-* `python -m spacy project run evaluate
+* `python -m spacy project run evaluate`
 
 There is also a display_spans script to get a better idea of how the spans were labeled.
 
