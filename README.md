@@ -24,8 +24,10 @@ I understood spacy better after reading this tutorial: https://cees-roele.medium
 
 Train:
 * `python -m spacy train configs/config.cfg --gpu-id 0 -o models`
-* For cross validation (change number): `python -m spacy train configs/config.cfg --gpu-id 0 -o models/cval_0 --paths.train corpus/textcat_cval_0_train.spacy --paths.dev corpus/textcat_cval_0_dev.spacy`
 
 Evaluate:
 * `python -m spacy evaluate models/model-best corpus/textcat_test.spacy --gpu-id 0`
-* Cross validation: `python -m spacy evaluate models/cval_0/model-best corpus/textcat_cval_0_test.spacy --gpu-id 0 -o results/cval_0.json`
+
+Crossvalidation:
+* A workflow that will fill the config file, create training data files, train and evaluate all buckets sequentially
+* `python -m spacy project run crossvalidation`
