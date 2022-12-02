@@ -1,22 +1,27 @@
 import json
 import spacy
+from tqdm import tqdm
 
 nlp = spacy.load("en_core_web_trf")
 spacy.prefer_gpu(0)
 
-with open("../../data/annotated_relations.jsonl", 'r', encoding='utf-8') as json_file:
+with open("../../data/textcat_all.jsonl", 'r', encoding='utf-8') as json_file:
     json_list = list(json_file)
 
-    for json_str in json_list:
+with open("../results/textcat_all_with_pretrained_ner_output.jsonl", 'w', encoding='utf-8') as out_file:
+    running_ent_id = 0
+
+    for json_str in tqdm(json_list):
         result = json.loads(json_str)
 
         doc = nlp(result["text"])
-
-        #print("Entities for doc " + str(result["id"]))
+        result["entities"] = []
 
         for ent in doc.ents:
-            if ent.label_ == "GPE":
-                print(ent.text, "|", result["text"][ent.start_char-20:ent.end_char+20], ent.label_)
+            result["entities"].append({"id": running_ent_id, "label": ent.label_, "start_offset": ent.start_char, "end_offset": ent.end_char})
+            running_ent_id += 1
+
+        out_file.write(str(result) + "\n")
 
 
 
