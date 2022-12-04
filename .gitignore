@@ -1,5 +1,5 @@
-MyCode/spacy_causal_carbon/training/
-MyCode/spacy_textcat/models/
+MyCode/old_repo/spacy_causal_carbon/training/
+MyCode/old_repo/spacy_textcat/models/
 *.iml
 
 # Byte-compiled / optimized / DLL files
