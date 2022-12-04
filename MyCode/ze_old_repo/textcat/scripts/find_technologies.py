@@ -1,9 +1,14 @@
 import json
 
-technologies = ["DRI", "EAF", "Electric Arc Furnace", "solar", "wind", "CCGT", "hydrogen", "TRT", "CCUS", "CCS",
+technologies = ["DRI", "EAF", "Electric Arc Furnace", "solar", "wind", "CCGT", "hydrogen", "TRT", "CCUS", "CCS", "CCU",
                 "carbon capture", "TRT", "HBI", "electrolysis", "R&D", "research and development", "filter", "dust",
-                "renewable energy", "scrap", "recycling", "coal", "activated clay", "heat", "kiln", "modern", "Modern",
-                "alternative fuel", "energy", "Shut down", "shut down", "decommission"]
+                "renewable energy", "scrap", "recycle", "recycling", "coal", "activated clay", "heat", "kiln",
+                "modern", "Modern", "bioethanol", "direct reduction", "iron ore", "H2",
+                "green hydrogen", "grey hydrogen", "blue hydrogen", "store", "storage", "capture",
+                "alternative fuel", "energy", "Shut down", "shut down", "decommission", "bio-fuel", "ethanol"
+
+                # general terms:
+                "steel", "cement", "blast furnace", "invest", "sustainable", "sustainability", "zero"]
 occurence = dict((k, 0) for k in technologies)
 num_found = [0, 0]
 unclassified = []
