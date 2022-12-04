@@ -31,3 +31,18 @@ Evaluate:
 Crossvalidation:
 * A workflow that will fill the config file, create training data files, train and evaluate all buckets sequentially
 * `python -m spacy project run crossvalidation`
+
+
+## labels_and_predictions input file explained:
+
+* Attributes from database, self-explanatory:
+  * id, text, company_name, published_on, title, emissions_rank, language, article_category, preview_text, article_url, pdf_url, error_text, carbon_in_title, carbon_in_text
+* entities: as predicted by pretrained NER algorithm of en_core_web_trf
+  * id, label, start_offset, end_offset
+* relations: labeled by me (in 118 articles)
+  * id, from_id, to_id, type
+* label: labeled by me. "positive", "negative" or "unsure" if article about investment in carbon abatement
+* textcat_prediction: label predicted by best textcat model (cval_2), to save computing time
+* labeled_entities: labeled by me. includes "core reference", "location", "effect", "cause", "status", "technology", "emissions", "timeline", "financial information", "carbon investment"
+* predicted_sent_spans: predicted sentence labels by spancat model, to save computing time. Trained on labeled_entities with boundaries expanded to sentences.
+  * same labels as labeled_entities but with "sent_" prefix

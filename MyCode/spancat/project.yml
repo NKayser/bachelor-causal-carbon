@@ -1,0 +1,122 @@
+title: "Bachelor Causal Carbon"
+description: "The SpanCategorizer is a component in **spaCy v3.1+** for assigning labels to contiguous spans of text proposed by a customizable suggester function. Unlike spaCy's EntityRecognizer component, the SpanCategorizer can recognize nested or overlapping spans. It also doesn't rely as heavily on consistent starting and ending words, so it may be a better fit for non-NER span labelling tasks. You do have to write a function that proposes your candidate spans, however. If your spans are often short, you could propose all spans under a certain size. You could also use syntactic constituents such as noun phrases or noun chunks, or matcher rules."
+spacy_version: ">=3.1.0,<4.0.0"
+
+vars:
+  config: "config"
+  gpu: 0
+  lang: "en"
+  spans_key: "sc"
+  package_name: "spacy_causal_carbon"
+  package_version: "0.0.0"
+  model: "best"
+
+directories: ["assets", "training", "configs", "metrics", "corpus", "packages"]
+
+assets:
+  - dest: "assets"
+    git:
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "MyCode/data/split"
+
+workflows:
+  all:
+    - corpus
+    - train
+    - test
+    - evaluate
+    - deploy
+    - post-deployment-test
+
+commands:
+
+  - name: corpus
+    help: "Convert the data to spaCy's format"
+    script:
+      - "python scripts/make_corpus.py"
+    deps:
+      - "scripts/make_corpus.py"
+      - "assets/cc_train.jsonl"
+      - "assets/cc_trial.jsonl"
+      - "assets/cc_test.jsonl"
+    outputs:
+      - "corpus/train.spacy"
+      - "corpus/dev.spacy"
+      - "corpus/eval.spacy"
+
+  - name: train
+    help: "Train the pipeline"
+    script:
+      - "python -m spacy train configs/${vars.config}.cfg -o training/ \
+        --gpu-id ${vars.gpu} \
+        --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy"
+    deps:
+      - "corpus/train.spacy"
+      - "corpus/dev.spacy"
+      - "configs/${vars.config}.cfg"
+    outputs:
+      - "training/model-best"
+
+  - name: test
+    help: 'Test the trained pipeline'
+    script:
+      - 'python -m pytest ./scripts/tests/test_evaluate.py --html=metrics/test-evaluate-report.html'
+    deps:
+      - 'assets/tsd_train.csv'
+      - 'training/model-best'
+    outputs:
+      - 'metrics/test-report.html'
+    no_skip: true
+
+  - name: evaluate
+    help: "Evaluate on the test data and save the metrics"
+    script:
+      - "python scripts/evaluate_token.py ./training/model-${vars.model} ./corpus/eval.spacy \
+        --output ./metrics/${vars.config}.json --gpu-id ${vars.gpu} \
+        --spans-key ${vars.spans_key}"
+    deps:
+      - "training/model-${vars.model}"
+      - "assets/cc_test.jsonl"
+      - "corpus/eval.spacy"
+      - "scripts/evaluate_token.py"
+    outputs:
+      - "metrics/${vars.config}.json"
+
+  - name: deploy
+    help: "Package the best model so it can be installed, loaded, and called"
+    script:
+      - "python -m spacy package ./training/model-best ./packages \
+      --name ${vars.package_name} \
+      --version ${vars.package_version} \
+      --code ./scripts/evaluate_token.py"
+      - "pip install --ignore-installed \
+      ./packages/en_${vars.package_name}-${vars.package_version}/dist/\
+      en_${vars.package_name}-${vars.package_version}.tar.gz"
+    deps:
+      - "training/model-best"
+      - "scripts/evaluate_token.py"
+    outputs:
+      - packages/en_${vars.package_name}-${vars.package_version}
+
+  - name: post-deployment-test
+    help: 'Test the installed package'
+    script:
+      - 'python -m pytest ./scripts/tests/test_package.py --html=metrics/test-package-report.html'
+    deps:
+      - 'assets/tsd_train.csv'
+      - 'training/model-best'
+    outputs:
+      - 'metrics/test-package-report.html'
+    no_skip: true
+
+  - name: clean
+    help: "Remove intermediate files"
+    # NOTE: we can't write "rm -rf corpus/*" because spaCy wraps the argument in quotes,
+    #       which prevents the wildcard '*' from expanding.
+    #       Hence we delete the directories themselves
+    script:
+      - "rm -rf corpus"
+      - "rm -rf training"
+      - "rm -rf metrics"
+      - "rm -rf packages"
