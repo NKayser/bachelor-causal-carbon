@@ -1,12 +1,10 @@
 import json
+import re
 
+from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
+    TECHNOLOGY_CATEGORIES
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner
-
-INPUT_PATH = "../data/labels_and_predictions.jsonl"
-TEXTCAT_MODEL_PATH = "../textcat/models/cval_2/model-best"
-SPANCAT_MODEL_PATH = "../spancat/models/model-best"
-PRETRAINED_NER_MODEL = "en_core_web_trf"
-TEXTCAT_THRESHOLD = 0.5
+from MyCode.scripts.utils import get_positive_article_ids
 
 
 class Article:
@@ -45,10 +43,33 @@ class Article:
         self.spans = apply_spancat(self.text, spancat_model)
         self.ents = apply_pretrained_ner(self.text, ner_model)
 
+    def get_technology_cats(self, categories=TECHNOLOGY_CATEGORIES):
+        # define the categories and keywords
+        # later: could define weights of keywords
+        # could use tree structure
+        # could use logical rules ("word1 AND word2 OR word3 AND NOT word4")
+
+        # initialize the counts for each category
+        counts = {c: 0 for c in categories}
+
+        # search for each keyword in the text
+        for c, keywords in categories.items():
+            for keyword in keywords:
+                count = len(re.findall(keyword, self.text))
+                counts[c] += count
+
+        # print the counts for each category
+        sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+        sorted_counts = [x for x in sorted_counts if x[1] != 0]
+        print(sorted_counts)
+
 
 if __name__ == '__main__':
+    positive_ids = get_positive_article_ids()
     article = Article()
-    article.fill_from_article(6389)
-    print(article.textcat_prediction)
-    print(article.spans)
-    print(article.ents)
+    article.fill_from_article(positive_ids[100]) # e.g. 6389
+    print(article.text)
+    article.get_technology_cats()
+    #print(article.textcat_prediction)
+    #print(article.spans)
+    #print(article.ents)
