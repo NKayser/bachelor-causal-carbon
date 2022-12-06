@@ -65,6 +65,9 @@ class Article:
         return sorted_counts
 
     def get_locations(self):
+        all_spans = get_all_entities_by_type(self.text, self.spans)
+        if "sent_location" in all_spans.keys():
+            print(all_spans["sent_location"])
         all_ents = get_all_entities_by_type(self.text, self.ents)
         better_locations = get_more_precise_locations(all_ents["GPE"])
         return better_locations
@@ -73,11 +76,11 @@ class Article:
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
     article = Article()
-    article.fill_from_article(positive_ids[86]) # e.g. 6389
+    article.fill_from_article(positive_ids[70]) # e.g. 6389
     print(article.text)
     #print(article.get_technology_cats())
     print(article.get_locations())  # some weird locations for number 25
-                                    # also: U.S. (in #85) classified as "Unterer See, Böblingen"
+                                    # Czech Republic points to specific location in country for some reason
     #print(article.textcat_prediction)
     #print(article.spans)
     #print(article.ents)
