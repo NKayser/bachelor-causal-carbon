@@ -3,6 +3,8 @@ spacy-experimental
 thinc[torch]
 spacy[transformers]
 GPUtil
+geopy
+geocoder
 #pandas
 #jupyterlab
 #seaborn
