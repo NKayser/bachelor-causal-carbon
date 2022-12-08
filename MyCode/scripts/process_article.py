@@ -79,7 +79,7 @@ if __name__ == '__main__':
     article.fill_from_article(positive_ids[70]) # e.g. 6389
     print(article.text)
     #print(article.get_technology_cats())
-    print(article.get_locations())  # some weird locations for number 25
+    #print(article.get_locations())  # some weird locations for number 25
                                     # Czech Republic points to specific location in country for some reason
     #print(article.textcat_prediction)
     #print(article.spans)
