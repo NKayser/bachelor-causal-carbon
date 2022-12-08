@@ -1,11 +1,10 @@
-import json
 import re
 
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner
-from MyCode.scripts.utils import get_positive_article_ids, get_entities_of_type, get_all_entities_by_type, \
-    get_more_precise_locations
+from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_type, \
+    get_more_precise_locations, read_input_file
 
 
 class Article:
@@ -15,6 +14,7 @@ class Article:
     textcat_prediction = None
     spans = None
     ents = None
+    ents_by_type = None
 
     def fill_from_dict(self, precomputed_dict, include_predictions=True):
         self.metadata = precomputed_dict
@@ -24,13 +24,12 @@ class Article:
             self.textcat_prediction = precomputed_dict["textcat_prediction"]
             self.spans = precomputed_dict["predicted_sent_spans"]
             self.ents = precomputed_dict["entities"]
+            self.ents_by_type = get_all_entities_by_type(self.text, self.ents)
 
     def fill_from_article(self, article_id, include_predictions=True, file_path=INPUT_PATH):
-        with open(file_path, "r", encoding="utf-8") as input_file:
-            json_list = list(input_file)
+        json_list = read_input_file()
 
-        for json_str in json_list:
-            article_data = json.loads(json_str)
+        for article_data in json_list:
             if article_data["id"] == article_id:
                 self.fill_from_dict(article_data, include_predictions)
                 return self
@@ -43,6 +42,7 @@ class Article:
         self.textcat_prediction = apply_textcat(self.text, textcat_model)
         self.spans = apply_spancat(self.text, spancat_model)
         self.ents = apply_pretrained_ner(self.text, ner_model)
+        self.ents_by_type = get_all_entities_by_type(self.text, self.ents)
 
     def get_technology_cats(self, categories=TECHNOLOGY_CATEGORIES):
         # define the categories and keywords
@@ -68,20 +68,23 @@ class Article:
         #all_spans = get_all_entities_by_type(self.text, self.spans)
         #if "sent_location" in all_spans.keys():
         #    print(all_spans["sent_location"])
-        all_ents = get_all_entities_by_type(self.text, self.ents)
-        better_locations = get_more_precise_locations(all_ents["GPE"])
+        better_locations = get_more_precise_locations(self.ents_by_type["GPE"])
         return better_locations
+
+    def get_financial_information(self):
+        return self.ents_by_type["MONEY"]
 
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
     article = Article()
-    article.fill_from_article(positive_ids[81]) # e.g. 6389
+    article.fill_from_article(positive_ids[80]) # e.g. 6389
     print(article.text)
     print(article.get_technology_cats())
     print(article.get_locations())  # some weird locations for number 25
                                     # Czech Republic points to specific location in country for some reason
                                     # error in 80
+    print(article.get_financial_information())
     #print(article.textcat_prediction)
     #print(article.spans)
     #print(article.ents)

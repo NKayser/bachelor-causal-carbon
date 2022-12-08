@@ -42,7 +42,11 @@ print(confusion_matrices)
 tp, fp, tn, fn = confusion_matrices[2]
 
 print("Evaluation on test data")
-print("Recall_p " + str(tp / (tp + fn)))
+print("tp " + str(tp))
+print("fp " + str(fp))
+print("tn " + str(tn))
+print("fn " + str(fn))
 print("Precision_p " + str(tp / (tp + fp)))
+print("Recall_p " + str(tp / (tp + fn)))
+print("Precision_n " + str(tn / (tn + fn)))
 print("Recall_n " + str(tn / (tn + fp)))
-print("Recall_p " + str(tn / (tn + fn)))
