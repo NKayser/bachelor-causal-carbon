@@ -46,3 +46,4 @@ Crossvalidation:
 * labeled_entities: labeled by me. includes "core reference", "location", "effect", "cause", "status", "technology", "emissions", "timeline", "financial information", "carbon investment"
 * predicted_sent_spans: predicted sentence labels by spancat model, to save computing time. Trained on labeled_entities with boundaries expanded to sentences.
   * same labels as labeled_entities but with "sent_" prefix
+* dataset: train, test, val or null. Which dataset article belonged to for training of model used for "textcat_prediction" value

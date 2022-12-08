@@ -63,7 +63,7 @@ def get_more_precise_locations(loc_array):
             if name not in locations:
                 locations.append(name)
                 #out.append((name, input_name, s[1]))
-                out.append((name, s[1]))
+                out.append([name, s[1]])
                 bounding_boxes.append(coded.raw["boundingbox"])
             else:
                 # add counts of duplicate to first mention of location
@@ -83,11 +83,23 @@ def get_more_precise_locations(loc_array):
         j = 0
         while j < len(out):
             if i != j and (out[i][0] in out[j][0]): # or rectangle_subset(bounding_boxes[j], bounding_boxes[i])):
+                out[j][1] += out[i][1]
                 removed_name = out.pop(i)
                 removed_bounding_box = bounding_boxes.pop(i)
             j += 1
         i += 1
 
-    out = list(dict.fromkeys(out))
+    #out = list(dict.fromkeys(out))
 
     return out
+
+
+def read_input_file(path=INPUT_PATH):
+    with open(path, "r", encoding="utf8") as json_file:
+        json_list = list(json_file)
+        return [json.loads(json_str) for json_str in json_list]
+
+
+def write_json_to_file(obj, path):
+    with open(path, "w", encoding="utf8") as json_file:
+        json_file.write(json.dumps(obj) + "\n")
