@@ -29,7 +29,9 @@ def get_positive_article_ids():
 
 
 def get_entities_of_type(text, all_entities, type):
-    return sorted(dict(Counter([text[ent["start_offset"]:ent["end_offset"]] for ent in all_entities if ent["label"] == type])).items(), key=lambda k: k[1], reverse=True)
+    return sorted(dict(Counter([text[ent["start_offset"]:ent["end_offset"]]
+                                for ent in all_entities if ent["label"] == type])).items(),
+                  key=lambda k: k[1], reverse=True)
 
 
 def get_all_entities_by_type(text, all_entities):
@@ -63,13 +65,13 @@ def get_more_precise_locations(loc_array):
             if name not in locations:
                 locations.append(name)
                 #out.append((name, input_name, s[1]))
-                out.append([name, s[1]])
+                out.append((name, s[1]))
                 bounding_boxes.append(coded.raw["boundingbox"])
             else:
                 # add counts of duplicate to first mention of location
                 for i in range(0, len(out)):
                     if out[i][0] == name:
-                        out[i][1] += s[1]
+                        out[i] = (out[i][0], out[i][1] + s[1])
         except socket.timeout:
             print(s[0] + " not found")
             continue
@@ -101,5 +103,5 @@ def read_input_file(path=INPUT_PATH):
 
 
 def write_json_to_file(obj, path):
-    with open(path, "w", encoding="utf8") as json_file:
+    with open(path, "a", encoding="utf8") as json_file:
         json_file.write(json.dumps(obj) + "\n")

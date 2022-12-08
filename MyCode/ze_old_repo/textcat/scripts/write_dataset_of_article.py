@@ -84,7 +84,9 @@ with open(fname + "2", 'w', encoding="utf8") as json_file:
                 # search for doc with id and write "train"
                 input_line["dataset"] = "train"
                 json_file.write(json.dumps(input_line) + "\n")
-                continue
+                break
+        if input_line["dataset"] == "train":
+            continue
 
         input_line["dataset"] = None
         json_file.write(json.dumps(input_line) + "\n")

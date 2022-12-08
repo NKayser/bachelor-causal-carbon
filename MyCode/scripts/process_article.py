@@ -72,16 +72,27 @@ class Article:
         return better_locations
 
     def get_financial_information(self):
-        return self.ents_by_type["MONEY"]
+        # self.ents_by_type["MONEY"]
+        money_ents = list(filter(lambda ent: ent["label"] == "MONEY", self.ents))
+        relevant_ent_texts = [self.text[ent["start_offset"]-50:ent["end_offset"]+50] for ent in money_ents]
+        money_spans = list(filter(lambda span: span["label"] == "sent_financial information", self.spans))
+        relevant_span_texts = [self.text[span["start_offset"]:span["end_offset"]] for span in money_spans]
+
+        print(money_ents)
+        print(relevant_ent_texts)
+        print(money_spans)
+        print(relevant_span_texts)
+
+        return(money_ents)
 
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
     article = Article()
-    article.fill_from_article(positive_ids[80]) # e.g. 6389
+    article.fill_from_article(positive_ids[1]) # e.g. 6389
     print(article.text)
-    print(article.get_technology_cats())
-    print(article.get_locations())  # some weird locations for number 25
+    #print(article.get_technology_cats())
+    #print(article.get_locations())  # some weird locations for number 25
                                     # Czech Republic points to specific location in country for some reason
                                     # error in 80
     print(article.get_financial_information())
