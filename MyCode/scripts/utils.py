@@ -9,9 +9,6 @@ from geopy.extra.rate_limiter import RateLimiter
 
 from MyCode.scripts.consts import INPUT_PATH
 
-ALL_STANDARD_ENTITY_TYPES = ["PERSON", "NORP", "FAC", "ORG", "GPE", "LOC", "PRODUCT", "EVENT", "WORK_OF_ART", "LAW",
-                             "LANGUAGE", "DATE", "TIME", "PERCENT", "MONEY", "QUANTITY", "ORDINAL", "CARDINAL"]
-
 
 def get_positive_article_ids():
     with open(INPUT_PATH, "r", encoding="utf-8") as input_file:
@@ -28,20 +25,40 @@ def get_positive_article_ids():
     return positive_ids
 
 
-def get_entities_of_type(text, all_entities, type):
-    return sorted(dict(Counter([text[ent["start_offset"]:ent["end_offset"]]
-                                for ent in all_entities if ent["label"] == type])).items(),
+def get_entities_with_label(all_entities, label):
+    return sorted(dict(Counter([ent for ent in all_entities if ent.label == label])).items(),
                   key=lambda k: k[1], reverse=True)
 
 
-def get_all_entities_by_type(text, all_entities):
-    all_types = list(dict.fromkeys([ent["label"] for ent in all_entities]))
-    return {type: get_entities_of_type(text, all_entities, type) for type in all_types}
+def get_all_entities_by_label(all_entities):
+    all_labels = list(dict.fromkeys([ent.label for ent in all_entities]))
+    return {label: get_entities_with_label(all_entities, label) for label in all_labels}
+
+
+def ent_is_in_sent(ent, sent):
+    return ent.start_offset >= sent.start_offset and ent.end_offset <= sent.end_offset
+
+
+def get_sent_of_ent(ent, sents):
+    for sent in sents:
+        if ent_is_in_sent(ent, sent):
+            return sent
+    print("Error with loading document: entity was not found in sentences.")
+    print("Entity: " + str(ent))
+    print("Sentences: " + str(sents))
+    assert False
+
+
+def get_all_entities_in_sentence(all_entities, sent):
+    return [ent for ent in all_entities if ent_is_in_sent(ent, sent)]
+
+
+def get_span_labels_of_sentence(spans, sent):
+    return [span.label for span in spans if span.start_offset == sent.start_offset]
 
 
 def rectangle_subset(rect1, rect2):
     return rect1[0] > rect2[0] and rect1[1] < rect2[1] and rect1[2] > rect2[2] and rect1[3] < rect2[3]
-
 
 
 def get_more_precise_locations(loc_array):

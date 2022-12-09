@@ -8,6 +8,12 @@ def apply_spacy_model(input_text, model):
     return doc
 
 
+def apply_sentencizer(input_text, model):
+    doc = apply_spacy_model(input_text, model)
+    return [{"id": sent.ent_id, "start_offset": sent.start_char, "end_offset": sent.end_char}
+            for sent in doc.sents]
+
+
 def apply_textcat(input_text, model):
     doc = apply_spacy_model(input_text, model)
     return doc.cats["positive"]

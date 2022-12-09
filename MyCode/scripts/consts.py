@@ -26,3 +26,6 @@ TECHNOLOGY_CATEGORIES = {
             'cement': ['cement'],
             'microbe': ['microbe', 'microbial', 'bioethanol'],
         }
+
+ALL_STANDARD_ENTITY_TYPES = ["PERSON", "NORP", "FAC", "ORG", "GPE", "LOC", "PRODUCT", "EVENT", "WORK_OF_ART", "LAW",
+                             "LANGUAGE", "DATE", "TIME", "PERCENT", "MONEY", "QUANTITY", "ORDINAL", "CARDINAL"]
