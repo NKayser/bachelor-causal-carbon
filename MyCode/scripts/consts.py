@@ -25,6 +25,7 @@ TECHNOLOGY_CATEGORIES = {
             'steel': ['steel', 'blast furnace', 'coke'],
             'cement': ['cement'],
             'microbe': ['microbe', 'microbial', 'bioethanol'],
+            'general': ['environment', 'sustain', 'net zero', 'net-zero', 'neutral'],
         }
 
 ALL_STANDARD_ENTITY_TYPES = ["PERSON", "NORP", "FAC", "ORG", "GPE", "LOC", "PRODUCT", "EVENT", "WORK_OF_ART", "LAW",

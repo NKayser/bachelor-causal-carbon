@@ -44,8 +44,8 @@ def get_sent_of_ent(ent, sents):
         if ent_is_in_sent(ent, sent):
             return sent
     print("Error with loading document: entity was not found in sentences.")
-    print("Entity: " + str(ent))
-    print("Sentences: " + str(sents))
+    print(ent.text)
+    print([sent.text for sent in sents])
     assert False
 
 

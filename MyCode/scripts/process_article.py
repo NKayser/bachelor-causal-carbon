@@ -1,4 +1,5 @@
 import re
+import spacy
 
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES
@@ -19,6 +20,7 @@ class Article:
     ents_by_type = None
 
     def __init__(self, metadata, text, texcat_prediction=None, sents=None, spans=None, ents=None):
+        assert text is not None
         self.metadata = metadata
         self.text = text
         self.textcat_prediction = texcat_prediction
@@ -29,14 +31,14 @@ class Article:
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
+        article_text = precomputed_dict["text"]
         if include_predictions:
-            article_text = precomputed_dict["text"]
             sents = Charspan.from_dict_array(precomputed_dict["sents"], article_text, "sent")
             spans = Charspan.from_dict_array(precomputed_dict["predicted_sent_spans"], article_text, "span")
             ents = Charspan.from_dict_array(precomputed_dict["entities"], article_text, "ent")
             return cls(precomputed_dict, article_text, precomputed_dict["textcat_prediction"], sents, spans, ents)
         else:
-            return cls(precomputed_dict, precomputed_dict["text"])
+            return cls(precomputed_dict, article_text)
 
     @classmethod
     def from_article(cls, article_id, include_predictions=True, file_path=INPUT_PATH):
@@ -86,14 +88,45 @@ class Article:
 
     def get_financial_information(self):
         # self.ents_by_type["MONEY"]
-        money_ents = get_all_entities_by_label(self.ents)["MONEY"]
+        money_ents = list(filter(lambda ent: ent.label == "MONEY", self.ents))
+        ner_length = len(money_ents)
+        print([ent.text for ent in money_ents])
         money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
 
         keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
+        additional_patterns = ["(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
+                               "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3)"]
+        # additional_patterns = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
+        #                                "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
 
         # fix problem where "€50m" -> "50" and "more than €160m" -> "more than €160"
+        for pattern in additional_patterns:
+            matches = re.finditer(pattern, self.text)
+            count_matches = 0
+            for match in matches:
+                print(self.text[match.start():match.end()])
+                count_matches += 1
+                match_text = self.text[match.start():match.end()]
+                if match_text in [ent.text for ent in money_ents]:
+                    continue
+                match_in_existing = False
+                for i in range(0, len(money_ents)):
+                    me_start = money_ents[i].start_offset
+                    me_end = money_ents[i].end_offset
+                    assert me_start < me_end and match.start() < match.end()
+                    if not (me_end <= match.start() or match.end() <= me_start):
+                        money_ents[i].set_new_offset(min(me_start, match.start()), max(me_end, match.end()))
+                        match_in_existing = True
+                if not match_in_existing:
+                    new_money_ent = Charspan(match.start(), match.end(), "MONEY", self.text, "ent")
+                    money_ents.append(new_money_ent)
 
-        for ent, count in money_ents:
+            print("Len of NER matches before: " + str(ner_length) + ", len of re matches: " + str(count_matches)
+                  + ", len of NER matches after: " + str(len(money_ents)))
+            #money_ents.append(Charspan.from_dict_array())
+
+        for ent in money_ents:
+            print(str(ent))
             sent = get_sent_of_ent(ent, self.sents)
             ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
             span_labels = get_span_labels_of_sentence(self.spans, sent)
@@ -102,17 +135,17 @@ class Article:
                 count = len(re.findall(keyword, sent.text))
                 keyword_number += count * weight
 
-            print(sent.text)
-            print(keyword_number)
-            print(span_labels)
-            print([str(ent) for ent in ents_of_sent])
-            print(ent.text)
+            #print(sent.text)
+            #print(keyword_number)
+            #print(span_labels)
+            #print([str(ent) for ent in ents_of_sent])
+            #print(ent.text)
 
 
-        print("all money ents:")
-        print([str(ent) for ent in money_ents])
-        print("all money spans:")
-        print([str(ent) for ent in money_spans])
+        #print("all money ents:")
+        #print([str(ent) for ent in money_ents])
+        #print("all money spans:")
+        #print([str(ent) for ent in money_spans])
 
         return(money_ents)
 
@@ -126,18 +159,13 @@ class Charspan:
     text = None
     article_text = None
 
-    def __init__(self, span_id, start_offset, end_offset, label, article_text, span_type):
-        if start_offset < 0 or end_offset > len(article_text):
-            print("Entity boundaries outside of text")
-            assert False
-
+    def __init__(self, start_offset, end_offset, label, article_text, span_type, span_id=None):
+        assert article_text is not None
+        self.article_text = article_text
+        self.set_new_offset(start_offset, end_offset)
         self.id = span_id
-        self.start_offset = start_offset
-        self.end_offset = end_offset
         self.type = span_type
         self.label = label
-        self.article_text = article_text
-        self.text = self.get_text()
 
     @classmethod
     def from_dict(cls, input_dict, article_text, span_type):
@@ -145,8 +173,8 @@ class Charspan:
             label = input_dict["label"]
         else:
             label = None
-        return cls(input_dict["id"], input_dict["start_offset"], input_dict["end_offset"], label, article_text,
-                   span_type)
+        return cls(input_dict["start_offset"], input_dict["end_offset"], label, article_text,
+                   span_type, input_dict["id"])
 
     @classmethod
     def from_dict_array(cls, arr, article_text, span_type):
@@ -164,11 +192,19 @@ class Charspan:
     def __str__(self):
         return str({"label": self.label, "text": self.text})
 
+    def set_new_offset(self, new_start_offset, new_end_offset):
+        if new_start_offset < 0 or new_end_offset > len(self.article_text):
+            print("Entity boundaries outside of text")
+            assert False
+        self.start_offset = new_start_offset
+        self.end_offset = new_end_offset
+        self.text = self.get_text()
+
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
-    article = Article.from_article(positive_ids[1]) # e.g. 6389
-    print(article.text)
+    article = Article.from_article(positive_ids[4]) # e.g. 6389
+    #print(article.text)
     #print(article.get_technology_cats())
     #print(article.get_locations())  # some weird locations for number 25
                                     # Czech Republic points to specific location in country for some reason
