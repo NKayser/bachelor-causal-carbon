@@ -86,20 +86,26 @@ class Article:
 
     def get_financial_information(self):
         # self.ents_by_type["MONEY"]
-        money_ents = list(filter(lambda ent: ent.label == "MONEY", self.ents))
+        money_ents = get_all_entities_by_label(self.ents)["MONEY"]
         money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
+
+        keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
 
         # fix problem where "€50m" -> "50" and "more than €160m" -> "more than €160"
 
-        for ent in money_ents:
+        for ent, count in money_ents:
             sent = get_sent_of_ent(ent, self.sents)
-            print("span labels:")
-            print(get_span_labels_of_sentence(self.spans, sent))
-            print("entities:")
-            print([str(ent) for ent in get_all_entities_in_sentence(self.ents, sent)])
-            print("sent text:")
+            ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
+            span_labels = get_span_labels_of_sentence(self.spans, sent)
+            keyword_number = 0
+            for keyword, weight in keywords:
+                count = len(re.findall(keyword, sent.text))
+                keyword_number += count * weight
+
             print(sent.text)
-            print("ent text:")
+            print(keyword_number)
+            print(span_labels)
+            print([str(ent) for ent in ents_of_sent])
             print(ent.text)
 
 
