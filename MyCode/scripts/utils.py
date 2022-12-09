@@ -36,17 +36,8 @@ def get_all_entities_by_label(all_entities):
 
 
 def ent_is_in_sent(ent, sent):
-    return ent.start_offset >= sent.start_offset and ent.end_offset <= sent.end_offset
-
-
-def get_sent_of_ent(ent, sents):
-    for sent in sents:
-        if ent_is_in_sent(ent, sent):
-            return sent
-    print("Error with loading document: entity was not found in sentences.")
-    print(ent.text)
-    print([sent.text for sent in sents])
-    assert False
+    # or overlapping
+    return ent.end_offset > sent.start_offset or ent.start_offset < sent.end_offset
 
 
 def get_all_entities_in_sentence(all_entities, sent):

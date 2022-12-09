@@ -5,8 +5,8 @@ from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_
     TECHNOLOGY_CATEGORIES
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
-    get_more_precise_locations, read_input_file, get_sent_of_ent, get_span_labels_of_sentence, \
-    get_all_entities_in_sentence
+    get_more_precise_locations, read_input_file, get_span_labels_of_sentence, \
+    get_all_entities_in_sentence, ent_is_in_sent
 
 
 class Article:
@@ -59,6 +59,18 @@ class Article:
         self.ents = Charspan.from_dict_array(apply_pretrained_ner(self.text, ner_model), self.text, "ent")
         self.ents_by_type = get_all_entities_by_label(self.ents)
 
+    def get_sent_of_ent(self, ent):
+        for i in range(0, len(self.sents)):
+            sent = self.sents[i]
+            if ent_is_in_sent(ent, sent):
+                if ent.start_offset < sent.start_offset:
+                    self.sents[i-1].set_new_offset(self.sents[i-1].start_offset, self.sents[i].end_offset)
+                if ent.end_offset > sent.end_offset:
+                    self.sents[i].set_new_offset(self.sents[i].start_offset, self.sents[i+1].end_offset)
+                return sent
+        print("Error with loading document: entity " + ent.text + " was not found in sentences.")
+        assert False
+
     def get_technology_cats(self, categories=TECHNOLOGY_CATEGORIES):
         # define the categories and keywords
         # later: could define weights of keywords
@@ -94,10 +106,10 @@ class Article:
         money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
 
         keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
-        additional_patterns = ["(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
-                               "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3)"]
-        # additional_patterns = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
-        #                                "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
+        #additional_patterns = ["(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
+        #                       "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3)"]
+        additional_patterns = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)",
+                                       "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
 
         # fix problem where "€50m" -> "50" and "more than €160m" -> "more than €160"
         for pattern in additional_patterns:
@@ -127,7 +139,7 @@ class Article:
 
         for ent in money_ents:
             print(str(ent))
-            sent = get_sent_of_ent(ent, self.sents)
+            sent = self.get_sent_of_ent(ent)
             ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
             span_labels = get_span_labels_of_sentence(self.spans, sent)
             keyword_number = 0
