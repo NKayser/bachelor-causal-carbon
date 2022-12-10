@@ -106,10 +106,9 @@ class Article:
         money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
 
         keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
-        #additional_patterns = ["(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)\.?",
-        #                       "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|CAN|CAN\$|CAD|cad|can|CHF|PLN|\u00a3)"]
         additional_patterns = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)",
                                        "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
+        ignore = ["2 can", "\+[\d ?\-?\-?]*", "19 Eur"]
 
         # fix problem where "€50m" -> "50" and "more than €160m" -> "more than €160"
         for pattern in additional_patterns:
@@ -137,15 +136,48 @@ class Article:
                   + ", len of NER matches after: " + str(len(money_ents)))
             #money_ents.append(Charspan.from_dict_array())
 
-        for ent in money_ents:
-            print(str(ent))
+        i = 0
+        while i < len(money_ents):
+            ent = money_ents[i]
+            i_popped = False
+            for pattern in ignore:
+                print(ent.text, pattern)
+                if re.fullmatch(pattern, ent.text):
+                    print("removed")
+                    money_ents.pop(i)
+                    i_popped = True
+            if not i_popped:
+                i += 1
+
+        weighted_money_ents = [(ent, 0) for ent in money_ents]
+        i = 0
+        while i < len(weighted_money_ents):
+            ent, weight = weighted_money_ents[i]
             sent = self.get_sent_of_ent(ent)
-            ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
-            span_labels = get_span_labels_of_sentence(self.spans, sent)
-            keyword_number = 0
-            for keyword, weight in keywords:
+            #ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
+            #span_labels = get_span_labels_of_sentence(self.spans, sent)
+            new_weight = 0
+            for keyword, kw_weight in keywords:
                 count = len(re.findall(keyword, sent.text))
-                keyword_number += count * weight
+                new_weight += count * kw_weight
+            weighted_money_ents[i] = (ent, new_weight)
+            j = 0
+            i_popped = False
+            while j < len(weighted_money_ents):
+                if j == i:
+                    j += 1
+                    continue
+                ent2, weight2 = weighted_money_ents[j]
+                if ent.text in ent2.text:
+                    money_ents.pop(i)
+                    weighted_money_ents[j] = (ent2, weight2 + new_weight)
+                    weighted_money_ents.pop(i)
+                    i_popped = True
+                    break
+                else:
+                    j += 1
+            if i_popped:
+                continue
 
             #print(sent.text)
             #print(keyword_number)
@@ -153,13 +185,17 @@ class Article:
             #print([str(ent) for ent in ents_of_sent])
             #print(ent.text)
 
+            i += 1
+
+        weighted_money_ents = sorted(weighted_money_ents, key=lambda x: x[1], reverse=True)
+        print([(ent.text, weight) for ent, weight in weighted_money_ents])
 
         #print("all money ents:")
         #print([str(ent) for ent in money_ents])
         #print("all money spans:")
         #print([str(ent) for ent in money_spans])
 
-        return(money_ents)
+        return weighted_money_ents
 
 
 class Charspan:
@@ -215,13 +251,15 @@ class Charspan:
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
-    article = Article.from_article(positive_ids[4]) # e.g. 6389
+    id = positive_ids[-1]
+    print("id " + str(id))
+    article = Article.from_article(id) # e.g. 6389
+    article.get_financial_information()
     #print(article.text)
     #print(article.get_technology_cats())
     #print(article.get_locations())  # some weird locations for number 25
                                     # Czech Republic points to specific location in country for some reason
                                     # error in 80
-    print(article.get_financial_information())
     #print(article.textcat_prediction)
     #print(article.spans)
     #print(article.ents)
