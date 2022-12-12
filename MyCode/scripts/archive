@@ -1,0 +1,50 @@
+### weighted money ents
+
+money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
+
+keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
+weighted_money_ents = [(ent, 0) for ent in money_ents]
+i = 0
+while i < len(weighted_money_ents):
+    ent, weight = weighted_money_ents[i]
+    sent = self.get_sent_of_ent(ent)
+    #ents_of_sent = get_all_entities_by_label(get_all_entities_in_sentence(self.ents, sent))
+    #span_labels = get_span_labels_of_sentence(self.spans, sent)
+    new_weight = 0
+    for keyword, kw_weight in keywords:
+        count = len(re.findall(keyword, sent.text))
+        new_weight += count * kw_weight
+    weighted_money_ents[i] = (ent, new_weight)
+    j = 0
+    i_popped = False
+    while j < len(weighted_money_ents):
+        if j == i:
+            j += 1
+            continue
+        ent2, weight2 = weighted_money_ents[j]
+        if ent.text in ent2.text:
+            money_ents.pop(i)
+            weighted_money_ents[j] = (ent2, weight2 + new_weight)
+            weighted_money_ents.pop(i)
+            i_popped = True
+            break
+        else:
+            j += 1
+    if i_popped:
+        continue
+
+    #print(sent.text)
+    #print(keyword_number)
+    #print(span_labels)
+    #print([str(ent) for ent in ents_of_sent])
+    #print(ent.text)
+
+    i += 1
+
+weighted_money_ents = sorted(weighted_money_ents, key=lambda x: x[1], reverse=True)
+print([(ent.text, weight) for ent, weight in weighted_money_ents])
+
+#print("all money ents:")
+#print([str(ent) for ent in money_ents])
+#print("all money spans:")
+#print([str(ent) for ent in money_spans])

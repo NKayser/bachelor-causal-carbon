@@ -37,15 +37,19 @@ def get_all_entities_by_label(all_entities):
 
 def ent_is_in_sent(ent, sent):
     # or overlapping
-    return ent.end_offset > sent.start_offset or ent.start_offset < sent.end_offset
+    return not (ent.end_offset < sent.start_offset or ent.start_offset > sent.end_offset)
 
 
-def get_all_entities_in_sentence(all_entities, sent):
+def get_ents_of_sent(all_entities, sent):
     return [ent for ent in all_entities if ent_is_in_sent(ent, sent)]
 
 
 def get_span_labels_of_sentence(spans, sent):
     return [span.label for span in spans if span.start_offset == sent.start_offset]
+
+
+def filter_ents(ents, label):
+    return list(filter(lambda ent: ent.label == label, ents))
 
 
 def rectangle_subset(rect1, rect2):

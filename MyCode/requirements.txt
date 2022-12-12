@@ -5,6 +5,7 @@ spacy[transformers]
 GPUtil
 geopy
 geocoder
+quantiphy
 #pandas
 #jupyterlab
 #seaborn
