@@ -113,7 +113,7 @@ class Article:
         for c, keywords in categories.items():
             for keyword in keywords:
                 for match in re.finditer(keyword, self.text):
-                    new_tech_ent = Charspan(match.start(), match.end(), "technology", self.text, "ent")
+                    new_tech_ent = Charspan(match.start(), match.end(), "TECHWORD", self.text, "ent")
                     technology_ents.append(new_tech_ent)
         return technology_ents
 
