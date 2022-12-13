@@ -3,7 +3,7 @@ from tqdm import tqdm
 import json
 
 # load the best model from training
-nlp = spacy.load("../../../spancat/models/model-best")
+nlp = spacy.load("../../../sententence_categorization/models/model-best")
 
 spacy.prefer_gpu(0)
 

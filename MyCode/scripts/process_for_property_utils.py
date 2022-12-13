@@ -1,7 +1,7 @@
 import re
 
 from MyCode.scripts.Charspan import Charspan
-from MyCode.scripts.consts import MONEY_PATTERNS, IGNORE_MONEY_PATTERNS
+from MyCode.scripts.consts import MONEY_PATTERNS, IGNORE_MONEY_PATTERNS, TECHNOLOGY_CATEGORIES
 
 
 def get_additional_money_ents(text, money_ents):
@@ -37,3 +37,19 @@ def get_additional_money_ents(text, money_ents):
             i += 1
 
     return money_ents
+
+
+def get_weighted_technology_cats(article_text, categories=TECHNOLOGY_CATEGORIES):
+    # initialize the counts for each category
+    counts = {c: 0 for c in categories}
+
+    # search for each keyword in the text
+    for c, keywords in categories.items():
+        for keyword in keywords:
+            count = len(re.findall(keyword, article_text))
+            counts[c] += count
+
+    # print the counts for each category
+    sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+    sorted_counts = [x for x in sorted_counts if x[1] != 0]
+    return sorted_counts

@@ -2,8 +2,8 @@ import re
 
 from MyCode.scripts.Charspan import Charspan
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
-    TECHNOLOGY_CATEGORIES
-from MyCode.scripts.process_for_property_utils import get_additional_money_ents
+    TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS
+from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, \
@@ -76,16 +76,37 @@ class Article:
         finance_ents = self.get_financial_information()     # "MONEY"
         technology_ents = self.get_technology_ents()        # "technology"
         location_ents = self.get_location_ents()            # "GPE"
-        emissions_ents = self.get_emissions_ents()          # "QUANTITY"
+        emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         time_ents = self.get_time_ents()                    # "TIME"
         parsed_ents = [finance_ents, technology_ents, location_ents, emissions_ents, time_ents]
+        weighted_sents = self.get_weighted_sents()
 
-        for sent in self.sents:
-            print("\nSentence:")
-            print(sent.text)
+        for sent, weight in weighted_sents:
             sent_ents = [get_ents_of_sent(ents, sent) for ents in parsed_ents]
+            count_ents = [len(arr) for arr in sent_ents]
+            sum_ents = sum(count_ents)
+            technology_cats_of_sent = get_weighted_technology_cats(sent.text)
+            if sum_ents == 0:
+                continue
+            print("\n")
+            print(sent.text)
             print([[ent.text for ent in ents] for ents in sent_ents])
+            print("tech cats: ", technology_cats_of_sent)
+            print("sentence weight: ", weight)
+            print("number of ents:  ", sum_ents)
 
+            # weighted_sents = [(sent, weight / total) for sent, weight in weighted_sents]
+
+    def get_weighted_sents(self, weighted_keywords=WEIGHTED_SENT_KEYWORDS):
+        weighted_sents = []
+        total = 0
+        for sent in self.sents:
+            sent_weight = 0
+            for keyword, weight in weighted_keywords:
+                sent_weight += len(re.findall(keyword, sent.text)) * weight
+            weighted_sents.append((sent, sent_weight))
+            total += sent_weight
+        return weighted_sents
 
     def get_technology_ents(self, categories=TECHNOLOGY_CATEGORIES):
         technology_ents = []
@@ -96,20 +117,8 @@ class Article:
                     technology_ents.append(new_tech_ent)
         return technology_ents
 
-    def get_weighted_technology_cats(self, categories=TECHNOLOGY_CATEGORIES):
-        # initialize the counts for each category
-        counts = {c: 0 for c in categories}
-
-        # search for each keyword in the text
-        for c, keywords in categories.items():
-            for keyword in keywords:
-                count = len(re.findall(keyword, self.text))
-                counts[c] += count
-
-        # print the counts for each category
-        sorted_counts = sorted(counts.items(), key=lambda x: x[1], reverse=True)
-        sorted_counts = [x for x in sorted_counts if x[1] != 0]
-        return sorted_counts
+    def get_weighted_technology_cats(self):
+        get_weighted_technology_cats(self.text)
 
     def get_location_ents(self):
         return filter_ents(self.ents, "GPE")
@@ -126,6 +135,7 @@ class Article:
     def get_emissions_ents(self):
         # Problem: "kW/h" only recognized as "kW"
         emissions_ents = filter_ents(self.ents, "QUANTITY")
+        emissions_ents = emissions_ents + filter_ents(self.ents, "PERCENT")
         return emissions_ents
 
     def get_time_ents(self):

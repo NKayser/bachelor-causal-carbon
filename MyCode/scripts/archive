@@ -2,7 +2,6 @@
 
 money_spans = list(filter(lambda span: span.label == "sent_financial information", self.spans))
 
-keywords = [("invest", 3), ("project", 2), ("technology", 2), ("plant", 2), ("environment", 1), ("sustain", 1)] # with weights
 weighted_money_ents = [(ent, 0) for ent in money_ents]
 i = 0
 while i < len(weighted_money_ents):

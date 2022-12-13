@@ -1,6 +1,6 @@
 INPUT_PATH = "../data/labels_and_predictions.jsonl"
 TEXTCAT_MODEL_PATH = "../textcat/models/cval_2/model-best"
-SPANCAT_MODEL_PATH = "../spancat/models/model-best"
+SPANCAT_MODEL_PATH = "../sententence_categorization/models/model-best"
 PRETRAINED_NER_MODEL = "en_core_web_trf"
 TEXTCAT_THRESHOLD = 0.5
 
@@ -34,3 +34,14 @@ ALL_STANDARD_ENTITY_TYPES = ["PERSON", "NORP", "FAC", "ORG", "GPE", "LOC", "PROD
 MONEY_PATTERNS = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3) ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand)",
                        "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
 IGNORE_MONEY_PATTERNS = ["2 can", "\+[\d ?\-?\-?]*", "19 Eur"]
+
+WEIGHTED_SENT_KEYWORDS = [("investment", 4),
+                          ("invest", 3),
+                          ("project", 2),
+                          ("technology", 2),
+                          ("plant", 2),
+                          ("CO2", 2),
+                          ("carbon", 2),
+                          ("Carbon", 2),
+                          ("environment", 1),
+                          ("sustain", 1)] # with weights
