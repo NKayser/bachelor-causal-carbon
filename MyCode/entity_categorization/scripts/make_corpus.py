@@ -10,9 +10,8 @@ from MyCode.scripts.process_article import Article
 from MyCode.scripts.utils import read_input_file, filter_ents, ent_is_in_sent
 
 nlp = spacy.blank("en")
-random.seed(0)
+random.seed(1)
 splits = [0.7, 0.8]
-include_neg_prob = 0.25
 fname = "../data/labels_and_predictions.jsonl"
 
 json_list = read_input_file(fname)
@@ -53,7 +52,6 @@ for json_obj in tqdm(json_list):
     doc_ents = []
     doc_dist = [0, 0]
     ran1 = random.random()
-    ran2 = random.random()
 
     for ent in article.ents:
         if ent.label not in corresponding_labels.keys():
@@ -69,21 +67,20 @@ for json_obj in tqdm(json_list):
                     #print(label, ent.label, labeled_ent.text)
                     ent_in_labeled_ent = True
                     doc_dist[0] += 1
-                    new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " positive")
-                    if str(new_ent) == "None":
-                        print(label, "|", ent.label, "|", ent.start_offset, "|", ent.end_offset, "|", ent.text, "|", article.text[ent.start_offset:ent.end_offset])
+                    new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " positive",
+                                            alignment_mode="expand")
+                    assert str(new_ent) != "None"
                     doc_ents.append(new_ent)
         if ent_in_labeled_ent:
             continue
-        if ran2 > include_neg_prob:
+        if doc_dist[1] > doc_dist[0]:
             continue
         doc_dist[1] += 1
-        new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " negative")
-        if str(new_ent) == "None":
-            print(ent.label, "|", ent.start_offset, "|", ent.end_offset, "|", ent.text, "|", article.text[ent.start_offset:ent.end_offset])
+        new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " negative", alignment_mode="expand")
+        assert str(new_ent) != "None"
         doc_ents.append(new_ent)
 
-    print(doc_ents)
+    #print(doc_ents)
     doc.spans["sc"] = doc_ents
 
     # manual split
