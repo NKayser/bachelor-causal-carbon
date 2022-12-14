@@ -33,6 +33,12 @@ Crossvalidation:
 * `python -m spacy project run crossvalidation`
 
 
+## Entity Categorization
+
+* `python -m spacy train configs/config.cfg -o models`
+* `python -m spacy evaluate models/model-best corpus/test.spacy -o metrics/model_best_metrics.json`
+
+
 ## labels_and_predictions input file explained:
 
 * Attributes from database, self-explanatory:

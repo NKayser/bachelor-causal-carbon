@@ -81,7 +81,8 @@ for json_obj in tqdm(json_list):
         doc_ents.append(new_ent)
 
     #print(doc_ents)
-    doc.spans["sc"] = doc_ents
+    #doc.spans["sc"] = doc_ents
+    doc.ents = spacy.util.filter_spans(doc_ents)
 
     # manual split
     if ran1 < splits[0]:
