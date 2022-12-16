@@ -66,7 +66,7 @@ for json_obj in tqdm(json_list):
                     #print(label, ent.label, labeled_ent.text)
                     ent_in_labeled_ent = True
                     doc_dist[0] += 1
-                    new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " positive",
+                    new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label + " positive",
                                             alignment_mode="expand")
                     assert str(new_ent) != "None"
                     doc_ents.append(new_ent)
@@ -75,7 +75,7 @@ for json_obj in tqdm(json_list):
         if doc_dist[1] > doc_dist[0]:
             continue
         doc_dist[1] += 1
-        new_ent = doc.char_span(ent.start_offset, ent.end_offset, ent.label + " negative", alignment_mode="expand")
+        new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label + " negative", alignment_mode="expand")
         assert str(new_ent) != "None"
         doc_ents.append(new_ent)
 

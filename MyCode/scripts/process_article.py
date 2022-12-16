@@ -2,7 +2,6 @@ import re
 
 import spacy
 
-from MyCode.scripts.Charspan import Charspan
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
@@ -12,35 +11,30 @@ from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_l
 
 
 class Article:
-    text = None
+    nlp = spacy.blank("en")
+    doc = None
     metadata = None
 
     textcat_prediction = None
-    sents = None
-    spans = None
-    ents = None
-    ents_by_type = None
 
-    def __init__(self, metadata, text, texcat_prediction=None, sents=None, spans=None, ents=None):
+    def __init__(self, text, metadata=None, texcat_prediction=None, sents=None, spans=None, ents=None):
         assert text is not None
+        self.doc = self.nlp(text)
         self.metadata = metadata
-        self.text = text
         self.textcat_prediction = texcat_prediction
-        self.sents = sents
-        self.spans = spans
-        self.ents = ents
-        self.ents_by_type = get_all_entities_by_label(self.ents)
+        self.set_sents(sents)
+        self.doc.spans["sc"] = self.dict_to_charspan_array(spans)
+        self.doc.ents = self.dict_to_charspan_array(ents)
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
         article_text = precomputed_dict["text"]
         if include_predictions:
-            sents = Charspan.from_dict_array(precomputed_dict["sents"], article_text, "sent")
-            spans = Charspan.from_dict_array(precomputed_dict["predicted_sent_spans"], article_text, "span")
-            ents = Charspan.from_dict_array(precomputed_dict["entities"], article_text, "ent")
-            return cls(precomputed_dict, article_text, precomputed_dict["textcat_prediction"], sents, spans, ents)
+            return cls(article_text, precomputed_dict, precomputed_dict["textcat_prediction"],
+                       precomputed_dict["sents"], precomputed_dict["predicted_sent_spans"],
+                       precomputed_dict["entities"])
         else:
-            return cls(precomputed_dict, article_text)
+            return cls(article_text, precomputed_dict)
 
     @classmethod
     def from_article(cls, article_id, include_predictions=True, file_path=INPUT_PATH):
@@ -53,22 +47,37 @@ class Article:
         print("Article with id " + str(article_id) + " could not be found.")
         assert False
 
+    def set_sents(self, in_dict):
+        char_span_sents = self.dict_to_charspan_array(in_dict)
+        for char_span_sent in char_span_sents:
+            char_span_sent[0].is_sent_start = True
+
+    def dict_to_charspan_array(self, in_dict):
+        spans = []
+        for entry in in_dict:
+            if "label" in entry.keys():
+                spans.append(self.doc.char_span(entry["start_offset"], entry["end_offset"], label=entry["label"],
+                                                alignment_mode="expand"))
+            else:
+                spans.append(self.doc.char_span(entry["start_offset"], entry["end_offset"],
+                                                alignment_mode="expand"))
+        return spans
+
     def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
                          ner_model=PRETRAINED_NER_MODEL):
-        self.textcat_prediction = apply_textcat(self.text, textcat_model)
-        self.sents = Charspan.from_dict_array(apply_sentencizer(self.text, spancat_model), self.text, "sent")
-        self.spans = Charspan.from_dict_array(apply_spancat(self.text, spancat_model), self.text, "span")
-        self.ents = Charspan.from_dict_array(apply_pretrained_ner(self.text, ner_model), self.text, "ent")
-        self.ents_by_type = get_all_entities_by_label(self.ents) # potential issue if metadata None
+        self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
+        self.doc.sents = self.dict_to_charspan_array(apply_sentencizer(self.doc.text, spancat_model))
+        self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
+        self.doc.ents = self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
     def get_sent_of_ent(self, ent):
-        for i in range(0, len(self.sents)):
-            sent = self.sents[i]
+        for i in range(0, len(self.doc.sents)):
+            sent = self.doc.sents[i]
             if ent_is_in_sent(ent, sent):
                 if ent.start_offset < sent.start_offset:
-                    self.sents[i-1].set_new_offset(self.sents[i-1].start_offset, self.sents[i].end_offset)
+                    self.doc.sents[i-1].set_new_offset(self.doc.sents[i-1].start_offset, self.doc.sents[i].end_offset)
                 if ent.end_offset > sent.end_offset:
-                    self.sents[i].set_new_offset(self.sents[i].start_offset, self.sents[i+1].end_offset)
+                    self.doc.sents[i].set_new_offset(self.doc.sents[i].start_offset, self.doc.sents[i+1].end_offset)
                 return sent
         print("Error with loading document: entity " + ent.text + " was not found in sentences.")
         assert False
@@ -101,7 +110,7 @@ class Article:
     def get_weighted_sents(self, weighted_keywords=WEIGHTED_SENT_KEYWORDS):
         weighted_sents = []
         total = 0
-        for sent in self.sents:
+        for sent in self.doc.sents:
             sent_weight = 0
             for keyword, weight in weighted_keywords:
                 sent_weight += len(re.findall(keyword, sent.text)) * weight
@@ -113,34 +122,34 @@ class Article:
         technology_ents = []
         for c, keywords in categories.items():
             for keyword in keywords:
-                for match in re.finditer(keyword, self.text):
-                    new_tech_ent = Charspan(match.start(), match.end(), "TECHWORD", self.text, "ent")
+                for match in re.finditer(keyword, self.doc.text):
+                    new_tech_ent = self.doc.char_span(match.start(), match.end(), "TECHWORD", alignment_mode="expand")
                     technology_ents.append(new_tech_ent)
         return technology_ents
 
     def get_weighted_technology_cats(self):
-        get_weighted_technology_cats(self.text)
+        get_weighted_technology_cats(self.doc.text)
 
     def get_location_ents(self):
-        return filter_ents(self.ents, "GPE")
+        return filter_ents(self.doc.ents, "GPE")
 
     def get_weighted_locations(self):
-        better_locations = get_more_precise_locations(self.ents_by_type["GPE"])
+        better_locations = get_more_precise_locations(get_all_entities_by_label(self.doc.ents)["GPE"])
         return better_locations
 
     def get_financial_information(self):
-        money_ents = filter_ents(self.ents, "MONEY")
-        money_ents = get_additional_money_ents(self.text, money_ents)
+        money_ents = filter_ents(self.doc.ents, "MONEY")
+        money_ents = get_additional_money_ents(self.doc, money_ents)
         return money_ents
 
     def get_emissions_ents(self):
         # Problem: "kW/h" only recognized as "kW"
-        emissions_ents = filter_ents(self.ents, "QUANTITY")
-        emissions_ents = emissions_ents + filter_ents(self.ents, "PERCENT")
+        emissions_ents = filter_ents(self.doc.ents, "QUANTITY")
+        emissions_ents = emissions_ents + filter_ents(self.doc.ents, "PERCENT")
         return emissions_ents
 
     def get_date_ents(self):
-        return filter_ents(self.ents, "DATE")
+        return filter_ents(self.doc.ents, "DATE")
 
 
 if __name__ == '__main__':

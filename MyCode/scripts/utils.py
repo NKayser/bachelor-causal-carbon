@@ -37,7 +37,7 @@ def get_all_entities_by_label(all_entities):
 
 def ent_is_in_sent(ent, sent):
     # or overlapping
-    return not (ent.end_offset < sent.start_offset or ent.start_offset > sent.end_offset)
+    return not (ent.end_char < sent.start_char or ent.start_char > sent.end_char)
 
 
 def get_ents_of_sent(all_entities, sent):
@@ -45,7 +45,7 @@ def get_ents_of_sent(all_entities, sent):
 
 
 def get_span_labels_of_sentence(spans, sent):
-    return [span.label for span in spans if span.start_offset == sent.start_offset]
+    return [span.label for span in spans if span.start_char == sent.start_char]
 
 
 def filter_ents(ents, label):
@@ -53,7 +53,7 @@ def filter_ents(ents, label):
 
 
 def ent_to_token_slice(doc, ent):
-    span = doc.char_span(ent.start_offset, ent.end_offset)
+    span = doc.char_span(ent.start_char, ent.end_char)
     return span[0].i, span[-1].i + 1
 
 
