@@ -6,7 +6,7 @@ from spacy.tokens import DocBin
 
 from MyCode.scripts.Charspan import Charspan
 from MyCode.scripts.process_article import Article
-from MyCode.scripts.utils import read_input_file, ent_is_in_sent
+from MyCode.scripts.utils import read_input_file, ent_is_in_sent, filter_ents
 
 nlp = spacy.blank("en")
 random.seed(1)
@@ -52,7 +52,7 @@ for json_obj in tqdm(json_list):
     doc_dist = [0, 0]
     ran1 = random.random()
 
-    for ent in article.ents:
+    for ent in filter_ents(article.ents, "MONEY"):
         if ent.label not in corresponding_labels.keys():
             continue
         ent_in_labeled_ent = False

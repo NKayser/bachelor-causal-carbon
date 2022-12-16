@@ -1,5 +1,7 @@
 import re
 
+import spacy
+
 from MyCode.scripts.Charspan import Charspan
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS

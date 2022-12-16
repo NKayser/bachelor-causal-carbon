@@ -82,6 +82,11 @@ def get_ents_of_sent(all_entities, sent):
     return [ent for ent in all_entities if ent_is_in_sent(ent, sent)]
 
 
+def ent_to_token_slice(doc, ent):
+    span = doc.char_span(ent.start_offset, ent.end_offset, alignment_mode="expand")
+    return span[0].i, span[-1].i + 1
+
+
 def apply_spacy_model(input_text, model):
     spacy.prefer_gpu(0)
     nlp = spacy.load(model)
@@ -93,24 +98,6 @@ def apply_sentencizer(input_text, model):
     doc = apply_spacy_model(input_text, model)
     return [{"id": sent.ent_id, "start_offset": sent.start_char, "end_offset": sent.end_char}
             for sent in doc.sents]
-
-
-def apply_textcat(input_text, model):
-    doc = apply_spacy_model(input_text, model)
-    return doc.cats["positive"]
-
-
-def apply_spancat(input_text, model):
-    doc = apply_spacy_model(input_text, model)
-    formatted_spans = []
-    running_span_id = 0
-
-    for span in doc.spans['sc']:
-        formatted_spans.append(
-            {"id": running_span_id, "label": span.label_, "start_offset": span.start_char, "end_offset": span.end_char})
-        running_span_id += 1
-
-    return formatted_spans
 
 
 def apply_pretrained_ner(input_text, model):
@@ -180,11 +167,8 @@ class Article:
         self.spans = spans
         self.ents = ents
 
-    def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
-                         ner_model=PRETRAINED_NER_MODEL):
-        self.textcat_prediction = apply_textcat(self.text, textcat_model)
+    def preprocess_spacy(self, spancat_model=SPANCAT_MODEL_PATH, ner_model=PRETRAINED_NER_MODEL):
         self.sents = Charspan.from_dict_array(apply_sentencizer(self.text, spancat_model), self.text, "sent")
-        self.spans = Charspan.from_dict_array(apply_spancat(self.text, spancat_model), self.text, "span")
         self.ents = Charspan.from_dict_array(apply_pretrained_ner(self.text, ner_model), self.text, "ent")
 
     def get_sent_of_ent(self, ent):
@@ -284,21 +268,23 @@ def build_custom_suggester() -> Suggester:
             article = Article(metadata=None, text=doc.text)
             article.preprocess_spacy()
             finance_ents = article.get_financial_information()      # "MONEY"
-            technology_ents = article.get_technology_ents()         # "TECHWORD"
-            location_ents = filter_ents(article.ents, "GPE")        # "GPE"
-            quantity_ents = filter_ents(article.ents, "QUANTITY")   # "QUANTITY"
-            percent_ents = filter_ents(article.ents, "PERCENT")     # "PERCENT"
-            date_ents = filter_ents(article.ents, "DATE")           # "DATE"
-            fac_ents = filter_ents(article.ents, "FAC")             # "FAC"
-            product_ents = filter_ents(article.ents, "PRODUCT")     # "PRODUCT"
-            parsed_ents = [finance_ents, technology_ents, location_ents, quantity_ents, percent_ents, date_ents,
-                           fac_ents, product_ents]
+            #technology_ents = article.get_technology_ents()         # "TECHWORD"
+            #location_ents = filter_ents(article.ents, "GPE")        # "GPE"
+            #quantity_ents = filter_ents(article.ents, "QUANTITY")   # "QUANTITY"
+            #percent_ents = filter_ents(article.ents, "PERCENT")     # "PERCENT"
+            #date_ents = filter_ents(article.ents, "DATE")           # "DATE"
+            #fac_ents = filter_ents(article.ents, "FAC")             # "FAC"
+            #product_ents = filter_ents(article.ents, "PRODUCT")     # "PRODUCT"
+            #parsed_ents = [finance_ents, technology_ents, location_ents, quantity_ents, percent_ents, date_ents,
+            #               fac_ents, product_ents]
+            parsed_ents = [finance_ents]
 
             for ent_arr in parsed_ents:
                 for ent in ent_arr:
-                    if (ent.start_offset, ent.end_offset) not in cache:
-                        spans.append((ent.start_offset, ent.end_offset))
-                        cache.add((ent.start_offset, ent.end_offset))
+                    token_slice = ent_to_token_slice(doc, ent)
+                    if token_slice not in cache:
+                        spans.append(token_slice)
+                        cache.add(token_slice)
                         length += 1
 
             lengths.append(length)

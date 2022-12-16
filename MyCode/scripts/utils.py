@@ -52,6 +52,11 @@ def filter_ents(ents, label):
     return list(filter(lambda ent: ent.label == label, ents))
 
 
+def ent_to_token_slice(doc, ent):
+    span = doc.char_span(ent.start_offset, ent.end_offset)
+    return span[0].i, span[-1].i + 1
+
+
 def rectangle_subset(rect1, rect2):
     return rect1[0] > rect2[0] and rect1[1] < rect2[1] and rect1[2] > rect2[2] and rect1[3] < rect2[3]
 
