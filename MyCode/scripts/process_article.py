@@ -6,8 +6,7 @@ from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
-    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, \
-    get_span_labels_of_sentence
+    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent
 
 
 class Article:
@@ -58,7 +57,7 @@ class Article:
         self.sents = Charspan.from_dict_array(apply_sentencizer(self.text, spancat_model), self.text, "sent")
         self.spans = Charspan.from_dict_array(apply_spancat(self.text, spancat_model), self.text, "span")
         self.ents = Charspan.from_dict_array(apply_pretrained_ner(self.text, ner_model), self.text, "ent")
-        self.ents_by_type = get_all_entities_by_label(self.ents)
+        self.ents_by_type = get_all_entities_by_label(self.ents) # potential issue if metadata None
 
     def get_sent_of_ent(self, ent):
         for i in range(0, len(self.sents)):
@@ -74,10 +73,10 @@ class Article:
 
     def get_investment_information(self):
         finance_ents = self.get_financial_information()     # "MONEY"
-        technology_ents = self.get_technology_ents()        # "technology"
+        technology_ents = self.get_technology_ents()        # "TECHWORD"
         location_ents = self.get_location_ents()            # "GPE"
         emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
-        time_ents = self.get_time_ents()                    # "TIME"
+        time_ents = self.get_date_ents()                    # "DATE"
         parsed_ents = [finance_ents, technology_ents, location_ents, emissions_ents, time_ents]
         weighted_sents = self.get_weighted_sents()
 
@@ -138,7 +137,7 @@ class Article:
         emissions_ents = emissions_ents + filter_ents(self.ents, "PERCENT")
         return emissions_ents
 
-    def get_time_ents(self):
+    def get_date_ents(self):
         return filter_ents(self.ents, "DATE")
 
 

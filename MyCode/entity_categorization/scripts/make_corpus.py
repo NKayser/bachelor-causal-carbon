@@ -3,11 +3,10 @@ import random
 import spacy
 from tqdm import tqdm
 from spacy.tokens import DocBin
-import json
 
 from MyCode.scripts.Charspan import Charspan
 from MyCode.scripts.process_article import Article
-from MyCode.scripts.utils import read_input_file, filter_ents, ent_is_in_sent
+from MyCode.scripts.utils import read_input_file, ent_is_in_sent
 
 nlp = spacy.blank("en")
 random.seed(1)
@@ -81,8 +80,8 @@ for json_obj in tqdm(json_list):
         doc_ents.append(new_ent)
 
     #print(doc_ents)
-    #doc.spans["sc"] = doc_ents
-    doc.ents = spacy.util.filter_spans(doc_ents)
+    doc.spans["sc"] = doc_ents
+    #doc.ents = spacy.util.filter_spans(doc_ents)
 
     # manual split
     if ran1 < splits[0]:

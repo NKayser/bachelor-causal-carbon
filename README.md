@@ -35,7 +35,7 @@ Crossvalidation:
 
 ## Entity Categorization
 
-* `python -m spacy train configs/config.cfg -o models`
+* MyCode\entity_categorization> `python -m spacy train configs/config.cfg -o models --gpu-id 0 --code scripts/custom_span_suggester.py`
 * `python -m spacy evaluate models/model-best corpus/test.spacy -o metrics/model_best_metrics.json`
 
 
