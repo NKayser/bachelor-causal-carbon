@@ -35,7 +35,6 @@ def get_additional_money_ents(doc, money_ents):
                 i_popped = True
         if not i_popped:
             i += 1
-
     return money_ents
 
 

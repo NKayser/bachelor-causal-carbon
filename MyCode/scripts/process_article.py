@@ -1,13 +1,14 @@
 import re
 
 import spacy
+from spacy.tokens import SpanGroup
 
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
-    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent
+    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents
 
 
 class Article:
@@ -24,7 +25,7 @@ class Article:
         self.textcat_prediction = texcat_prediction
         self.set_sents(sents)
         self.doc.spans["sc"] = self.dict_to_charspan_array(spans)
-        self.doc.ents = self.dict_to_charspan_array(ents)
+        self.doc.spans["sc"] += self.dict_to_charspan_array(ents)
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
@@ -66,9 +67,9 @@ class Article:
     def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
                          ner_model=PRETRAINED_NER_MODEL):
         self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
-        self.doc.sents = self.dict_to_charspan_array(apply_sentencizer(self.doc.text, spancat_model))
+        self.set_sents(apply_sentencizer(self.doc.text, spancat_model))
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
-        self.doc.ents = self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
+        self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
     def get_sent_of_ent(self, ent):
         for i in range(0, len(self.doc.sents)):
@@ -83,8 +84,8 @@ class Article:
         assert False
 
     def get_investment_information(self):
-        finance_ents = self.get_financial_information()     # "MONEY"
-        technology_ents = self.get_technology_ents()        # "TECHWORD"
+        finance_ents = self.set_money_ents()     # "MONEY"
+        technology_ents = self.set_technology_ents()        # "TECHWORD"
         location_ents = self.get_location_ents()            # "GPE"
         emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         time_ents = self.get_date_ents()                    # "DATE"
@@ -118,38 +119,40 @@ class Article:
             total += sent_weight
         return weighted_sents
 
-    def get_technology_ents(self, categories=TECHNOLOGY_CATEGORIES):
-        technology_ents = []
+    def set_technology_ents(self, categories=TECHNOLOGY_CATEGORIES):
+        technology_ents = SpanGroup(self.doc)
         for c, keywords in categories.items():
             for keyword in keywords:
                 for match in re.finditer(keyword, self.doc.text):
                     new_tech_ent = self.doc.char_span(match.start(), match.end(), "TECHWORD", alignment_mode="expand")
                     technology_ents.append(new_tech_ent)
+        self.doc.spans["sc"] = self.doc.spans["sc"] + technology_ents
         return technology_ents
 
     def get_weighted_technology_cats(self):
         get_weighted_technology_cats(self.doc.text)
 
     def get_location_ents(self):
-        return filter_ents(self.doc.ents, "GPE")
+        return filter_ents(self.doc.spans["sc"], "GPE")
 
     def get_weighted_locations(self):
-        better_locations = get_more_precise_locations(get_all_entities_by_label(self.doc.ents)["GPE"])
+        better_locations = get_more_precise_locations(get_all_entities_by_label(self.doc.spans["sc"])["GPE"])
         return better_locations
 
-    def get_financial_information(self):
-        money_ents = filter_ents(self.doc.ents, "MONEY")
+    def set_money_ents(self):
+        money_ents = filter_ents(self.doc.spans["sc"], "MONEY")
         money_ents = get_additional_money_ents(self.doc, money_ents)
+        self.doc.spans["sc"] = opposite_filter_ents(self.doc.spans["sc"], "MONEY") + money_ents
         return money_ents
 
     def get_emissions_ents(self):
         # Problem: "kW/h" only recognized as "kW"
-        emissions_ents = filter_ents(self.doc.ents, "QUANTITY")
-        emissions_ents = emissions_ents + filter_ents(self.doc.ents, "PERCENT")
+        emissions_ents = filter_ents(self.doc.spans["sc"], "QUANTITY")
+        emissions_ents = emissions_ents + filter_ents(self.doc.spans["sc"], "PERCENT")
         return emissions_ents
 
     def get_date_ents(self):
-        return filter_ents(self.doc.ents, "DATE")
+        return filter_ents(self.doc.spans["sc"], "DATE")
 
 
 if __name__ == '__main__':

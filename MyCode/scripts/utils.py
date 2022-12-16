@@ -26,12 +26,12 @@ def get_positive_article_ids():
 
 
 def get_entities_with_label(all_entities, label):
-    return sorted(dict(Counter([ent for ent in all_entities if ent.label == label])).items(),
+    return sorted(dict(Counter([ent for ent in all_entities if ent.label_ == label])).items(),
                   key=lambda k: k[1], reverse=True)
 
 
 def get_all_entities_by_label(all_entities):
-    all_labels = list(dict.fromkeys([ent.label for ent in all_entities]))
+    all_labels = list(dict.fromkeys([ent.label_ for ent in all_entities]))
     return {label: get_entities_with_label(all_entities, label) for label in all_labels}
 
 
@@ -49,7 +49,11 @@ def get_span_labels_of_sentence(spans, sent):
 
 
 def filter_ents(ents, label):
-    return list(filter(lambda ent: ent.label == label, ents))
+    return list(filter(lambda ent: ent.label_ == label, ents))
+
+
+def opposite_filter_ents(ents, label):
+    return list(filter(lambda ent: ent.label_ != label, ents))
 
 
 def ent_to_token_slice(doc, ent):
