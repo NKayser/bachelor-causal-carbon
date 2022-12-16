@@ -1,3 +1,4 @@
+import json
 from collections import Counter
 from typing import List, Optional, Iterable, cast
 
@@ -6,7 +7,7 @@ from spacy.pipeline.spancat import Suggester
 from thinc.api import get_current_ops, Ops
 from thinc.types import Ragged, Ints1d
 
-from spacy.tokens import Doc
+from spacy.tokens import Doc, SpanGroup
 from spacy.util import registry
 import spacy
 import re
@@ -51,7 +52,11 @@ IGNORE_MONEY_PATTERNS = ["2 can", "\+[\d ?\-?\-?]*", "19 Eur"]
 
 
 def filter_ents(ents, label):
-    return list(filter(lambda ent: ent.label == label, ents))
+    return list(filter(lambda ent: ent.label_ == label, ents))
+
+
+def opposite_filter_ents(ents, label):
+    return list(filter(lambda ent: ent.label_ != label, ents))
 
 
 def ent_to_token_slice(doc, ent):
@@ -94,30 +99,43 @@ def get_additional_money_ents(doc, money_ents):
     return money_ents
 
 
+def read_input_file(path=INPUT_PATH):
+    with open(path, "r", encoding="utf8") as json_file:
+        json_list = list(json_file)
+        return [json.loads(json_str) for json_str in json_list]
+
+
 class Article:
     doc = None
-    metadata = None
 
-    def __init__(self, metadata, text, model=PRETRAINED_NER_MODEL):
+    def __init__(self, text, model=PRETRAINED_NER_MODEL):
         assert text is not None
         spacy.prefer_gpu(0)
-        nlp = spacy.load(model)
+        nlp = spacy.blank("en")
         self.doc = nlp(text)
-        self.metadata = metadata
+        #ner = spacy.load(model)
+        #self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner(text).ents]
+        for json_obj in read_input_file():
+            if json_obj["text"][:200] == text[:200]:
+                self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
+                                        for span in json_obj["entities"]]
+                break
 
 
     def get_financial_information(self):
-        money_ents = filter_ents(self.doc.ents, "MONEY")
+        money_ents = filter_ents(self.doc.spans["sc"], "MONEY")
         money_ents = get_additional_money_ents(self.doc, money_ents)
+        self.doc.spans["sc"] = opposite_filter_ents(self.doc.spans["sc"], "MONEY") + money_ents
         return money_ents
 
     def get_technology_ents(self, categories=TECHNOLOGY_CATEGORIES):
-        technology_ents = []
+        technology_ents = SpanGroup(self.doc)
         for c, keywords in categories.items():
             for keyword in keywords:
                 for match in re.finditer(keyword, self.doc.text):
                     new_tech_ent = self.doc.char_span(match.start(), match.end(), label="TECHWORD", alignment_mode="expand")
                     technology_ents.append(new_tech_ent)
+        self.doc.spans["sc"] = self.doc.spans["sc"] + technology_ents
         return technology_ents
 
 
@@ -137,18 +155,19 @@ def build_custom_suggester() -> Suggester:
             cache = set()
             length = 0
 
-            article = Article(metadata=None, text=doc.text)
+            article = Article(text=doc.text)
             finance_ents = article.get_financial_information()      # "MONEY"
-            #technology_ents = article.get_technology_ents()         # "TECHWORD"
-            #location_ents = filter_ents(article.ents, "GPE")        # "GPE"
-            #quantity_ents = filter_ents(article.ents, "QUANTITY")   # "QUANTITY"
-            #percent_ents = filter_ents(article.ents, "PERCENT")     # "PERCENT"
-            #date_ents = filter_ents(article.ents, "DATE")           # "DATE"
-            #fac_ents = filter_ents(article.ents, "FAC")             # "FAC"
-            #product_ents = filter_ents(article.ents, "PRODUCT")     # "PRODUCT"
-            #parsed_ents = [finance_ents, technology_ents, location_ents, quantity_ents, percent_ents, date_ents,
-            #               fac_ents, product_ents]
-            parsed_ents = [finance_ents]
+            technology_ents = article.get_technology_ents()         # "TECHWORD"
+            article_ents = article.doc.spans["sc"]
+            location_ents = filter_ents(article_ents, "GPE")        # "GPE"
+            quantity_ents = filter_ents(article_ents, "QUANTITY")   # "QUANTITY"
+            percent_ents = filter_ents(article_ents, "PERCENT")     # "PERCENT"
+            date_ents = filter_ents(article_ents, "DATE")           # "DATE"
+            fac_ents = filter_ents(article_ents, "FAC")             # "FAC"
+            product_ents = filter_ents(article_ents, "PRODUCT")     # "PRODUCT"
+            parsed_ents = [finance_ents, technology_ents, location_ents, quantity_ents, percent_ents, date_ents,
+                           fac_ents, product_ents]
+            #parsed_ents = [finance_ents]
 
             for ent_arr in parsed_ents:
                 for ent in ent_arr:

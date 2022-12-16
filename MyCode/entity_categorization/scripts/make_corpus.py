@@ -51,7 +51,7 @@ for json_obj in tqdm(json_list):
     doc_dist = [0, 0]
     ran1 = random.random()
 
-    for ent in filter_ents(article.doc.spans["sc"], "MONEY"):
+    for ent in article.doc.spans["sc"]:
         if ent.label_ not in corresponding_labels.keys():
             continue
         ent_in_labeled_ent = False

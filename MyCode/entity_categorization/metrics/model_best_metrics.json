@@ -3,16 +3,26 @@
   "token_p":1.0,
   "token_r":1.0,
   "token_f":1.0,
-  "spans_sc_p":0.2421524664,
-  "spans_sc_r":0.2288135593,
-  "spans_sc_f":0.2352941176,
+  "spans_sc_p":0.0436643836,
+  "spans_sc_r":0.2188841202,
+  "spans_sc_f":0.0728051392,
   "spans_sc_per_type":{
-    "GPE negative":{
-      "p":0.2584269663,
-      "r":0.6764705882,
-      "f":0.3739837398
+    "TECHWORD positive":{
+      "p":0.0,
+      "r":0.0,
+      "f":0.0
     },
     "DATE negative":{
+      "p":0.0,
+      "r":0.0,
+      "f":0.0
+    },
+    "TECHWORD negative":{
+      "p":0.0437392796,
+      "r":1.0,
+      "f":0.0838126541
+    },
+    "GPE positive":{
       "p":0.0,
       "r":0.0,
       "f":0.0
@@ -22,37 +32,12 @@
       "r":0.0,
       "f":0.0
     },
-    "TECHWORD positive":{
-      "p":0.5,
-      "r":0.2040816327,
-      "f":0.2898550725
-    },
-    "TECHWORD negative":{
-      "p":0.14,
-      "r":0.2745098039,
-      "f":0.1854304636
-    },
-    "FAC negative":{
-      "p":0.0,
-      "r":0.0,
-      "f":0.0
-    },
     "PRODUCT positive":{
       "p":0.0,
       "r":0.0,
       "f":0.0
     },
-    "GPE positive":{
-      "p":0.5,
-      "r":0.2692307692,
-      "f":0.35
-    },
-    "PERCENT positive":{
-      "p":0.0,
-      "r":0.0,
-      "f":0.0
-    },
-    "QUANTITY positive":{
+    "FAC negative":{
       "p":0.0,
       "r":0.0,
       "f":0.0
@@ -62,7 +47,22 @@
       "r":0.0,
       "f":0.0
     },
+    "QUANTITY positive":{
+      "p":0.0,
+      "r":0.0,
+      "f":0.0
+    },
+    "GPE negative":{
+      "p":0.0,
+      "r":0.0,
+      "f":0.0
+    },
     "MONEY positive":{
+      "p":0.0,
+      "r":0.0,
+      "f":0.0
+    },
+    "PERCENT positive":{
       "p":0.0,
       "r":0.0,
       "f":0.0
@@ -88,5 +88,5 @@
       "f":0.0
     }
   },
-  "speed":3508.5704032445
+  "speed":1584.2701978596
 }
