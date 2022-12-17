@@ -193,7 +193,7 @@ def build_custom_suggester() -> Suggester:
                 for val in arr:
                     relevant_labels.add(val)
 
-            ents = article.spans["sc"]
+            ents = article.doc.spans["sc"]
 
             for ent in ents:
                 if ent.label_ not in corresponding_labels.keys():
