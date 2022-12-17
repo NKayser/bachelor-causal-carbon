@@ -1,0 +1,75 @@
+title: "Spacy entity categorization"
+description: "Entity cat"
+
+vars:
+  config: "config"
+  gpu: 0
+  lang: "en"
+  package_name: "spacy_textcat"
+  package_version: "0.0.0"
+  model: "best"
+
+directories: ["assets", "models", "configs", "metrics", "corpus", "packages", "scripts"]
+
+assets:
+  - dest: "assets"
+    git:
+      repo: "https://github.com/NKayser/bachelor-causal-carbon"
+      branch: "main"
+      path: "MyCode/data"
+
+workflows:
+  all:
+    - corpus
+    - train
+
+commands:
+
+  - name: corpus
+    help: "Convert the data to spaCy's format"
+    script:
+      - "python scripts/make_corpus.py"
+    deps:
+      - "scripts/make_corpus.py"
+      - "assets/labels_and_predictions.jsonl"
+    outputs:
+      - "corpus/train.spacy"
+      - "corpus/dev.spacy"
+      - "corpus/test.spacy"
+
+  - name: config
+    help: "update config file from base_config"
+    script:
+      - "python -m spacy init fill-config configs/base_config.cfg configs/config.cfg \
+        --code scripts/custom_span_suggester.py"
+    deps:
+      - "configs/base_config.cfg"
+      - "scripts/custom_span_suggester.py"
+    outputs:
+      - "configs/${vars.config}.cfg"
+
+  - name: train
+    help: "Train the pipeline"
+    script:
+      - "python -m spacy train configs/${vars.config}.cfg -o models --gpu-id ${vars.gpu} \
+        --code scripts/custom_span_suggester.py"
+    deps:
+      - "corpus/train.spacy"
+      - "corpus/dev.spacy"
+      - "configs/${vars.config}.cfg"
+      - "scripts/custom_span_suggester.py"
+    outputs:
+      - "models/model-best"
+
+  - name: evaluate
+    help: "Evaluate results"
+    script:
+      - "python -m spacy evaluate models/model-best corpus/test.spacy -o metrics/model_best_metrics.json --gpu-id 0 --code scripts/custom_span_suggester.py"
+    deps:
+      - "assets/labels_and_predictions.jsonl"
+      - "models/model-best"
+      - "corpus/test.spacy"
+      - "scripts/custom_span_suggester.py"
+    outputs:
+      - "models/model-best"
+      - "metrics/model_best_metrics.json"

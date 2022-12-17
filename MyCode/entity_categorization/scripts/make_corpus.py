@@ -7,10 +7,12 @@ from spacy.tokens import DocBin
 from MyCode.scripts.process_article import Article
 from MyCode.scripts.utils import read_input_file, ent_is_in_sent, filter_ents
 
+spacy.prefer_gpu(0)
 nlp = spacy.blank("en")
 random.seed(1)
 splits = [0.7, 0.8]
-fname = "../data/labels_and_predictions.jsonl"
+#fname = "../data/labels_and_predictions.jsonl"
+fname = "assets/labels_and_predictions.jsonl"
 
 json_list = read_input_file(fname)
 
@@ -34,7 +36,6 @@ relevant_labels = set()
 for arr in corresponding_labels.values():
     for val in arr:
         relevant_labels.add(val)
-print(relevant_labels)
 
 distribution = [[0, 0], [0, 0], [0, 0]]
 
@@ -51,7 +52,12 @@ for json_obj in tqdm(json_list):
     doc_dist = [0, 0]
     ran1 = random.random()
 
-    for ent in article.doc.spans["sc"]:
+    #ents = filter_ents(article.doc.spans["sc"], "MONEY")
+    ents = article.doc.spans["sc"]
+    if len(ents) == 0:
+        continue
+
+    for ent in ents:
         if ent.label_ not in corresponding_labels.keys():
             continue
         ent_in_labeled_ent = False
@@ -73,8 +79,8 @@ for json_obj in tqdm(json_list):
                     doc_ents.append(new_ent)
         if ent_in_labeled_ent:
             continue
-        if doc_dist[1] > doc_dist[0]:
-            continue
+        #if doc_dist[1] > doc_dist[0] * 2:
+        #    continue
         doc_dist[1] += 1
         new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_ + " negative", alignment_mode="expand")
         assert str(new_ent) != "None"
@@ -88,13 +94,16 @@ for json_obj in tqdm(json_list):
     # manual split
     if ran1 < splits[0]:
         train_db.add(doc)
+        train_db.add(doc)
         distribution[0][0] += doc_dist[0]
         distribution[0][1] += doc_dist[1]
     elif ran1 > splits[1]:
         test_db.add(doc)
+        test_db.add(doc)
         distribution[1][0] += doc_dist[0]
         distribution[1][1] += doc_dist[1]
     else:
+        dev_db.add(doc)
         dev_db.add(doc)
         distribution[2][0] += doc_dist[0]
         distribution[2][1] += doc_dist[1]
