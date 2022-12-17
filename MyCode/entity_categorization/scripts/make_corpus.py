@@ -79,8 +79,8 @@ for json_obj in tqdm(json_list):
                     doc_ents.append(new_ent)
         if ent_in_labeled_ent:
             continue
-        #if doc_dist[1] > doc_dist[0] * 2:
-        #    continue
+        if doc_dist[1] > doc_dist[0]:
+            continue
         doc_dist[1] += 1
         new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_ + " negative", alignment_mode="expand")
         assert str(new_ent) != "None"
@@ -94,16 +94,13 @@ for json_obj in tqdm(json_list):
     # manual split
     if ran1 < splits[0]:
         train_db.add(doc)
-        train_db.add(doc)
         distribution[0][0] += doc_dist[0]
         distribution[0][1] += doc_dist[1]
     elif ran1 > splits[1]:
         test_db.add(doc)
-        test_db.add(doc)
         distribution[1][0] += doc_dist[0]
         distribution[1][1] += doc_dist[1]
     else:
-        dev_db.add(doc)
         dev_db.add(doc)
         distribution[2][0] += doc_dist[0]
         distribution[2][1] += doc_dist[1]

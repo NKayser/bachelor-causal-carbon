@@ -1,8 +1,8 @@
 import json
-from collections import Counter
+#from collections import Counter
 from typing import List, Optional, Iterable, cast
 
-import tokenizers
+#import tokenizers
 from spacy.pipeline.spancat import Suggester
 from thinc.api import get_current_ops, Ops
 from thinc.types import Ragged, Ints1d
@@ -49,6 +49,17 @@ MONEY_PATTERNS = ["(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|u
                        "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?(EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3)"]
 IGNORE_MONEY_PATTERNS = ["2 can", "\+[\d ?\-?\-?]*", "19 Eur"]
 
+corresponding_labels = {
+    "GPE": ["location"],
+    "TECHWORD": ["technology", "core reference"],
+    "FAC": ["technology", "core reference"],
+    "PRODUCT": ["technology", "core reference"],
+    "PERCENT": ["emissions"],
+    "QUANTITY": ["emissions"],
+    "DATE": ["timeline"],
+    "MONEY": ["financial information"]
+}
+
 
 
 def filter_ents(ents, label):
@@ -62,6 +73,11 @@ def opposite_filter_ents(ents, label):
 def ent_to_token_slice(doc, ent):
     span = doc.char_span(ent.start_char, ent.end_char, alignment_mode="expand")
     return span[0].i, span[-1].i + 1
+
+
+def ent_is_in_sent(ent, sent):
+    # or overlapping
+    return not (ent.end_char < sent.start_char or ent.start_char > sent.end_char)
 
 
 def get_additional_money_ents(doc, money_ents):
@@ -107,6 +123,7 @@ def read_input_file(path=INPUT_PATH):
 
 class Article:
     doc = None
+    labeled_entities = None
 
     def __init__(self, text, model=PRETRAINED_NER_MODEL):
         assert text is not None
@@ -119,6 +136,7 @@ class Article:
             if json_obj["text"][:200] == text[:200]:
                 self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
                                         for span in json_obj["entities"]]
+                self.labeled_entities = json_obj["labeled_entities"]
                 break
 
 
@@ -154,6 +172,7 @@ def build_custom_suggester() -> Suggester:
         for doc in docs:
             cache = set()
             length = 0
+            doc_dist = [0, 0]
 
             article = Article(text=doc.text)
             finance_ents = article.get_financial_information()      # "MONEY"
@@ -169,13 +188,57 @@ def build_custom_suggester() -> Suggester:
                            fac_ents, product_ents] # technology_ents
             #parsed_ents = [finance_ents]
 
-            for ent_arr in parsed_ents:
-                for ent in ent_arr:
-                    token_slice = ent_to_token_slice(doc, ent)
-                    if token_slice not in cache:
-                        spans.append(token_slice)
-                        cache.add(token_slice)
-                        length += 1
+            relevant_labels = set()
+            for arr in corresponding_labels.values():
+                for val in arr:
+                    relevant_labels.add(val)
+
+            ents = article.spans["sc"]
+
+            for ent in ents:
+                if ent.label_ not in corresponding_labels.keys():
+                    continue
+                ent_in_labeled_ent = False
+                for labeled_entity in article.labeled_entities:
+                    label = labeled_entity["label"]
+                    if label not in relevant_labels:
+                        continue
+                    labeled_ent = doc.char_span(labeled_entity["start_offset"], labeled_entity["end_offset"], label,
+                                                alignment_mode="expand")
+                    if label in corresponding_labels[ent.label_]:
+                        if ent_is_in_sent(ent, labeled_ent):
+                            #print(label, ent.label_, labeled_ent.text)
+                            ent_in_labeled_ent = True
+                            doc_dist[0] += 1
+                            new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_,
+                                                    alignment_mode="expand")
+                            assert str(new_ent) != "None"
+                            #print(new_ent)
+                            token_slice = ent_to_token_slice(doc, new_ent)
+                            if token_slice not in cache:
+                                spans.append(token_slice)
+                                cache.add(token_slice)
+                                length += 1
+                if ent_in_labeled_ent:
+                    continue
+                if doc_dist[1] > doc_dist[0]:
+                    continue
+                doc_dist[1] += 1
+                new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_, alignment_mode="expand")
+                assert str(new_ent) != "None"
+                #print(new_ent)
+                token_slice = ent_to_token_slice(doc, ent)
+                if token_slice not in cache:
+                    spans.append(token_slice)
+                    cache.add(token_slice)
+                    length += 1
+
+            #for ent in ents:
+            #    token_slice = ent_to_token_slice(doc, ent)
+            #    if token_slice not in cache:
+            #        spans.append(token_slice)
+            #        cache.add(token_slice)
+            #        length += 1
 
             lengths.append(length)
 
