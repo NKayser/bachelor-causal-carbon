@@ -157,7 +157,7 @@ def build_custom_suggester() -> Suggester:
 
             article = Article(text=doc.text)
             finance_ents = article.get_financial_information()      # "MONEY"
-            technology_ents = article.get_technology_ents()         # "TECHWORD"
+            #technology_ents = article.get_technology_ents()         # "TECHWORD"
             article_ents = article.doc.spans["sc"]
             location_ents = filter_ents(article_ents, "GPE")        # "GPE"
             quantity_ents = filter_ents(article_ents, "QUANTITY")   # "QUANTITY"
@@ -165,8 +165,8 @@ def build_custom_suggester() -> Suggester:
             date_ents = filter_ents(article_ents, "DATE")           # "DATE"
             fac_ents = filter_ents(article_ents, "FAC")             # "FAC"
             product_ents = filter_ents(article_ents, "PRODUCT")     # "PRODUCT"
-            parsed_ents = [finance_ents, technology_ents, location_ents, quantity_ents, percent_ents, date_ents,
-                           fac_ents, product_ents]
+            parsed_ents = [finance_ents, location_ents, quantity_ents, percent_ents, date_ents,
+                           fac_ents, product_ents] # technology_ents
             #parsed_ents = [finance_ents]
 
             for ent_arr in parsed_ents:

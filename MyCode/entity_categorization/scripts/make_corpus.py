@@ -5,7 +5,7 @@ from tqdm import tqdm
 from spacy.tokens import DocBin
 
 from MyCode.scripts.process_article import Article
-from MyCode.scripts.utils import read_input_file, ent_is_in_sent, filter_ents
+from MyCode.scripts.utils import read_input_file, ent_is_in_sent, filter_ents, opposite_filter_ents
 
 spacy.prefer_gpu(0)
 nlp = spacy.blank("en")
@@ -52,8 +52,8 @@ for json_obj in tqdm(json_list):
     doc_dist = [0, 0]
     ran1 = random.random()
 
-    #ents = filter_ents(article.doc.spans["sc"], "MONEY")
-    ents = article.doc.spans["sc"]
+    ents = opposite_filter_ents(article.doc.spans["sc"], "TECHWORD")
+    #ents = article.doc.spans["sc"]
     if len(ents) == 0:
         continue
 
