@@ -23,9 +23,14 @@ class Article:
         self.doc = self.nlp(text)
         self.metadata = metadata
         self.textcat_prediction = texcat_prediction
-        self.set_sents(sents)
-        self.doc.spans["sc"] = self.dict_to_charspan_array(spans)
-        self.doc.spans["sc"] += self.dict_to_charspan_array(ents)
+        if sents is not None:
+            self.set_sents(sents)
+        if spans is not None:
+            self.doc.spans["sc"] = self.dict_to_charspan_array(spans)
+        else:
+            self.doc.spans["sc"] = []
+        if ents is not None:
+            self.doc.spans["sc"] += self.dict_to_charspan_array(ents)
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
