@@ -111,9 +111,10 @@ def create_corpus_docbins():
     return train_db, dev_db, test_db
 
 
-train_db, dev_db, test_db = create_corpus_docbins()
+if __name__ == "__main__":
+    train_db, dev_db, test_db = create_corpus_docbins()
 
-# save the docbin objects
-train_db.to_disk(f"entity_categorization/corpus/train.spacy")
-dev_db.to_disk(f"entity_categorization/corpus/dev.spacy")
-test_db.to_disk(f"entity_categorization/corpus/test.spacy")
+    # save the docbin objects
+    train_db.to_disk(f"entity_categorization/corpus/train.spacy")
+    dev_db.to_disk(f"entity_categorization/corpus/dev.spacy")
+    test_db.to_disk(f"entity_categorization/corpus/test.spacy")

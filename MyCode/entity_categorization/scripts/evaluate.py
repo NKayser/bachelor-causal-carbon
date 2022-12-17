@@ -17,16 +17,14 @@ confusion_matrix = {actual_class: {predicted_class: 0
                                    for predicted_class in class_labels}
                     for actual_class in class_labels}
 
-train_db, dev_db, test_db = create_corpus_docbins()
+#train_db, dev_db, test_db = create_corpus_docbins()
 
 for doc in list(docbin.get_docs(nlp.vocab)):
-    true_doc = None
-    for doc2 in list(test_db.get_docs(nlp.vocab)):
-        if doc.text == doc2.text:
-            true_doc = doc2
-    assert true_doc is not None
-    for predicted_span in doc.spans["sc"]:
-        for true_span in true_doc.spans["sc"]:
+    predicted_doc = nlp(doc.text)
+    #print([[span.start_char, span.end_char, span.text, span.label_] for span in predicted_doc.ents])
+    print(predicted_doc["sc"])
+    for predicted_span in predicted_doc.ents:
+        for true_span in doc.spans["sc"]:
             if predicted_span.start_char == true_span.start_char and predicted_span.end_char == true_span.end_char:
                 #true_label = true_span.label_.split()
                 #predicted_label = predicted_span.split()
