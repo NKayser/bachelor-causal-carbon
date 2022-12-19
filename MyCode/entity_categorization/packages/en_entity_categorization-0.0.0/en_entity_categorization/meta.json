@@ -1,0 +1,60 @@
+{
+  "lang":"en",
+  "name":"entity_categorization",
+  "version":"0.0.0",
+  "description":"",
+  "author":"",
+  "email":"",
+  "url":"",
+  "license":"",
+  "spacy_version":">=3.4.3,<3.5.0",
+  "spacy_git_version":"63673a792",
+  "vectors":{
+    "width":0,
+    "vectors":0,
+    "keys":0,
+    "name":null
+  },
+  "labels":{
+    "transformer":[
+
+    ],
+    "spancat":[
+      "DATE negative",
+      "GPE negative",
+      "GPE positive",
+      "QUANTITY negative",
+      "DATE positive",
+      "PRODUCT negative",
+      "PRODUCT positive",
+      "MONEY positive",
+      "FAC negative",
+      "QUANTITY positive",
+      "MONEY negative",
+      "PERCENT positive",
+      "PERCENT negative",
+      "FAC positive"
+    ]
+  },
+  "pipeline":[
+    "transformer",
+    "spancat"
+  ],
+  "components":[
+    "transformer",
+    "spancat"
+  ],
+  "disabled":[
+
+  ],
+  "performance":{
+    "spans_sc_f":0.7,
+    "spans_sc_p":0.7538461538,
+    "spans_sc_r":0.6533333333,
+    "transformer_loss":2.3704347163,
+    "spancat_loss":25.4381927031
+  },
+  "requirements":[
+    "spacy-transformers>=1.1.8,<1.2.0"
+  ]
+}

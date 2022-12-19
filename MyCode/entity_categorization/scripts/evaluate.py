@@ -1,10 +1,11 @@
 import spacy
 from spacy.tokens import DocBin
+from thinc.api import Config
 
 from MyCode.scripts.utils import write_json_to_file
 
 docbin = DocBin().from_disk("entity_categorization/corpus/test.spacy")
-nlp = spacy.load("entity_categorization/models/model-best")
+nlp = spacy.load("entity_categorization/packages/en_entity_categorization-0.0.0/en_entity_categorization")
 
 labels = ["DATE", "FAC", "GPE", "PRODUCT", "MONEY", "PERCENT", "QUANTITY"]
 pos_labels = [label + " positive" for label in labels]

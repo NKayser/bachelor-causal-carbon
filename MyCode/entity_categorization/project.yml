@@ -77,4 +77,4 @@ commands:
   - name: package
     help: "Generate an installable Python package from an existing pipeline data directory. All data files are copied over."
     script:
-      - "python -m spacy package models/model-best packages --code scripts/custom_span_suggester.py"
+      - "python -m spacy package models/model-best packages --code scripts/custom_span_suggester.py --name entity_categorization"
