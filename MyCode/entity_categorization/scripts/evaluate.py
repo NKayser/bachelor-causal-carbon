@@ -1,8 +1,6 @@
 import spacy
 from spacy.tokens import DocBin
 
-from MyCode.entity_categorization.scripts.make_corpus import create_corpus_docbins
-from MyCode.scripts.process_article import Article
 from MyCode.scripts.utils import write_json_to_file
 
 docbin = DocBin().from_disk("entity_categorization/corpus/test.spacy")
@@ -16,8 +14,6 @@ class_labels = pos_labels + neg_labels
 confusion_matrix = {actual_class: {predicted_class: 0
                                    for predicted_class in class_labels}
                     for actual_class in class_labels}
-
-#train_db, dev_db, test_db = create_corpus_docbins()
 
 for doc in list(docbin.get_docs(nlp.vocab)):
     predicted_doc = nlp(doc.text)
