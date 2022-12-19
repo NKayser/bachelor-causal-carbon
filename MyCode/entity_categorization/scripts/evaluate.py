@@ -1,34 +1,56 @@
-import spacy
-from spacy.tokens import DocBin
-from thinc.api import Config
+import json
 
+import spacy
+from spacy import registry
+from spacy.tokens import DocBin
+from tqdm import tqdm
+
+from MyCode.entity_categorization.scripts.custom_span_suggester import build_custom_suggester
 from MyCode.scripts.utils import write_json_to_file
 
-docbin = DocBin().from_disk("entity_categorization/corpus/test.spacy")
-nlp = spacy.load("entity_categorization/packages/en_entity_categorization-0.0.0/en_entity_categorization")
+
+@registry.misc("article_all_ent_suggester.v1")
+def suggester():
+    return build_custom_suggester()
+
+#db_all = DocBin()
+#db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")
+#db_dev = DocBin().from_disk("entity_categorization/corpus/dev.spacy")
+db_test = DocBin().from_disk("entity_categorization/corpus/test.spacy")
+#db_all.merge(db_dev)
+#db_all.merge(db_test)
+nlp = spacy.load("entity_categorization/models/model-best")
 
 labels = ["DATE", "FAC", "GPE", "PRODUCT", "MONEY", "PERCENT", "QUANTITY"]
-pos_labels = [label + " positive" for label in labels]
-neg_labels = [label + " negative" for label in labels]
-class_labels = pos_labels + neg_labels
+class_labels = []
+for label in labels:
+    class_labels.append(label + " positive")
+    class_labels.append(label + " negative")
 
 confusion_matrix = {actual_class: {predicted_class: 0
                                    for predicted_class in class_labels}
                     for actual_class in class_labels}
 
-for doc in list(docbin.get_docs(nlp.vocab)):
-    predicted_doc = nlp(doc.text)
-    #print([[span.start_char, span.end_char, span.text, span.label_] for span in predicted_doc.ents])
-    print(predicted_doc["sc"])
-    for predicted_span in predicted_doc.ents:
+for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
+    assert doc is not None
+    assert doc.text is not None
+    try:
+        predicted_doc = nlp(doc.text)
+    except ValueError:
+        print("Error with loading doc")
+        continue
+    #print([[span.start_char, span.end_char, span.text, span.label_] for span in predicted_doc.spans["sc"]])
+    for predicted_span in predicted_doc.spans["sc"]:
         for true_span in doc.spans["sc"]:
             if predicted_span.start_char == true_span.start_char and predicted_span.end_char == true_span.end_char:
+                found_predicted = True
                 #true_label = true_span.label_.split()
                 #predicted_label = predicted_span.split()
                 confusion_matrix[true_span.label_][predicted_span.label_] += 1
                 break
 
+
 filtered_confusion_matrix = {k: {k2: v2 for k2, v2 in v.items() if v2 > 0} for k, v in confusion_matrix.items()}
-print(filtered_confusion_matrix)
+print(json.dumps(filtered_confusion_matrix, indent=4))
 
 write_json_to_file(filtered_confusion_matrix, "entity_categorization/metrics/confusion_matrix.json")
