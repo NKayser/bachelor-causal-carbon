@@ -14,8 +14,8 @@ import re
 
 
 # assumes execution from entity_categorization
-INPUT_PATH = "data/labels_and_predictions.jsonl"
-SPANCAT_MODEL_PATH = "sententence_categorization/models/model-best"
+INPUT_PATH = "../data/labels_and_predictions.jsonl"
+SPANCAT_MODEL_PATH = "../sententence_categorization/models/model-best"
 PRETRAINED_NER_MODEL = "en_core_web_trf"
 
 TECHNOLOGY_CATEGORIES = {

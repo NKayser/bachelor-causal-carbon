@@ -16,16 +16,17 @@ def suggester():
 #db_all = DocBin()
 #db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")
 #db_dev = DocBin().from_disk("entity_categorization/corpus/dev.spacy")
-db_test = DocBin().from_disk("entity_categorization/corpus/test.spacy")
+db_test = DocBin().from_disk("corpus/test.spacy")
 #db_all.merge(db_dev)
 #db_all.merge(db_test)
-nlp = spacy.load("entity_categorization/models/model-best")
+nlp = spacy.load("models-binary/model-best")
 
 labels = ["DATE", "FAC", "GPE", "PRODUCT", "MONEY", "PERCENT", "QUANTITY"]
-class_labels = []
-for label in labels:
-    class_labels.append(label + " positive")
-    class_labels.append(label + " negative")
+#class_labels = []
+#for label in labels:
+#    class_labels.append(label + " positive")
+#    class_labels.append(label + " negative")
+class_labels = ["positive", "negative"]
 
 confusion_matrix = {actual_class: {predicted_class: 0
                                    for predicted_class in class_labels}
@@ -53,4 +54,4 @@ for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
 filtered_confusion_matrix = {k: {k2: v2 for k2, v2 in v.items() if v2 > 0} for k, v in confusion_matrix.items()}
 print(json.dumps(filtered_confusion_matrix, indent=4))
 
-write_json_to_file(filtered_confusion_matrix, "entity_categorization/metrics/confusion_matrix.json")
+write_json_to_file(filtered_confusion_matrix, "metrics/binary_confusion_matrix.json")

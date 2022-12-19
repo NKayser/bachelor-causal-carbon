@@ -74,7 +74,7 @@ def create_corpus_docbins():
                         #print(label, ent.label_, labeled_ent.text)
                         ent_in_labeled_ent = True
                         doc_dist[0] += 1
-                        new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_ + " positive",
+                        new_ent = doc.char_span(ent.start_char, ent.end_char, "positive",
                                                 alignment_mode="expand")
                         assert str(new_ent) != "None"
                         #print(new_ent)
@@ -84,7 +84,7 @@ def create_corpus_docbins():
             if doc_dist[1] > doc_dist[0]:
                 continue
             doc_dist[1] += 1
-            new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_ + " negative", alignment_mode="expand")
+            new_ent = doc.char_span(ent.start_char, ent.end_char, "negative", alignment_mode="expand")
             assert str(new_ent) != "None"
             #print(new_ent)
             doc_ents.append(new_ent)
