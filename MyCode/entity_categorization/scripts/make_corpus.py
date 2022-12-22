@@ -8,7 +8,7 @@ from MyCode.scripts.process_article import Article
 from MyCode.scripts.utils import read_input_file, ent_is_in_sent, filter_ents, opposite_filter_ents
 
 
-def create_corpus_docbins():
+def create_corpus_docbins(balanced=True):
     spacy.prefer_gpu(0)
     nlp = spacy.blank("en")
     random.seed(1)
@@ -81,7 +81,7 @@ def create_corpus_docbins():
                         doc_ents.append(new_ent)
             if ent_in_labeled_ent:
                 continue
-            if doc_dist[1] > doc_dist[0]:
+            if balanced and doc_dist[1] > doc_dist[0]:
                 continue
             doc_dist[1] += 1
             new_ent = doc.char_span(ent.start_char, ent.end_char, "negative", alignment_mode="expand")
@@ -112,9 +112,13 @@ def create_corpus_docbins():
 
 
 if __name__ == "__main__":
-    train_db, dev_db, test_db = create_corpus_docbins()
+    train_db, dev_db, test_db = create_corpus_docbins(balanced=False)
 
     # save the docbin objects
-    train_db.to_disk(f"entity_categorization/corpus/train.spacy")
-    dev_db.to_disk(f"entity_categorization/corpus/dev.spacy")
-    test_db.to_disk(f"entity_categorization/corpus/test.spacy")
+    train_db.to_disk(f"entity_categorization/corpus-unbalanced/train.spacy")
+    dev_db.to_disk(f"entity_categorization/corpus-unbalanced/dev.spacy")
+    test_db.to_disk(f"entity_categorization/corpus-unbalanced/test.spacy")
+
+    #train_db.to_disk(f"entity_categorization/corpus/train.spacy")
+    #dev_db.to_disk(f"entity_categorization/corpus/dev.spacy")
+    #test_db.to_disk(f"entity_categorization/corpus/test.spacy")

@@ -16,7 +16,7 @@ def suggester():
 #db_all = DocBin()
 #db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")
 #db_dev = DocBin().from_disk("entity_categorization/corpus/dev.spacy")
-db_test = DocBin().from_disk("corpus/test.spacy")
+db_test = DocBin().from_disk("corpus-unbalanced/test.spacy")
 #db_all.merge(db_dev)
 #db_all.merge(db_test)
 nlp = spacy.load("models-binary/model-best")
