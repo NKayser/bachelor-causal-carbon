@@ -69,6 +69,9 @@ class Article:
                                                 alignment_mode="expand"))
         return spans
 
+    def apply_ner(self, ner_model=PRETRAINED_NER_MODEL):
+        self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
+
     def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
                          ner_model=PRETRAINED_NER_MODEL):
         self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
