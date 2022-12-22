@@ -11,7 +11,7 @@ from MyCode.scripts.utils import write_json_to_file
 
 @registry.misc("article_all_ent_suggester.v1")
 def suggester():
-    return build_custom_suggester()
+    return build_custom_suggester(balance=False)
 
 #db_all = DocBin()
 #db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")

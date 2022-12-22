@@ -158,7 +158,7 @@ class Article:
 
 
 @registry.misc("article_all_ent_suggester.v1")
-def build_custom_suggester() -> Suggester:
+def build_custom_suggester(balance: bool) -> Suggester:
     """Suggest all spans of the given lengths. Spans are returned as a ragged
     array of integers. The array has two columns, indicating the start and end
     position."""
@@ -177,15 +177,15 @@ def build_custom_suggester() -> Suggester:
             article = Article(text=doc.text)
             finance_ents = article.get_financial_information()      # "MONEY"
             #technology_ents = article.get_technology_ents()         # "TECHWORD"
-            article_ents = article.doc.spans["sc"]
-            location_ents = filter_ents(article_ents, "GPE")        # "GPE"
-            quantity_ents = filter_ents(article_ents, "QUANTITY")   # "QUANTITY"
-            percent_ents = filter_ents(article_ents, "PERCENT")     # "PERCENT"
-            date_ents = filter_ents(article_ents, "DATE")           # "DATE"
-            fac_ents = filter_ents(article_ents, "FAC")             # "FAC"
-            product_ents = filter_ents(article_ents, "PRODUCT")     # "PRODUCT"
-            parsed_ents = [finance_ents, location_ents, quantity_ents, percent_ents, date_ents,
-                           fac_ents, product_ents] # technology_ents
+            #article_ents = article.doc.spans["sc"]
+            #location_ents = filter_ents(article_ents, "GPE")        # "GPE"
+            #quantity_ents = filter_ents(article_ents, "QUANTITY")   # "QUANTITY"
+            #percent_ents = filter_ents(article_ents, "PERCENT")     # "PERCENT"
+            #date_ents = filter_ents(article_ents, "DATE")           # "DATE"
+            #fac_ents = filter_ents(article_ents, "FAC")             # "FAC"
+            #product_ents = filter_ents(article_ents, "PRODUCT")     # "PRODUCT"
+            #parsed_ents = [finance_ents, location_ents, quantity_ents, percent_ents, date_ents,
+            #               fac_ents, product_ents] # technology_ents
             #parsed_ents = [finance_ents]
 
             relevant_labels = set()
@@ -221,7 +221,7 @@ def build_custom_suggester() -> Suggester:
                                 length += 1
                 if ent_in_labeled_ent:
                     continue
-                if doc_dist[1] > doc_dist[0]:
+                if balance and doc_dist[1] > doc_dist[0]:
                     continue
                 doc_dist[1] += 1
                 new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_, alignment_mode="expand")
