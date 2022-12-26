@@ -28,10 +28,10 @@ class_labels = []
 for label in labels:
     class_labels.append(label + " positive")
     class_labels.append(label + " negative")
-#class_labels = ["positive", "negative"]
+class_labels2 = ["positive", "negative"]
 
 confusion_matrix = {actual_class: {predicted_class: 0
-                                   for predicted_class in class_labels}
+                                   for predicted_class in class_labels2}
                     for actual_class in class_labels}
 
 for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
@@ -43,8 +43,9 @@ for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
         print("Error with loading doc")
         continue
     article = Article(doc.text)
+    article.apply_ner()
     article.set_money_ents()
-    ner_ents = article.doc.ents
+    ner_ents = article.doc.spans["sc"]
     #print([[span.start_char, span.end_char, span.text, span.label_] for span in predicted_doc.spans["sc"]])
     for predicted_span in predicted_doc.spans["sc"]:
         for true_span in doc.spans["sc"]:
