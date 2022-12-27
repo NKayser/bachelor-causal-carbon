@@ -74,6 +74,36 @@ commands:
       - "models/model-best"
       - "metrics/model_best_metrics.json"
 
+  - name: crossvalidation
+    help: "Crossval"
+    script:
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_0 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_0_train.spacy --paths.dev corpus-cval/cval_0_dev.spacy"
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_1 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_1_train.spacy --paths.dev corpus-cval/cval_1_dev.spacy"
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_2 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_2_train.spacy --paths.dev corpus-cval/cval_2_dev.spacy"
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_3 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_3_train.spacy --paths.dev corpus-cval/cval_3_dev.spacy"
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_4 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_4_train.spacy --paths.dev corpus-cval/cval_4_dev.spacy"
+      - "python -m spacy train configs/config.cfg -o models-cval/cval_5 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_5_train.spacy --paths.dev corpus-cval/cval_5_dev.spacy"
+    deps:
+      - "corpus-cval/cval_0_train.spacy"
+      - "corpus-cval/cval_0_dev.spacy"
+      - "corpus-cval/cval_1_train.spacy"
+      - "corpus-cval/cval_1_dev.spacy"
+      - "corpus-cval/cval_2_train.spacy"
+      - "corpus-cval/cval_2_dev.spacy"
+      - "corpus-cval/cval_3_train.spacy"
+      - "corpus-cval/cval_3_dev.spacy"
+      - "corpus-cval/cval_4_train.spacy"
+      - "corpus-cval/cval_4_dev.spacy"
+      - "corpus-cval/cval_5_train.spacy"
+      - "corpus-cval/cval_5_dev.spacy"
+    outputs:
+      - "models-cval/cval_0/model-best"
+      - "models-cval/cval_1/model-best"
+      - "models-cval/cval_2/model-best"
+      - "models-cval/cval_3/model-best"
+      - "models-cval/cval_4/model-best"
+      - "models-cval/cval_5/model-best"
+
   - name: package
     help: "Generate an installable Python package from an existing pipeline data directory. All data files are copied over."
     script:

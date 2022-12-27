@@ -10,17 +10,20 @@ from MyCode.scripts.process_article import Article
 from MyCode.scripts.utils import write_json_to_file
 
 
+cval_run = "5"
+
+
 @registry.misc("article_all_ent_suggester.v1")
 def suggester():
-    return build_custom_suggester(balance=False)
+    return build_custom_suggester(balance=True)
 
 #db_all = DocBin()
 #db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")
 #db_dev = DocBin().from_disk("entity_categorization/corpus/dev.spacy")
-db_test = DocBin().from_disk("corpus-unbalanced/test.spacy")
+db_test = DocBin().from_disk("corpus-cval/cval_" + cval_run + "_test.spacy")
 #db_all.merge(db_dev)
 #db_all.merge(db_test)
-nlp = spacy.load("models-binary/model-best")
+nlp = spacy.load("models-cval/cval_" + cval_run + "/model-best")
 nlp2 = spacy.load("en_core_web_trf")
 
 labels = ["DATE", "FAC", "GPE", "PRODUCT", "MONEY", "PERCENT", "QUANTITY"]
@@ -63,4 +66,4 @@ for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
 filtered_confusion_matrix = {k: {k2: v2 for k2, v2 in v.items() if v2 > 0} for k, v in confusion_matrix.items()}
 print(json.dumps(filtered_confusion_matrix, indent=4))
 
-write_json_to_file(filtered_confusion_matrix, "metrics/binary_confusion_matrix.jsonl")
+write_json_to_file(filtered_confusion_matrix, "metrics/cval_" + cval_run + "_confusion_matrix.jsonl")

@@ -158,7 +158,7 @@ class Article:
 
 
 @registry.misc("article_all_ent_suggester.v1")
-def build_custom_suggester(balance: bool) -> Suggester:
+def build_custom_suggester(balance: bool = True) -> Suggester:
     """Suggest all spans of the given lengths. Spans are returned as a ragged
     array of integers. The array has two columns, indicating the start and end
     position."""
