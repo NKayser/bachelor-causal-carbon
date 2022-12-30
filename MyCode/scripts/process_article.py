@@ -4,7 +4,7 @@ import spacy
 from spacy.tokens import SpanGroup
 
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
-    TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS
+    TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS, ENT_MODEL_PATH
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
@@ -73,11 +73,12 @@ class Article:
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
     def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
-                         ner_model=PRETRAINED_NER_MODEL):
+                         ner_model=PRETRAINED_NER_MODEL, custom_ner_model=ENT_MODEL_PATH):
         self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
         self.set_sents(apply_sentencizer(self.doc.text, spancat_model))
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
+        #self.doc.spans["sc"] += self.dict_to_charspan_array(apply_custom_ner(self.doc.text, custom_ner_model))
 
     def get_sent_of_ent(self, ent):
         for i in range(0, len(self.doc.sents)):
