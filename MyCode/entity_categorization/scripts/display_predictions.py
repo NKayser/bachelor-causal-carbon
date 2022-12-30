@@ -1,18 +1,32 @@
 import json
 
 import spacy
-from spacy import displacy
+from spacy import displacy, registry
 
 # Using displacy on a doc without spans would result in a warning. We suppress them.
 import warnings
+
+from MyCode.entity_categorization.scripts.custom_span_suggester import build_custom_suggester
+from MyCode.scripts.utils import get_positive_article_ids, read_input_file
+from MyCode.scripts.process_article import Article
+
 warnings.filterwarnings('ignore')
 
-nlp = spacy.load('models/model-best')
+@registry.misc("article_all_ent_suggester.v1")
+def suggester():
+    return build_custom_suggester(balance=False)
 
-with open("assets/labels_and_predictions.jsonl", 'r') as json_file:
-    json_list = list(json_file)[0:30]
+nlp = spacy.load('models-binary/model-best')
 
-texts = "\n ".join([json.loads(json_str)["text"] for json_str in json_list])
+positive_ids = get_positive_article_ids("../data/labels_and_predictions.jsonl")[0:10]
+json_list = read_input_file("../data/labels_and_predictions.jsonl")
+texts = ""
+
+for article_data in json_list:
+    if article_data["id"] in positive_ids:
+        texts += article_data["text"]
+
+#texts = "\n ".join([json.loads(json_str)["text"] for json_str in json_list])
 
 # Define a colour for our span category (default is grey)
 colors = {'positive': '#00ff00',

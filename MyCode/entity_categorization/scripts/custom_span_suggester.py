@@ -130,8 +130,8 @@ class Article:
         spacy.prefer_gpu(0)
         nlp = spacy.blank("en")
         self.doc = nlp(text)
-        #ner = spacy.load(model)
-        #self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner(text).ents]
+        ner = spacy.load(model)
+        self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner(text).ents]
         for json_obj in read_input_file():
             if json_obj["text"][:200] == text[:200]:
                 self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
@@ -199,26 +199,27 @@ def build_custom_suggester(balance: bool = True) -> Suggester:
                 if ent.label_ not in corresponding_labels.keys():
                     continue
                 ent_in_labeled_ent = False
-                for labeled_entity in article.labeled_entities:
-                    label = labeled_entity["label"]
-                    if label not in relevant_labels:
-                        continue
-                    labeled_ent = doc.char_span(labeled_entity["start_offset"], labeled_entity["end_offset"], label,
-                                                alignment_mode="expand")
-                    if label in corresponding_labels[ent.label_]:
-                        if ent_is_in_sent(ent, labeled_ent):
-                            #print(label, ent.label_, labeled_ent.text)
-                            ent_in_labeled_ent = True
-                            doc_dist[0] += 1
-                            new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_,
+                if article.labeled_entities is not None:
+                    for labeled_entity in article.labeled_entities:
+                        label = labeled_entity["label"]
+                        if label not in relevant_labels:
+                            continue
+                        labeled_ent = doc.char_span(labeled_entity["start_offset"], labeled_entity["end_offset"], label,
                                                     alignment_mode="expand")
-                            assert str(new_ent) != "None"
-                            #print(new_ent)
-                            token_slice = ent_to_token_slice(doc, new_ent)
-                            if token_slice not in cache:
-                                spans.append(token_slice)
-                                cache.add(token_slice)
-                                length += 1
+                        if label in corresponding_labels[ent.label_]:
+                            if ent_is_in_sent(ent, labeled_ent):
+                                #print(label, ent.label_, labeled_ent.text)
+                                ent_in_labeled_ent = True
+                                doc_dist[0] += 1
+                                new_ent = doc.char_span(ent.start_char, ent.end_char, ent.label_,
+                                                        alignment_mode="expand")
+                                assert str(new_ent) != "None"
+                                #print(new_ent)
+                                token_slice = ent_to_token_slice(doc, new_ent)
+                                if token_slice not in cache:
+                                    spans.append(token_slice)
+                                    cache.add(token_slice)
+                                    length += 1
                 if ent_in_labeled_ent:
                     continue
                 if balance and doc_dist[1] > doc_dist[0]:

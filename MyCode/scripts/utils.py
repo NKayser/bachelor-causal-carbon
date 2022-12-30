@@ -10,8 +10,8 @@ from geopy.extra.rate_limiter import RateLimiter
 from MyCode.scripts.consts import INPUT_PATH
 
 
-def get_positive_article_ids():
-    with open(INPUT_PATH, "r", encoding="utf-8") as input_file:
+def get_positive_article_ids(path=INPUT_PATH):
+    with open(path, "r", encoding="utf-8") as input_file:
         json_list = list(input_file)
 
     positive_ids = []
