@@ -34,6 +34,14 @@ colors = {'positive': '#00ff00',
 # If other than the default 'sc', define the used spans-key and set colors
 options={'spans_key':'sc', 'colors': colors}
 
+def ent_to_token_slice(doc, ent):
+    span = doc.char_span(ent.start_char, ent.end_char, alignment_mode="expand")
+    return span[0].i, span[-1].i + 1
 
 doc = nlp(texts)
+spans = doc.spans["sc"]
+for span, confidence in zip(spans, spans.attrs["scores"]):
+    charspan = doc.char_span(span.start_char, span.end_char, span.label_)
+    token_slice = ent_to_token_slice(doc, charspan)
+    print(token_slice[0], token_slice[1], span.start_char, span.end_char, span.label_, confidence, span.text)
 displacy.serve(doc, style="span", options=options)

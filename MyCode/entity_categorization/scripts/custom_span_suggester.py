@@ -130,8 +130,9 @@ class Article:
         spacy.prefer_gpu(0)
         nlp = spacy.blank("en")
         self.doc = nlp(text)
-        ner = spacy.load(model)
-        self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner(text).ents]
+        #ner = spacy.load(model)
+        #ner_doc_ents = ner(text).ents
+        #self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner_doc_ents]
         for json_obj in read_input_file():
             if json_obj["text"][:200] == text[:200]:
                 self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
@@ -246,6 +247,7 @@ def build_custom_suggester(balance: bool = True) -> Suggester:
         lengths_array = cast(Ints1d, ops.asarray(lengths, dtype="i"))
         if len(spans) > 0:
             output = Ragged(ops.asarray(spans, dtype="i"), lengths_array)
+            #print(output)
         else:
             output = Ragged(ops.xp.zeros((0, 0), dtype="i"), lengths_array)
 
