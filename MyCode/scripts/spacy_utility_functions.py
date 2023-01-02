@@ -45,14 +45,7 @@ def apply_pretrained_ner(input_text, model):
     return formatted_ents
 
 
-def apply_custom_ner(input_text, model):
+def apply_ent_cat(input_text, model):
     doc = apply_spacy_model(input_text, model)
-    formatted_ents = []
-    running_ent_id = 0
-
-    for ent in doc.ents:
-        formatted_ents.append(
-            {"id": running_ent_id, "label": ent.label_, "start_offset": ent.start_char, "end_offset": ent.end_char})
-        running_ent_id += 1
-
-    return formatted_ents
+    spans = doc.spans['sc']
+    return spans

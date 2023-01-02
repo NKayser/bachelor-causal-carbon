@@ -117,6 +117,21 @@ def get_more_precise_locations(loc_array):
     return out
 
 
+def sort_by_ent_cat(spans, ent_cats):
+    # Create a list of tuples, where each tuple contains the span from `spans1` and the span from `spans2`
+    span_pairs = []
+    for s1 in spans:
+        for s2 in ent_cats:
+            if s1.start == s2.start and s1.end == s2.end:
+                span_pairs.append((s1, s2))
+                break
+    # Sort the list of tuples by the category and confidence score of the span from `spans2`
+    span_pairs.sort(key=lambda x: (x[1].label_ == "positive", -x[1].score, x[1].label_ == "negative", x[1].score))
+    print(span_pairs)
+    # Return the sorted list of spans from `spans1`
+    return [s[0] for s in span_pairs]
+
+
 def read_input_file(path=INPUT_PATH):
     with open(path, "r", encoding="utf8") as json_file:
         json_list = list(json_file)

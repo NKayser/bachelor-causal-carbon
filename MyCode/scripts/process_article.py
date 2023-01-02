@@ -6,9 +6,11 @@ from spacy.tokens import SpanGroup
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS, ENT_MODEL_PATH
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
-from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, apply_sentencizer
+from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, \
+    apply_sentencizer, apply_ent_cat
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
-    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents
+    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
+    sort_by_ent_cat
 
 
 class Article:
@@ -78,27 +80,32 @@ class Article:
         self.set_sents(apply_sentencizer(self.doc.text, spancat_model))
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
-        #self.doc.spans["sc"] += self.dict_to_charspan_array(apply_custom_ner(self.doc.text, custom_ner_model))
+        self.doc.spans["sc"] += apply_ent_cat(self.doc.text, custom_ner_model)
 
-    def get_sent_of_ent(self, ent):
-        for i in range(0, len(self.doc.sents)):
-            sent = self.doc.sents[i]
-            if ent_is_in_sent(ent, sent):
-                if ent.start_offset < sent.start_offset:
-                    self.doc.sents[i-1].set_new_offset(self.doc.sents[i-1].start_offset, self.doc.sents[i].end_offset)
-                if ent.end_offset > sent.end_offset:
-                    self.doc.sents[i].set_new_offset(self.doc.sents[i].start_offset, self.doc.sents[i+1].end_offset)
-                return sent
-        print("Error with loading document: entity " + ent.text + " was not found in sentences.")
-        assert False
-
-    def get_investment_information(self):
-        finance_ents = self.set_money_ents()     # "MONEY"
+    def get_investment_information_v1(self):
+        # need to preprocess_spacy before
+        finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
         location_ents = self.get_location_ents()            # "GPE"
         emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         time_ents = self.get_date_ents()                    # "DATE"
-        parsed_ents = [finance_ents, technology_ents, location_ents, emissions_ents, time_ents]
+        ent_cats = self.get_ent_cat()                       # "positive" or "negative", 2d array with confidence scores
+
+        return {"technology1": self.get_weighted_technology_cats(),
+                "technology2": sort_by_ent_cat(technology_ents, ent_cats),
+                "money": sort_by_ent_cat(finance_ents, ent_cats),
+                "location": sort_by_ent_cat(location_ents, ent_cats),
+                "emissions": sort_by_ent_cat(emissions_ents, ent_cats),
+                "time": sort_by_ent_cat(time_ents, ent_cats)}
+
+    def get_investment_information_v2(self):
+        finance_ents = self.set_money_ents()                # "MONEY"
+        technology_ents = self.set_technology_ents()        # "TECHWORD"
+        location_ents = self.get_location_ents()            # "GPE"
+        emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
+        time_ents = self.get_date_ents()                    # "DATE"
+        ent_cats = self.get_ent_cat()                       # "positive" or "negative"
+        parsed_ents = [finance_ents, technology_ents, location_ents, emissions_ents, time_ents, ent_cats]
         weighted_sents = self.get_weighted_sents()
 
         for sent, weight in weighted_sents:
@@ -163,13 +170,21 @@ class Article:
     def get_date_ents(self):
         return filter_ents(self.doc.spans["sc"], "DATE")
 
+    def get_ent_cat(self):
+        #spans = self.doc.spans["sc"]
+        #scores = self.doc.spans["sc"].attrs["scores"]
+        #zipped = zip(spans, scores)
+        #return list(filter(lambda span, score: span.label_ in ["positive", "negative"], zipped))
+        return filter(lambda ent: ent.label_ in ["positive", "negative"], self.doc.spans["sc"])
+
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
     id = positive_ids[-1]
     print("id " + str(id))
-    article = Article.from_article(id) # e.g. 6389
-    article.get_investment_information()
+    article = Article.from_article(id, include_predictions=False) # e.g. 6389
+    article.preprocess_spacy()
+    print(article.get_investment_information_v1())
     #article.get_financial_information()
     #print(article.text)
     #print(article.get_technology_cats())
