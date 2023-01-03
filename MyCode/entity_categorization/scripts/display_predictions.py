@@ -14,11 +14,11 @@ warnings.filterwarnings('ignore')
 
 @registry.misc("article_all_ent_suggester.v1")
 def suggester():
-    return build_custom_suggester(balance=False)
+    return build_custom_suggester(balance=False, input_path="../data/labels_and_predictions.jsonl")
 
 nlp = spacy.load('models-binary/model-best')
 
-positive_ids = get_positive_article_ids("../data/labels_and_predictions.jsonl")[0:10]
+positive_ids = get_positive_article_ids("../data/labels_and_predictions.jsonl")[70:80]
 json_list = read_input_file("../data/labels_and_predictions.jsonl")
 texts = ""
 

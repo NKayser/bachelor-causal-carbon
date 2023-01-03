@@ -15,7 +15,7 @@ cval_run = "5"
 
 @registry.misc("article_all_ent_suggester.v1")
 def suggester():
-    return build_custom_suggester(balance=False)
+    return build_custom_suggester(balance=False, input_path="../data/labels_and_predictions.jsonl")
 
 #db_all = DocBin()
 #db_train = DocBin().from_disk("entity_categorization/corpus/train.spacy")
@@ -33,7 +33,7 @@ class_labels = []
 for label in labels:
     class_labels.append(label + " positive")
     class_labels.append(label + " negative")
-class_labels2 = ["positive", "negative"]
+class_labels2 = ["positive", "negative", "None"]
 
 confusion_matrix = {actual_class: {predicted_class: 0
                                    for predicted_class in class_labels2}
@@ -52,17 +52,22 @@ for doc in tqdm(list(db_test.get_docs(nlp.vocab))):
     article.set_money_ents()
     ner_ents = article.doc.spans["sc"]
     #print([[span.start_char, span.end_char, span.text, span.label_] for span in predicted_doc.spans["sc"]])
-    for predicted_span in predicted_doc.spans["sc"]:
-        for true_span in doc.spans["sc"]:
-            if predicted_span.start_char == true_span.start_char and predicted_span.end_char == true_span.end_char:
-                for ent in ner_ents:
-                    if ent.start_char == true_span.start_char and ent.end_char == true_span.end_char:
+    for true_span in doc.spans["sc"]:
+        for ent in ner_ents:
+            if ent.start_char == true_span.start_char and ent.end_char == true_span.end_char:
+                found_predicted = False
+                for predicted_span in predicted_doc.spans["sc"]:
+                    if predicted_span.start_char == true_span.start_char and predicted_span.end_char == true_span.end_char:
                         found_predicted = True
-                        #true_label = true_span.label_.split()
-                        #predicted_label = predicted_span.split()
+                        # true_label = true_span.label_.split()
+                        # predicted_label = predicted_span.split()
                         confusion_matrix[ent.label_ + " " + true_span.label_][predicted_span.label_] += 1
                         break
-                break
+                if found_predicted:
+                    break
+                confusion_matrix[ent.label_ + " " + true_span.label_]["None"] += 1
+
+
 
 
 filtered_confusion_matrix = {k: {k2: v2 for k2, v2 in v.items() if v2 > 0} for k, v in confusion_matrix.items()}

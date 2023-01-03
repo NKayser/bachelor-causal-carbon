@@ -13,9 +13,6 @@ import spacy
 import re
 
 
-# assumes execution from entity_categorization
-INPUT_PATH = "../data/labels_and_predictions.jsonl"
-SPANCAT_MODEL_PATH = "../sententence_categorization/models/model-best"
 PRETRAINED_NER_MODEL = "en_core_web_trf"
 
 TECHNOLOGY_CATEGORIES = {
@@ -115,7 +112,7 @@ def get_additional_money_ents(doc, money_ents):
     return money_ents
 
 
-def read_input_file(path=INPUT_PATH):
+def read_input_file(path):
     with open(path, "r", encoding="utf8") as json_file:
         json_list = list(json_file)
         return [json.loads(json_str) for json_str in json_list]
@@ -125,7 +122,7 @@ class Article:
     doc = None
     labeled_entities = None
 
-    def __init__(self, text, model=PRETRAINED_NER_MODEL):
+    def __init__(self, text, input_path, model=PRETRAINED_NER_MODEL):
         assert text is not None
         spacy.prefer_gpu(0)
         nlp = spacy.blank("en")
@@ -133,7 +130,7 @@ class Article:
         #ner = spacy.load(model)
         #ner_doc_ents = ner(text).ents
         #self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner_doc_ents]
-        for json_obj in read_input_file():
+        for json_obj in read_input_file(input_path):
             if json_obj["text"][:200] == text[:200]:
                 self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
                                         for span in json_obj["entities"]]
@@ -159,7 +156,8 @@ class Article:
 
 
 @registry.misc("article_all_ent_suggester.v1")
-def build_custom_suggester(balance: bool = True) -> Suggester:
+def build_custom_suggester(balance: bool, input_path: str) -> Suggester:
+    # input_path="../data/labels_and_predictions.jsonl"
     """Suggest all spans of the given lengths. Spans are returned as a ragged
     array of integers. The array has two columns, indicating the start and end
     position."""
@@ -175,7 +173,7 @@ def build_custom_suggester(balance: bool = True) -> Suggester:
             length = 0
             doc_dist = [0, 0]
 
-            article = Article(text=doc.text)
+            article = Article(text=doc.text, input_path=input_path)
             finance_ents = article.get_financial_information()      # "MONEY"
             #technology_ents = article.get_technology_ents()         # "TECHWORD"
             #article_ents = article.doc.spans["sc"]
@@ -200,7 +198,7 @@ def build_custom_suggester(balance: bool = True) -> Suggester:
                 if ent.label_ not in corresponding_labels.keys():
                     continue
                 ent_in_labeled_ent = False
-                if article.labeled_entities is not None:
+                if article.labeled_entities:
                     for labeled_entity in article.labeled_entities:
                         label = labeled_entity["label"]
                         if label not in relevant_labels:
@@ -247,6 +245,8 @@ def build_custom_suggester(balance: bool = True) -> Suggester:
         lengths_array = cast(Ints1d, ops.asarray(lengths, dtype="i"))
         if len(spans) > 0:
             output = Ragged(ops.asarray(spans, dtype="i"), lengths_array)
+            #for doc in docs:
+            #    print([doc[start:end] for start, end in spans])
             #print(output)
         else:
             output = Ragged(ops.xp.zeros((0, 0), dtype="i"), lengths_array)

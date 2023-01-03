@@ -7,7 +7,7 @@ from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS, ENT_MODEL_PATH
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, \
-    apply_sentencizer, apply_ent_cat
+    apply_sentencizer, suggester
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
     sort_by_ent_cat
@@ -19,6 +19,9 @@ class Article:
     metadata = None
 
     textcat_prediction = None
+    ent_cats = None
+
+    ent_cat_doc = None
 
     def __init__(self, text, metadata=None, texcat_prediction=None, sents=None, spans=None, ents=None):
         assert text is not None
@@ -75,24 +78,38 @@ class Article:
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
     def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
-                         ner_model=PRETRAINED_NER_MODEL, custom_ner_model=ENT_MODEL_PATH):
+                         ner_model=PRETRAINED_NER_MODEL, ent_cat_model=ENT_MODEL_PATH):
         self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
         self.set_sents(apply_sentencizer(self.doc.text, spancat_model))
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
-        self.doc.spans["sc"] += apply_ent_cat(self.doc.text, custom_ner_model)
+
+        spacy.prefer_gpu(0)
+        nlp2 = spacy.load(ent_cat_model)
+        self.ent_cat_doc = nlp2(self.doc.text)
+        print(self.ent_cat_doc.spans["sc"])
+
 
     def get_investment_information_v1(self):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
+        weighted_tech_ents = self.get_weighted_technology_cats()
         location_ents = self.get_location_ents()            # "GPE"
         emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         time_ents = self.get_date_ents()                    # "DATE"
-        ent_cats = self.get_ent_cat()                       # "positive" or "negative", 2d array with confidence scores
+        ent_cats = self.get_ent_cats()                      # "positive" or "negative", 2d array with confidence scores
 
-        return {"technology1": self.get_weighted_technology_cats(),
-                "technology2": sort_by_ent_cat(technology_ents, ent_cats),
+        print(finance_ents)
+        print(technology_ents)
+        print(location_ents)
+        print(emissions_ents)
+        print(time_ents)
+        print(ent_cats)
+
+        return {"technology": weighted_tech_ents,
+                "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
+                "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                 "money": sort_by_ent_cat(finance_ents, ent_cats),
                 "location": sort_by_ent_cat(location_ents, ent_cats),
                 "emissions": sort_by_ent_cat(emissions_ents, ent_cats),
@@ -104,7 +121,7 @@ class Article:
         location_ents = self.get_location_ents()            # "GPE"
         emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         time_ents = self.get_date_ents()                    # "DATE"
-        ent_cats = self.get_ent_cat()                       # "positive" or "negative"
+        ent_cats = self.get_ent_cats()                      # "positive" or "negative"
         parsed_ents = [finance_ents, technology_ents, location_ents, emissions_ents, time_ents, ent_cats]
         weighted_sents = self.get_weighted_sents()
 
@@ -170,12 +187,16 @@ class Article:
     def get_date_ents(self):
         return filter_ents(self.doc.spans["sc"], "DATE")
 
-    def get_ent_cat(self):
+    def get_ent_cats(self):
+        spans = self.ent_cat_doc.spans["sc"]
+        for span in spans:
+            print(span.label_, span.start, span.end, span.text)
+        return spans
         #spans = self.doc.spans["sc"]
         #scores = self.doc.spans["sc"].attrs["scores"]
         #zipped = zip(spans, scores)
         #return list(filter(lambda span, score: span.label_ in ["positive", "negative"], zipped))
-        return filter(lambda ent: ent.label_ in ["positive", "negative"], self.doc.spans["sc"])
+        #return filter(lambda ent: ent.label_ in ["positive", "negative"], self.doc.spans["sc"])
 
 
 if __name__ == '__main__':

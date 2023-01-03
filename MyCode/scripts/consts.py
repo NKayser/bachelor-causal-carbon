@@ -1,7 +1,7 @@
 INPUT_PATH = "data/labels_and_predictions.jsonl"
 TEXTCAT_MODEL_PATH = "textcat/models/cval_2/model-best"
 SPANCAT_MODEL_PATH = "sententence_categorization/models/model-best"
-ENT_MODEL_PATH = "entity_categorization/models/model-best"
+ENT_MODEL_PATH = "entity_categorization/models-binary/model-best"
 PRETRAINED_NER_MODEL = "en_core_web_trf"
 TEXTCAT_THRESHOLD = 0.5
 

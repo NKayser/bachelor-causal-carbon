@@ -112,12 +112,18 @@ def create_corpus_docbins(balanced=True):
 
 
 if __name__ == "__main__":
-    train_db, dev_db, test_db = create_corpus_docbins(balanced=False)
+    balanced = True
+    train_db, dev_db, test_db = create_corpus_docbins(balanced=balanced)
 
     # save the docbin objects
-    train_db.to_disk(f"entity_categorization/corpus-unbalanced/train.spacy")
-    dev_db.to_disk(f"entity_categorization/corpus-unbalanced/dev.spacy")
-    test_db.to_disk(f"entity_categorization/corpus-unbalanced/test.spacy")
+    corpus_path = "corpus-bin" # binary
+    if balanced:
+        corpus_path += "-balanced"
+    else:
+        corpus_path += "-unbalanced"
+    train_db.to_disk(f"entity_categorization/{corpus_path}/train.spacy")
+    dev_db.to_disk(f"entity_categorization/{corpus_path}/dev.spacy")
+    test_db.to_disk(f"entity_categorization/{corpus_path}/test.spacy")
 
     #train_db.to_disk(f"entity_categorization/corpus/train.spacy")
     #dev_db.to_disk(f"entity_categorization/corpus/dev.spacy")

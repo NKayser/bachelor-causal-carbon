@@ -1,4 +1,7 @@
 import spacy
+from spacy import registry
+
+from MyCode.entity_categorization.scripts.custom_span_suggester import build_custom_suggester
 
 
 def apply_spacy_model(input_text, model):
@@ -45,7 +48,7 @@ def apply_pretrained_ner(input_text, model):
     return formatted_ents
 
 
-def apply_ent_cat(input_text, model):
-    doc = apply_spacy_model(input_text, model)
-    spans = doc.spans['sc']
-    return spans
+
+@registry.misc("article_all_ent_suggester.v1")
+def suggester():
+    return build_custom_suggester(balance=False, input_path="data/labels_and_predictions.jsonl")

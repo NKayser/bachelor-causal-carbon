@@ -119,15 +119,25 @@ def get_more_precise_locations(loc_array):
 
 def sort_by_ent_cat(spans, ent_cats):
     # Create a list of tuples, where each tuple contains the span from `spans1` and the span from `spans2`
+    scores = ent_cats.attrs["scores"]
+    zipped_ent_cats = zip(ent_cats, scores)
     span_pairs = []
     for s1 in spans:
-        for s2 in ent_cats:
+        found = False
+        for s2, score in zipped_ent_cats:
             if s1.start == s2.start and s1.end == s2.end:
-                span_pairs.append((s1, s2))
+                found = True
+                span_pairs.append((s1, s2, score))
                 break
+        if found:
+            continue
+        # not clear why some suggested spans don't appear in ent_cat list at all
+        s2 = s1
+        s2.label_ = "neutral"
+        span_pairs.append((s1, s2, 1.0))
     # Sort the list of tuples by the category and confidence score of the span from `spans2`
-    span_pairs.sort(key=lambda x: (x[1].label_ == "positive", -x[1].score, x[1].label_ == "negative", x[1].score))
-    print(span_pairs)
+    span_pairs.sort(key=lambda x: (x[1].label_ == "positive", -x[2], x[1].label_ == "neutral", x[1].label_ == "negative", x[2]))
+    print([(x[0].text, x[1].label_, x[2]) for x in span_pairs])
     # Return the sorted list of spans from `spans1`
     return [s[0] for s in span_pairs]
 
