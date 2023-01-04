@@ -9,8 +9,8 @@ from MyCode.scripts.process_for_property_utils import get_additional_money_ents,
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, \
     apply_sentencizer, suggester
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
-    get_more_precise_locations, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
-    sort_by_ent_cat
+    parse_location, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
+    sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time
 
 
 class Article:
@@ -89,7 +89,7 @@ class Article:
         self.ent_cat_doc = nlp2(self.doc.text)
 
 
-    def get_investment_information_v1(self, threshold=0.5):
+    def get_investment_information_v1(self, threshold=0.5, parse=True):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
@@ -114,14 +114,24 @@ class Article:
         #print(time_ents)
         #print(ent_cats)
 
-        return {"technology": weighted_tech_ents,
+        if parse:
+            return {"technology": weighted_tech_ents,
                 #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                 #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
-                "money": sort_by_ent_cat(finance_ents, ent_cats, threshold),
-                "location": sort_by_ent_cat(location_ents, ent_cats, threshold),
-                "emissions_percent": sort_by_ent_cat(percent_ents, ent_cats, threshold),
-                "emissions_quantity": sort_by_ent_cat(quantity_ents, ent_cats, threshold),
-                "time": sort_by_ent_cat(time_ents, ent_cats, threshold)}
+                "money": list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold))),
+                "location": list(map(parse_location, sort_by_ent_cat(location_ents, ent_cats, threshold))),
+                "emissions_percent": list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold))),
+                "emissions_quantity": list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
+                "time": list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold)))}
+        else:
+            return {"technology": weighted_tech_ents,
+                    # "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
+                    # "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
+                    "money": list(sort_by_ent_cat(finance_ents, ent_cats, threshold)),
+                    "location": list(sort_by_ent_cat(location_ents, ent_cats, threshold)),
+                    "emissions_percent": list(sort_by_ent_cat(percent_ents, ent_cats, threshold)),
+                    "emissions_quantity": list(sort_by_ent_cat(quantity_ents, ent_cats, threshold)),
+                    "time": list(sort_by_ent_cat(time_ents, ent_cats, threshold))}
 
     def get_investment_information_v2(self):
         finance_ents = self.set_money_ents()                # "MONEY"
@@ -177,7 +187,7 @@ class Article:
         return filter_ents(self.doc.spans["sc"], "GPE")
 
     def get_weighted_locations(self):
-        better_locations = get_more_precise_locations(get_all_entities_by_label(self.doc.spans["sc"])["GPE"])
+        better_locations = parse_locations(get_all_entities_by_label(self.doc.spans["sc"])["GPE"])
         return better_locations
 
     def set_money_ents(self):

@@ -1,13 +1,16 @@
 import json
+import re
 import socket
 from collections import Counter
 from functools import partial
+from decimal import Decimal
 
 from geopy.exc import GeocoderUnavailable
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
+from quantiphy import Quantity
 
-from MyCode.scripts.consts import INPUT_PATH
+from MyCode.scripts.consts import INPUT_PATH, MONEY_PATTERNS
 
 
 def get_positive_article_ids(path=INPUT_PATH):
@@ -115,6 +118,126 @@ def get_more_precise_locations(loc_array):
     #out = list(dict.fromkeys(out))
 
     return out
+
+
+def standardize_currency(cur):
+    currency_dict = {"EUR": "EUR", "Eur": "EUR", "eur": "EUR", "euro": "EUR", "euros": "EUR", "Euro": "EUR", "€": "EUR",
+                     "USD": "USD", "Usd": "USD", "usd": "USD", "$": "USD", "US$": "USD", "us$": "USD", "Us$": "USD",
+                     "CAD": "CAD", "CAN$": "CAD", "CAN": "CAD", "CAD$": "CAD", "cad": "CAD", "cad$": "CAD",
+                     "can": "CAD", "can$": "CAD", "Cad": "CAD", "Cad$": "CAD", "Can": "CAD", "Can$": "CAD",
+                     "CHF": "CHF", "Chf": "CHF", "chf": "CHF",
+                     "PLN": "PLN", "pln": "PLN", "Pln": "PLN",
+                     "GBP": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP"}
+    # TODO: add these GBP synonyms to MONEY_PATTERNS
+    if cur in currency_dict.keys():
+        return currency_dict[cur]
+    return cur.upper()
+
+
+def magnitude_str_to_number(mag):
+    magnitude_dict = {"m": 1000000, "mio": 1000000, "mln": 1000000, "million": 1000000,
+                      "b": 1000000000, "bn": 1000000000, "billion": 1000000000,
+                      "thousand": 1000}
+    if mag in magnitude_dict.keys():
+        return Decimal(magnitude_dict[mag])
+    return Decimal(1)
+
+
+def number_str_to_decimal(num):
+    if num is None or num == "":
+        return None
+    last_point_ind = num.rfind(".")
+    last_comma_ind = num.rfind(",")
+
+    if last_point_ind > last_comma_ind:
+        out = num.replace(",", "")
+        return Decimal(out)
+    elif last_comma_ind > last_point_ind:
+        out = num.replace(".", "").replace(",", ".")
+        return Decimal(out)
+    return Decimal(num)
+
+
+def parse_location(loc_str):
+    exceptions = {"U.S.": "US", "the United States": "US"}
+    geolocator = Nominatim(user_agent="causal_carbon_bachelor")
+    geocode = partial(geolocator.geocode, language='en')
+    geocode = RateLimiter(geocode, min_delay_seconds=1)
+
+    if loc_str in exceptions.keys():
+        loc_str = exceptions[loc_str]
+    try:
+        coded = geocode(loc_str)
+        name = coded.raw["display_name"]
+        return {"parsed": name, "original": loc_str}
+    except socket.timeout:
+        print(loc_str + " not found")
+        return {"parsed": None, "original": loc_str}
+    except GeocoderUnavailable:
+        print(loc_str + " not found")
+        return {"parsed": None, "original": loc_str}
+
+
+def parse_money(money_str):
+    matches = [re.search(money_pat, money_str) for money_pat in MONEY_PATTERNS]
+
+    if matches[0] is not None:
+        groups = matches[0].groups()
+        currency = groups[0]
+        lower = groups[1]
+        upper = groups[3]
+        magnitude = groups[5]
+        print(currency, lower, upper, magnitude)
+    elif matches[1] is not None:
+        groups = matches[1].groups()
+        currency = groups[5]
+        lower = groups[0]
+        upper = groups[2]
+        magnitude = groups[4]
+        print(currency, lower, upper, magnitude)
+    else:
+        return None
+
+    currency = standardize_currency(currency)
+    magnitude = magnitude_str_to_number(magnitude)
+    lower = number_str_to_decimal(lower)
+    upper = number_str_to_decimal(upper)
+    if lower:
+        lower *= magnitude
+    else:
+        lower = upper
+    if upper:
+        upper *= magnitude
+    else:
+        upper = lower
+
+    return {"currency": currency, "lower_value": str(lower), "upper_value": str(upper), "original": money_str}
+
+
+def parse_percent(percent_str):
+    try:
+        match = re.search("([0-9]*[.,])?[0-9]+", percent_str)
+        if match is not None:
+            return {"value": str(Decimal(match[0].replace(",", "."))), "unit": "%", "original": percent_str}
+        return {"value": None, "unit": "%", "original": percent_str}
+    except:
+        return {"value": None, "unit": "%", "original": percent_str}
+
+
+def parse_quantity(quant_str):
+    try:
+        quant = Quantity(quant_str)
+        value, unit = quant.as_tuple()
+        return {"value": str(value), "unit": unit, "original": quant_str}
+    except:
+        return {"value": None,  "unit": None, "original": quant_str}
+
+
+def parse_time(time_str):
+    # left out for now
+    return time_str
+
+
 
 
 def sort_by_ent_cat(spans, ent_cats, threshold):
