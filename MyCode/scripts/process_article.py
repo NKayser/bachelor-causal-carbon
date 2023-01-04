@@ -87,33 +87,41 @@ class Article:
         spacy.prefer_gpu(0)
         nlp2 = spacy.load(ent_cat_model)
         self.ent_cat_doc = nlp2(self.doc.text)
-        print(self.ent_cat_doc.spans["sc"])
 
 
-    def get_investment_information_v1(self):
+    def get_investment_information_v1(self, threshold=0.5):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
         weighted_tech_ents = self.get_weighted_technology_cats()
         location_ents = self.get_location_ents()            # "GPE"
-        emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
+        #emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
+        quantity_ents = filter_ents(self.doc.spans["sc"], "QUANTITY")
+        percent_ents = filter_ents(self.doc.spans["sc"], "PERCENT")
+        fac_ents = filter_ents(self.doc.spans["sc"], "FAC")
         time_ents = self.get_date_ents()                    # "DATE"
         ent_cats = self.get_ent_cats()                      # "positive" or "negative", 2d array with confidence scores
 
-        print(finance_ents)
-        print(technology_ents)
-        print(location_ents)
-        print(emissions_ents)
-        print(time_ents)
-        print(ent_cats)
+        # if faculty name is also in locations, add it again to locations (might increase confidence score)
+        for ent in fac_ents:
+            if ent.text in [loc_ent.text for loc_ent in location_ents]:
+                location_ents.append(ent)
+
+        #print(finance_ents)
+        #print(technology_ents)
+        #print(location_ents)
+        #print([(ent.start, ent.end, ent.text) for ent in emissions_ents])
+        #print(time_ents)
+        #print(ent_cats)
 
         return {"technology": weighted_tech_ents,
-                "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
-                "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
-                "money": sort_by_ent_cat(finance_ents, ent_cats),
-                "location": sort_by_ent_cat(location_ents, ent_cats),
-                "emissions": sort_by_ent_cat(emissions_ents, ent_cats),
-                "time": sort_by_ent_cat(time_ents, ent_cats)}
+                #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
+                #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
+                "money": sort_by_ent_cat(finance_ents, ent_cats, threshold),
+                "location": sort_by_ent_cat(location_ents, ent_cats, threshold),
+                "emissions_percent": sort_by_ent_cat(percent_ents, ent_cats, threshold),
+                "emissions_quantity": sort_by_ent_cat(quantity_ents, ent_cats, threshold),
+                "time": sort_by_ent_cat(time_ents, ent_cats, threshold)}
 
     def get_investment_information_v2(self):
         finance_ents = self.set_money_ents()                # "MONEY"
@@ -163,7 +171,7 @@ class Article:
         return technology_ents
 
     def get_weighted_technology_cats(self):
-        get_weighted_technology_cats(self.doc.text)
+        return get_weighted_technology_cats(self.doc.text)
 
     def get_location_ents(self):
         return filter_ents(self.doc.spans["sc"], "GPE")
@@ -189,8 +197,8 @@ class Article:
 
     def get_ent_cats(self):
         spans = self.ent_cat_doc.spans["sc"]
-        for span in spans:
-            print(span.label_, span.start, span.end, span.text)
+        #for span in spans:
+        #    print(span.label_, span.start, span.end, span.text)
         return spans
         #spans = self.doc.spans["sc"]
         #scores = self.doc.spans["sc"].attrs["scores"]
@@ -205,6 +213,7 @@ if __name__ == '__main__':
     print("id " + str(id))
     article = Article.from_article(id, include_predictions=False) # e.g. 6389
     article.preprocess_spacy()
+    print(article.doc.text)
     print(article.get_investment_information_v1())
     #article.get_financial_information()
     #print(article.text)

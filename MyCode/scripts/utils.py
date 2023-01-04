@@ -117,10 +117,10 @@ def get_more_precise_locations(loc_array):
     return out
 
 
-def sort_by_ent_cat(spans, ent_cats):
+def sort_by_ent_cat(spans, ent_cats, threshold):
     # Create a list of tuples, where each tuple contains the span from `spans1` and the span from `spans2`
     scores = ent_cats.attrs["scores"]
-    zipped_ent_cats = zip(ent_cats, scores)
+    zipped_ent_cats = list(zip(ent_cats, scores))
     span_pairs = []
     for s1 in spans:
         found = False
@@ -136,10 +136,31 @@ def sort_by_ent_cat(spans, ent_cats):
         s2.label_ = "neutral"
         span_pairs.append((s1, s2, 1.0))
     # Sort the list of tuples by the category and confidence score of the span from `spans2`
-    span_pairs.sort(key=lambda x: (x[1].label_ == "positive", -x[2], x[1].label_ == "neutral", x[1].label_ == "negative", x[2]))
-    print([(x[0].text, x[1].label_, x[2]) for x in span_pairs])
+    def order(label, score):
+        out = 0
+        if label == "positive":
+            out += (0.5 + score / 2)
+        elif label == "neutral":
+            out += 0.5
+        else:
+            out += (0.5 - score / 2)
+        return out
+
+    span_pairs = [(s1.text, order(s2.label_, score.item())) for s1, s2, score in span_pairs]
+    span_pairs.sort(key=lambda x: x[1], reverse=True)
+
+    # filter by threshold confidence
+    span_pairs = list(filter(lambda x: x[1] >= threshold, span_pairs))
+
+    # deduplicate, keep highest confidence span
+    temp = []
+    for ent_text, score in span_pairs:
+        if ent_text in temp:
+            continue
+        temp.append(ent_text)
+
     # Return the sorted list of spans from `spans1`
-    return [s[0] for s in span_pairs]
+    return temp
 
 
 def read_input_file(path=INPUT_PATH):
