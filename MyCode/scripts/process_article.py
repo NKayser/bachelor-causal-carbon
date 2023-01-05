@@ -117,7 +117,7 @@ class Article:
         #print(ent_cats)
 
         if parse:
-            out = {"technology": list(map(parse_weighted_tech, weighted_tech_ents)),
+            info = {"technology": list(map(parse_weighted_tech, weighted_tech_ents)),
                 #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                 #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                 "money": list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold))),
@@ -125,10 +125,8 @@ class Article:
                 "emissions_percent": list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold))),
                 "emissions_quantity": list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
                 "time": list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold)))}
-            print(json.dumps(out, indent=4))
-            return out
         else:
-            return {"technology": weighted_tech_ents,
+            info = {"technology": weighted_tech_ents,
                     # "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                     # "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                     "money": list(sort_by_ent_cat(finance_ents, ent_cats, threshold)),
@@ -136,6 +134,13 @@ class Article:
                     "emissions_percent": list(sort_by_ent_cat(percent_ents, ent_cats, threshold)),
                     "emissions_quantity": list(sort_by_ent_cat(quantity_ents, ent_cats, threshold)),
                     "time": list(sort_by_ent_cat(time_ents, ent_cats, threshold))}
+
+        out_obj = {"metadata": self.metadata,
+                   "textcat_prediction": self.textcat_prediction,
+                   "parsed_info": info}
+        #print(json.dumps(out_obj, indent=4))
+        print(out_obj)
+        return out_obj
 
     def get_investment_information_v2(self):
         finance_ents = self.set_money_ents()                # "MONEY"
