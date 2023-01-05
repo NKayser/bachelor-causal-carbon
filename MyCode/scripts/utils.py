@@ -9,6 +9,7 @@ from geopy.exc import GeocoderUnavailable
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 from quantiphy import Quantity
+from numerizer import numerize
 
 from MyCode.scripts.consts import INPUT_PATH, MONEY_PATTERNS
 
@@ -120,6 +121,11 @@ def get_more_precise_locations(loc_array):
     return out
 
 
+def parse_weighted_tech(x):
+    tech_cat, confidence = x
+    return {"category": tech_cat, "confidence": confidence}
+
+
 def standardize_currency(cur):
     currency_dict = {"EUR": "EUR", "Eur": "EUR", "eur": "EUR", "euro": "EUR", "euros": "EUR", "Euro": "EUR", "€": "EUR",
                      "USD": "USD", "Usd": "USD", "usd": "USD", "$": "USD", "US$": "USD", "us$": "USD", "Us$": "USD",
@@ -143,22 +149,31 @@ def magnitude_str_to_number(mag):
     return Decimal(1)
 
 
+def numerize_wrapper(num_str):
+    num_str = numerize(num_str)
+    last_point_ind = num_str.rfind(".")
+    last_comma_ind = num_str.rfind(",")
+
+    if last_point_ind > last_comma_ind:
+        out = num_str.replace(",", "")
+        return out
+    elif last_comma_ind > last_point_ind:
+        out = num_str.replace(".", "").replace(",", ".")
+        return out
+    return num_str
+
+
 def number_str_to_decimal(num):
     if num is None or num == "":
         return None
-    last_point_ind = num.rfind(".")
-    last_comma_ind = num.rfind(",")
-
-    if last_point_ind > last_comma_ind:
-        out = num.replace(",", "")
-        return Decimal(out)
-    elif last_comma_ind > last_point_ind:
-        out = num.replace(".", "").replace(",", ".")
-        return Decimal(out)
-    return Decimal(num)
+    try:
+        return Decimal(numerize_wrapper(num))
+    except:
+        return None
 
 
-def parse_location(loc_str):
+def parse_location(x):
+    loc_str, confidence = x
     exceptions = {"U.S.": "US", "the United States": "US"}
     geolocator = Nominatim(user_agent="causal_carbon_bachelor")
     geocode = partial(geolocator.geocode, language='en')
@@ -178,7 +193,8 @@ def parse_location(loc_str):
         return {"parsed": None, "original": loc_str}
 
 
-def parse_money(money_str):
+def parse_money(x):
+    money_str, confidence = x
     matches = [re.search(money_pat, money_str) for money_pat in MONEY_PATTERNS]
 
     if matches[0] is not None:
@@ -214,28 +230,35 @@ def parse_money(money_str):
     return {"currency": currency, "lower_value": str(lower), "upper_value": str(upper), "original": money_str}
 
 
-def parse_percent(percent_str):
+def parse_percent(x):
+    percent_str, confidence = x
+    percent_str = numerize_wrapper(percent_str)
     try:
         match = re.search("([0-9]*[.,])?[0-9]+", percent_str)
         if match is not None:
-            return {"value": str(Decimal(match[0].replace(",", "."))), "unit": "%", "original": percent_str}
-        return {"value": None, "unit": "%", "original": percent_str}
+            return {"value": Decimal(match[0].replace(",", ".")), "unit": "%", "original": percent_str,
+                    "confidence": confidence}
+        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
     except:
-        return {"value": None, "unit": "%", "original": percent_str}
+        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
 
 
-def parse_quantity(quant_str):
+def parse_quantity(x):
+    quant_str, confidence = x
+    quant_str = numerize_wrapper(quant_str)
     try:
-        quant = Quantity(quant_str)
+        new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
+        quant = Quantity(new_quant_str)
         value, unit = quant.as_tuple()
-        return {"value": str(value), "unit": unit, "original": quant_str}
+        return {"value": value, "unit": unit, "original": quant_str, "confidence": confidence}
     except:
-        return {"value": None,  "unit": None, "original": quant_str}
+        return {"value": None,  "unit": None, "original": quant_str, "confidence": confidence}
 
 
-def parse_time(time_str):
+def parse_time(x):
+    time_str, confidence = x
     # left out for now
-    return time_str
+    return {"original": time_str, "confidence": confidence}
 
 
 
@@ -262,11 +285,11 @@ def sort_by_ent_cat(spans, ent_cats, threshold):
     def order(label, score):
         out = 0
         if label == "positive":
-            out += (0.5 + score / 2)
+            out += score
         elif label == "neutral":
-            out += 0.5
+            out += 0.0
         else:
-            out += (0.5 - score / 2)
+            out -= score
         return out
 
     span_pairs = [(s1.text, order(s2.label_, score.item())) for s1, s2, score in span_pairs]
@@ -278,9 +301,9 @@ def sort_by_ent_cat(spans, ent_cats, threshold):
     # deduplicate, keep highest confidence span
     temp = []
     for ent_text, score in span_pairs:
-        if ent_text in temp:
+        if ent_text in [t for t, s in temp]:
             continue
-        temp.append(ent_text)
+        temp.append((ent_text, score))
 
     # Return the sorted list of spans from `spans1`
     return temp

@@ -6,6 +6,7 @@ GPUtil
 geopy
 geocoder
 quantiphy
+numerizer
 #pandas
 #jupyterlab
 #seaborn

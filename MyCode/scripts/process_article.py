@@ -1,3 +1,4 @@
+import json
 import re
 
 import spacy
@@ -10,7 +11,8 @@ from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat,
     apply_sentencizer, suggester
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     parse_location, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
-    sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time
+    sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time, get_more_precise_locations, \
+    parse_weighted_tech
 
 
 class Article:
@@ -115,7 +117,7 @@ class Article:
         #print(ent_cats)
 
         if parse:
-            return {"technology": weighted_tech_ents,
+            out = {"technology": list(map(parse_weighted_tech, weighted_tech_ents)),
                 #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                 #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                 "money": list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold))),
@@ -123,6 +125,8 @@ class Article:
                 "emissions_percent": list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold))),
                 "emissions_quantity": list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
                 "time": list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold)))}
+            print(json.dumps(out, indent=4))
+            return out
         else:
             return {"technology": weighted_tech_ents,
                     # "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
@@ -187,7 +191,7 @@ class Article:
         return filter_ents(self.doc.spans["sc"], "GPE")
 
     def get_weighted_locations(self):
-        better_locations = parse_locations(get_all_entities_by_label(self.doc.spans["sc"])["GPE"])
+        better_locations = get_more_precise_locations(get_all_entities_by_label(self.doc.spans["sc"])["GPE"])
         return better_locations
 
     def set_money_ents(self):
@@ -224,7 +228,7 @@ if __name__ == '__main__':
     article = Article.from_article(id, include_predictions=False) # e.g. 6389
     article.preprocess_spacy()
     print(article.doc.text)
-    print(article.get_investment_information_v1())
+    article.get_investment_information_v1()
     #article.get_financial_information()
     #print(article.text)
     #print(article.get_technology_cats())
