@@ -91,7 +91,7 @@ class Article:
         self.ent_cat_doc = nlp2(self.doc.text)
 
 
-    def get_investment_information_v1(self, threshold=0.5, parse=True):
+    def get_investment_information_v1(self, threshold=-1.0, parse=True):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
@@ -138,8 +138,8 @@ class Article:
         out_obj = {"metadata": self.metadata,
                    "textcat_prediction": self.textcat_prediction,
                    "parsed_info": info}
-        #print(json.dumps(out_obj, indent=4))
-        print(out_obj)
+        print(json.dumps(out_obj, indent=4))
+        #print(out_obj)
         return out_obj
 
     def get_investment_information_v2(self):
@@ -228,11 +228,11 @@ class Article:
 
 if __name__ == '__main__':
     positive_ids = get_positive_article_ids()
-    id = positive_ids[-1]
+    id = positive_ids[-4]
     print("id " + str(id))
     article = Article.from_article(id, include_predictions=False) # e.g. 6389
     article.preprocess_spacy()
-    print(article.doc.text)
+    #print(article.doc.text)
     article.get_investment_information_v1()
     #article.get_financial_information()
     #print(article.text)

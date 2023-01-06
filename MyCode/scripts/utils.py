@@ -3,7 +3,6 @@ import re
 import socket
 from collections import Counter
 from functools import partial
-from decimal import Decimal
 
 from geopy.exc import GeocoderUnavailable
 from geopy.geocoders import Nominatim
@@ -145,14 +144,31 @@ def magnitude_str_to_number(mag):
                       "b": 1000000000, "bn": 1000000000, "billion": 1000000000,
                       "thousand": 1000}
     if mag in magnitude_dict.keys():
-        return Decimal(magnitude_dict[mag])
-    return Decimal(1)
+        return magnitude_dict[mag]
+    return 1
 
 
 def numerize_wrapper(num_str):
     num_str = numerize(num_str)
     last_point_ind = num_str.rfind(".")
     last_comma_ind = num_str.rfind(",")
+    number_index_list = list(re.finditer(r'\d', num_str))
+    if number_index_list is None or len(number_index_list) == 0:
+        last_number_index = None
+    else:
+        last_number_index = number_index_list[-1].start()
+
+    if last_point_ind == -1:
+        if last_comma_ind != -1 and last_number_index is not None and last_comma_ind == last_number_index - 3:
+            out = num_str.replace(",", "")
+            return out
+        out = num_str.replace(",", ".")
+        return out
+    if last_comma_ind == -1:
+        if last_point_ind != -1 and last_number_index is not None and last_point_ind == last_number_index - 3:
+            out = num_str.replace(".", "")
+            return out
+        return num_str
 
     if last_point_ind > last_comma_ind:
         out = num_str.replace(",", "")
@@ -167,7 +183,7 @@ def number_str_to_decimal(num):
     if num is None or num == "":
         return None
     try:
-        return Decimal(numerize_wrapper(num))
+        return float(numerize_wrapper(num))
     except:
         return None
 
@@ -184,33 +200,40 @@ def parse_location(x):
     try:
         coded = geocode(loc_str)
         name = coded.raw["display_name"]
-        return {"parsed": name, "original": loc_str}
+        return {"parsed": name, "original": loc_str, "confidence": confidence}
     except socket.timeout:
         print(loc_str + " not found")
-        return {"parsed": None, "original": loc_str}
+        return {"parsed": None, "original": loc_str, "confidence": confidence}
     except GeocoderUnavailable:
         print(loc_str + " not found")
-        return {"parsed": None, "original": loc_str}
+        return {"parsed": None, "original": loc_str, "confidence": confidence}
 
 
 def parse_money(x):
     money_str, confidence = x
-    matches = [re.search(money_pat, money_str) for money_pat in MONEY_PATTERNS]
+    matches = [re.findall(money_pat, money_str) for money_pat in MONEY_PATTERNS]
+    magnitude2 = None
 
-    if matches[0] is not None:
-        groups = matches[0].groups()
-        currency = groups[0]
-        lower = groups[1]
-        upper = groups[3]
-        magnitude = groups[5]
-        print(currency, lower, upper, magnitude)
-    elif matches[1] is not None:
-        groups = matches[1].groups()
-        currency = groups[5]
-        lower = groups[0]
-        upper = groups[2]
-        magnitude = groups[4]
-        print(currency, lower, upper, magnitude)
+    if matches[0] is not None and len(matches[0]) > 0:
+        currency = matches[0][0][0]
+        lower = matches[0][0][1]
+        upper = matches[0][0][3]
+        magnitude = matches[0][0][5]
+        if len(matches[0]) >= 2:
+            currency2 = matches[0][1][0]
+            if currency2 == currency:
+                magnitude2 = matches[0][1][5]
+                upper = matches[0][1][1]
+    elif matches[1] is not None and len(matches[1]) > 0:
+        currency = matches[1][0][5]
+        lower = matches[1][0][0]
+        upper = matches[1][0][2]
+        magnitude = matches[1][0][4]
+        if len(matches[1]) >= 2:
+            currency2 = matches[1][1][5]
+            if currency2 == currency:
+                magnitude2 = matches[1][1][4]
+                upper = matches[1][1][0]
     else:
         return None
 
@@ -223,11 +246,16 @@ def parse_money(x):
     else:
         lower = upper
     if upper:
-        upper *= magnitude
+        if magnitude2 is not None:
+            magnitude2 = magnitude_str_to_number(magnitude2)
+            upper *= magnitude2
+        else:
+            upper *= magnitude
     else:
         upper = lower
 
-    return {"currency": currency, "lower_value": str(lower), "upper_value": str(upper), "original": money_str}
+    return {"currency": currency, "lower_value": lower, "upper_value": upper, "original": money_str,
+            "confidence": confidence}
 
 
 def parse_percent(x):
@@ -236,7 +264,7 @@ def parse_percent(x):
     try:
         match = re.search("([0-9]*[.,])?[0-9]+", percent_str)
         if match is not None:
-            return {"value": Decimal(match[0].replace(",", ".")), "unit": "%", "original": percent_str,
+            return {"value": float(match[0].replace(",", ".")), "unit": "%", "original": percent_str,
                     "confidence": confidence}
         return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
     except:
@@ -244,15 +272,27 @@ def parse_percent(x):
 
 
 def parse_quantity(x):
-    quant_str, confidence = x
+    input_text, confidence = x
+    quant_str = input_text
+    replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ",
+                    "gigawatts": "GW", "gigawatt": "GW", "hour": "h"}
+    for key, value in replacements.items():
+        quant_str = quant_str.replace(key, value)
     quant_str = numerize_wrapper(quant_str)
     try:
         new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
         quant = Quantity(new_quant_str)
         value, unit = quant.as_tuple()
-        return {"value": value, "unit": unit, "original": quant_str, "confidence": confidence}
+        return {"value": value, "unit": unit, "original": input_text, "confidence": confidence}
     except:
-        return {"value": None,  "unit": None, "original": quant_str, "confidence": confidence}
+        try:
+            new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
+            new_quant_str = new_quant_str.split()
+            quant = Quantity(new_quant_str[0] + " " + new_quant_str[1])
+            value, unit = quant.as_tuple()
+            return {"value": value, "unit": unit, "original": input_text, "confidence": confidence}
+        except:
+            return {"value": None,  "unit": None, "original": input_text, "confidence": confidence}
 
 
 def parse_time(x):
@@ -261,9 +301,7 @@ def parse_time(x):
     return {"original": time_str, "confidence": confidence}
 
 
-
-
-def sort_by_ent_cat(spans, ent_cats, threshold):
+def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
     # Create a list of tuples, where each tuple contains the span from `spans1` and the span from `spans2`
     scores = ent_cats.attrs["scores"]
     zipped_ent_cats = list(zip(ent_cats, scores))
@@ -280,7 +318,7 @@ def sort_by_ent_cat(spans, ent_cats, threshold):
         # not clear why some suggested spans don't appear in ent_cat list at all
         s2 = s1
         s2.label_ = "neutral"
-        span_pairs.append((s1, s2, 1.0))
+        span_pairs.append((s1, s2, 0.0))
     # Sort the list of tuples by the category and confidence score of the span from `spans2`
     def order(label, score):
         out = 0
@@ -301,7 +339,22 @@ def sort_by_ent_cat(spans, ent_cats, threshold):
     # deduplicate, keep highest confidence span
     temp = []
     for ent_text, score in span_pairs:
-        if ent_text in [t for t, s in temp]:
+        cont = False
+        if spans[0] is not None and spans[0].label_ == "QUANTITY":
+            for ignore_keyword in ["degrees"]:
+                if ignore_keyword in ent_text:
+                    cont = True
+                    break
+        if cont:
+            continue
+        for t, s in temp:
+            if t in ent_text:
+                temp.remove((t, s))
+                break
+            if ent_text in t:
+                cont = True
+                break
+        if cont:
             continue
         temp.append((ent_text, score))
 
