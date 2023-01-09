@@ -32,9 +32,10 @@ TECHNOLOGY_CATEGORIES = {
 ALL_STANDARD_ENTITY_TYPES = ["PERSON", "NORP", "FAC", "ORG", "GPE", "LOC", "PRODUCT", "EVENT", "WORK_OF_ART", "LAW",
                              "LANGUAGE", "DATE", "TIME", "PERCENT", "MONEY", "QUANTITY", "ORDINAL", "CARDINAL"]
 
-CURRENCIES = "(C\$|EUR|Eur|eur|euro|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|U\.S\.\$|us\$|Us\$|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|PLN|pln|Pln|\u00a3|GBP|gbp|Gbp|pounds|pound|INR|CZK|Rs\.)"
-MONEY_PATTERNS = [CURRENCIES + " ?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(million|mio|mln|m|billion|bn|b|thousand| )",
-                       "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?(m|mio|mln|million|b|bn|billion|thousand| )\.? ?" + CURRENCIES]
+CURRENCIES = "(C\$|EUR|Eur|eur|euro|Euros|euros|Euro|€|\u20ac|USD|Usd|usd|\$|US\$|\$US|dollar|US|U\.S\.\$|us\$|Us\$|US dollars|CAN|CAN\$|CAD|CAD\$|cad|cad\$|can|can\$|Cad|Cad\$|Can|Can\$|CHF|Chf|chf|Swiss francs|Swiss Francs|francs|franc|PLN|pln|Pln|zlotys|zloty|zlotych|\u00a3|GBP|gbp|Gbp|pounds|pound|INR|CZK|Rs\.|AUD|THB|KRW|CNY|LFL|LfL|MYR|LTL|SEK|RMB|ZAR|R|yuan|)"
+MAGNITUDES = "(mn|mm|mio|mil|mln|million|m|Mn|Mio|Mil|Mln|Million|M|b|bn|billion|B|Bn|Billion|thousand|Thousand| )?"
+MONEY_PATTERNS = [CURRENCIES + " ?~?(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?" + MAGNITUDES,
+                       "(\d+([\.,]?\d*)*)[-–]?(\d*([\.,]?\d*)*)\+? ?" + MAGNITUDES + "\.? ?" + CURRENCIES]
 IGNORE_MONEY_PATTERNS = ["2 can", "\+[\d ?\-?\-?]*", "19 Eur"]
 
 WEIGHTED_SENT_KEYWORDS = [("investment", 4),

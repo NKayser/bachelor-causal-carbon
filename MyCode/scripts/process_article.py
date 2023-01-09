@@ -15,7 +15,7 @@ from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat,
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     parse_location, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
     sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time, get_more_precise_locations, \
-    parse_weighted_tech, simple_loc_parse
+    parse_weighted_tech, simple_loc_parse, filter_none
 
 
 @registry.misc("article_all_ent_suggester.v1")
@@ -125,6 +125,11 @@ class Article:
             if ent.text in [loc_ent.text for loc_ent in location_ents]:
                 location_ents.append(ent)
 
+        for ent in finance_ents:
+            if "boe" in ent.text.lower() or "nm3" in ent.text.lower():
+                finance_ents.remove(ent)
+                quantity_ents.append(ent)
+
         #print(finance_ents)
         #print(technology_ents)
         #print(location_ents)
@@ -137,23 +142,23 @@ class Article:
                 loc_parse_func = parse_location
             else:
                 loc_parse_func = simple_loc_parse
-            info = {"technology": list(map(parse_weighted_tech, weighted_tech_ents)),
-                #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
-                #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
-                "money": list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold))),
-                "location": list(map(loc_parse_func, sort_by_ent_cat(location_ents, ent_cats, threshold))),
-                "emissions_percent": list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold))),
-                "emissions_quantity": list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
-                "time": list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold)))}
+            info = {"technology": filter_none(list(map(parse_weighted_tech, weighted_tech_ents))),
+                #"fac": filter_none(sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats)),
+                #"product": filter_none(sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats)),
+                "money": filter_none(list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold)))),
+                "location": filter_none(list(map(loc_parse_func, sort_by_ent_cat(location_ents, ent_cats, threshold)))),
+                "emissions_percent": filter_none(list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold)))),
+                "emissions_quantity": filter_none(list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold)))),
+                "time": filter_none(list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold))))}
         else:
-            info = {"technology": weighted_tech_ents,
+            info = {"technology": filter_none(weighted_tech_ents),
                     # "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                     # "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
-                    "money": list(sort_by_ent_cat(finance_ents, ent_cats, threshold)),
-                    "location": list(sort_by_ent_cat(location_ents, ent_cats, threshold)),
-                    "emissions_percent": list(sort_by_ent_cat(percent_ents, ent_cats, threshold)),
-                    "emissions_quantity": list(sort_by_ent_cat(quantity_ents, ent_cats, threshold)),
-                    "time": list(sort_by_ent_cat(time_ents, ent_cats, threshold))}
+                    "money": filter_none(list(sort_by_ent_cat(finance_ents, ent_cats, threshold))),
+                    "location": filter_none(list(sort_by_ent_cat(location_ents, ent_cats, threshold))),
+                    "emissions_percent": filter_none(list(sort_by_ent_cat(percent_ents, ent_cats, threshold))),
+                    "emissions_quantity": filter_none(list(sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
+                    "time": filter_none(list(sort_by_ent_cat(time_ents, ent_cats, threshold)))}
 
         out_obj = {"metadata": self.metadata,
                    "textcat_prediction": self.textcat_prediction,
@@ -294,23 +299,24 @@ def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path=
             if article_id < start_at_id or article_id in parsed_ids:
                 print("skipped id", article_id)
                 continue
-            print("id", article_id)
+            #print("id", article_id)
             money_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["money"]]
             quant_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["emissions_quantity"]]
-            money = list(map(parse_money, money_arr))
-            quant = list(map(parse_quantity, quant_arr))
+            money = filter_none(list(map(parse_money, money_arr)))
+            quant = filter_none(list(map(parse_quantity, quant_arr)))
             article_obj["parsed_info"]["money"] = money
             article_obj["parsed_info"]["emissions_quantity"] = quant
-            out = json.dumps(article_obj, ensure_ascii=False)
-            out_file.write(out + "\n")
+            #out = json.dumps(article_obj, ensure_ascii=False)
+            #out_file.write(out + "\n")
             parsed_ids.append(article_id)
-            print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
+            #print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
             print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
 
 
 if __name__ == '__main__':
     #parse_and_save_all_articles()
     redo_money_and_quantity_parse(start_at_id=6010)
+    #print(parse_money(("EUR 10.60", 0)))
 
     #positive_ids = get_positive_article_ids()
     #id = positive_ids[-4]

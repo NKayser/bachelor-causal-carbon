@@ -126,17 +126,22 @@ def parse_weighted_tech(x):
 
 
 def standardize_currency(cur):
-    currency_dict = {"EUR": "EUR", "Eur": "EUR", "eur": "EUR", "euro": "EUR", "euros": "EUR", "Euro": "EUR", "€": "EUR",
-                     "USD": "USD", "Usd": "USD", "usd": "USD", "$": "USD", "US$": "USD", "us$": "USD", "Us$": "USD",
-                     "U.S.$": "USD",
-                     "CAD": "CAD", "CAN$": "CAD", "CAN": "CAD", "CAD$": "CAD", "cad": "CAD", "cad$": "CAD", "C$": "CAD",
-                     "can": "CAD", "can$": "CAD", "Cad": "CAD", "Cad$": "CAD", "Can": "CAD", "Can$": "CAD",
-                     "CHF": "CHF", "Chf": "CHF", "chf": "CHF",
-                     "PLN": "PLN", "pln": "PLN", "Pln": "PLN",
-                     "GBP": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP",
-                     "CZK": "CZK", "INR": "INR", "Rs.": "INR"}
-    if cur in currency_dict.keys():
-        return currency_dict[cur]
+    currency_dict = {"eur": "EUR", "euro": "EUR", "euros": "EUR", "€": "EUR",
+                     "usd": "USD", "$": "USD", "us$": "USD",
+                     "u.s.$": "USD", "us dollars": "USD", "us dollar": "USD", "us": "USD", "$us": "USD",
+                     "dollar": "USD",
+                     "cad": "CAD", "can$": "CAD", "can": "CAD", "cad$": "CAD", "c$": "CAD",
+                     "chf": "CHF", "swiss francs": "CHF", "swiss franc": "CHF", "francs": "CHF", "franc": "CHF",
+                     "pln": "PLN", "zloty": "PLN", "zlotych": "PLN", "zlotys": "PLN",
+                     "gbp": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP",
+                     "czk": "CZK", "inr": "INR", "rupees": "INR", "rupee": "INR",
+                     "rs.": "INR", "zar": "ZAR", "aud": "AUD", "thb": "THB", "krw": "KRW",
+                     "cny": "CNY", "yuan": "CNY", "lfl": "LFL", "myr": "MYR", "ltl": "LTL", "sek": "SEK", "rmb": "RMB",
+                     "r": "ZAR", "south african rand": "ZAR", "rand": "ZAR"}
+    if cur.lower() in currency_dict.keys():
+        return currency_dict[cur.lower()]
+    if cur is None or cur == "":
+        return None
     return cur.upper()
 
 
@@ -193,6 +198,81 @@ def number_str_to_decimal(num):
             return None
 
 
+def parse_money(x):
+    money_str, confidence = x
+    try:
+        # Just a float without currency, filter out
+        float(money_str)
+        return None
+    except:
+        None
+    numerized_str = money_str.replace("multi-", "5 ").replace("multi", "5").replace("millions of", "5000000") \
+        .replace("billions of", "5000000000").replace("three-digit", "100").replace("3-digit", "100")
+    numerized_str = numerize(numerized_str)
+    matches = [re.findall(money_pat, numerized_str) for money_pat in MONEY_PATTERNS]
+    magnitude2 = None
+    greater_kw = ["over", "more", "at least", "greater", "minimum", "up to"]
+    smaller_kw = ["almost", "at most", "maximum", "less", "nearly"]
+    greater = False
+    smaller = False
+    for kw in greater_kw:
+        if kw in money_str:
+            greater = True
+    for kw in smaller_kw:
+        if kw in money_str:
+            smaller = True
+
+    if matches[0] is not None and len(matches[0]) > 0:
+        currency = matches[0][0][0]
+        lower = matches[0][0][1]
+        upper = matches[0][0][3]
+        magnitude = matches[0][0][5]
+        if len(matches[0]) >= 2:
+            currency2 = matches[0][1][0]
+            if currency2 == currency:
+                magnitude2 = matches[0][1][5]
+                upper = matches[0][1][1]
+    elif matches[1] is not None and len(matches[1]) > 0:
+        currency = matches[1][0][5]
+        lower = matches[1][0][0]
+        upper = matches[1][0][2]
+        magnitude = matches[1][0][4]
+        if len(matches[1]) >= 2:
+            currency2 = matches[1][1][5]
+            if currency2 == currency:
+                magnitude2 = matches[1][1][4]
+                upper = matches[1][1][0]
+    else:
+        return None
+
+    currency = standardize_currency(currency)
+    magnitude = magnitude_str_to_number(magnitude)
+    lower = number_str_to_decimal(lower)
+    upper = number_str_to_decimal(upper)
+    if lower:
+        lower *= magnitude
+    else:
+        lower = upper
+    if upper:
+        if magnitude2 is not None:
+            magnitude2 = magnitude_str_to_number(magnitude2)
+            upper *= magnitude2
+        else:
+            upper *= magnitude
+    else:
+        upper = lower
+    if lower == upper and greater and not smaller:
+        upper = None
+    if lower == upper and smaller and not greater:
+        lower = None
+
+    if currency is None or (lower is None and upper is None):
+        return None
+
+    return {"currency": currency, "lower_value": lower, "upper_value": upper, "original": money_str,
+            "confidence": confidence}
+
+
 def simple_loc_parse(x):
     original, confidence = x
     return {"parsed": None, "original": original, "confidence": confidence}
@@ -221,72 +301,6 @@ def parse_location(x):
     except GeocoderUnavailable:
         print(loc_str + " not found")
         return {"parsed": None, "original": original, "confidence": confidence}
-
-
-def parse_money(x):
-    # TODO: Numbers smaller than 100000 can be ignored
-    money_str, confidence = x
-    matches = [re.findall(money_pat, money_str) for money_pat in MONEY_PATTERNS]
-    magnitude2 = None
-    greater_kw = ["over", "more", "at least", "greater", "minimum"]
-    greater = False
-    for kw in greater_kw:
-        if kw in money_str:
-            greater = True
-
-    if matches[0] is not None and len(matches[0]) > 0:
-        currency = matches[0][0][0]
-        lower = matches[0][0][1]
-        upper = matches[0][0][3]
-        magnitude = matches[0][0][5]
-        if len(matches[0]) >= 2:
-            currency2 = matches[0][1][0]
-            if currency2 == currency:
-                magnitude2 = matches[0][1][5]
-                upper = matches[0][1][1]
-    elif matches[1] is not None and len(matches[1]) > 0:
-        currency = matches[1][0][5]
-        lower = matches[1][0][0]
-        upper = matches[1][0][2]
-        magnitude = matches[1][0][4]
-        if len(matches[1]) >= 2:
-            currency2 = matches[1][1][5]
-            if currency2 == currency:
-                magnitude2 = matches[1][1][4]
-                upper = matches[1][1][0]
-    else:
-        try:
-            lower = number_str_to_decimal(money_str)
-            upper = None
-            if not greater:
-                upper = lower
-            return {"currency": None, "lower_value": lower, "upper_value": upper, "original": money_str,
-                "confidence": confidence}
-        except:
-            return {"currency": None, "lower_value": None, "upper_value": None, "original": money_str,
-                    "confidence": confidence}
-
-    currency = standardize_currency(currency)
-    magnitude = magnitude_str_to_number(magnitude)
-    lower = number_str_to_decimal(lower)
-    upper = number_str_to_decimal(upper)
-    if lower:
-        lower *= magnitude
-    else:
-        lower = upper
-    if upper:
-        if magnitude2 is not None:
-            magnitude2 = magnitude_str_to_number(magnitude2)
-            upper *= magnitude2
-        else:
-            upper *= magnitude
-    else:
-        upper = lower
-    if lower == upper and greater:
-        upper = None
-
-    return {"currency": currency, "lower_value": lower, "upper_value": upper, "original": money_str,
-            "confidence": confidence}
 
 
 def parse_percent(x):
@@ -419,14 +433,6 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
                 if ignore_keyword in ent_text:
                     cont = True
                     break
-        if spans[0] is not None and spans[0].label_ == "MONEY":
-            try:
-                num = number_str_to_decimal(ent_text)
-                if num < 100000:
-                    cont = True
-                    break
-            except:
-                None
         if cont:
             continue
         # TODO: some duplicates still get through, like "US" in 6008
@@ -443,6 +449,10 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
 
     # Return the sorted list of spans from `spans1`
     return temp
+
+
+def filter_none(l):
+    return [x for x in l if x is not None]
 
 
 def read_input_file(path=INPUT_PATH):
