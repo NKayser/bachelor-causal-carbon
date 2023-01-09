@@ -130,12 +130,15 @@ class Article:
         #ner = spacy.load(model)
         #ner_doc_ents = ner(text).ents
         #self.doc.spans["sc"] = [self.doc.char_span(ent.start_char, ent.end_char, ent.label_) for ent in ner_doc_ents]
+        found = False
         for json_obj in read_input_file(input_path):
-            if json_obj["text"][:200] == text[:200]:
+            if json_obj["text"] == text:
                 self.doc.spans["sc"] = [self.doc.char_span(span["start_offset"], span["end_offset"], span["label"])
                                         for span in json_obj["entities"]]
                 self.labeled_entities = json_obj["labeled_entities"]
+                found = True
                 break
+        assert found
 
 
     def get_financial_information(self):
@@ -250,7 +253,6 @@ def build_custom_suggester(balance: bool, input_path: str) -> Suggester:
             #print(output)
         else:
             output = Ragged(ops.xp.zeros((0, 0), dtype="i"), lengths_array)
-
         return output
 
     return custom_suggester

@@ -2,17 +2,25 @@ import json
 import re
 
 import spacy
+from spacy import registry
 from spacy.tokens import SpanGroup
+from tqdm import tqdm
 
+from MyCode.entity_categorization.scripts.custom_span_suggester import build_custom_suggester
 from MyCode.scripts.consts import INPUT_PATH, TEXTCAT_MODEL_PATH, SPANCAT_MODEL_PATH, PRETRAINED_NER_MODEL, \
     TECHNOLOGY_CATEGORIES, WEIGHTED_SENT_KEYWORDS, ENT_MODEL_PATH
 from MyCode.scripts.process_for_property_utils import get_additional_money_ents, get_weighted_technology_cats
 from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat, apply_pretrained_ner, \
-    apply_sentencizer, suggester
+    apply_sentencizer
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     parse_location, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
     sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time, get_more_precise_locations, \
     parse_weighted_tech
+
+
+@registry.misc("article_all_ent_suggester.v1")
+def suggester():
+    return build_custom_suggester(balance=False, input_path=INPUT_PATH)
 
 
 class Article:
@@ -38,6 +46,11 @@ class Article:
             self.doc.spans["sc"] = []
         if ents is not None:
             self.doc.spans["sc"] += self.dict_to_charspan_array(ents)
+
+        # decide where this part should live
+        #spacy.prefer_gpu(0)
+        #nlp2 = spacy.load(ENT_MODEL_PATH)
+        #self.ent_cat_doc = nlp2(self.doc.text)
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
@@ -86,9 +99,12 @@ class Article:
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
-        spacy.prefer_gpu(0)
-        nlp2 = spacy.load(ent_cat_model)
-        self.ent_cat_doc = nlp2(self.doc.text)
+        try:
+            spacy.prefer_gpu(0)
+            nlp2 = spacy.load(ent_cat_model)
+            self.ent_cat_doc = nlp2(self.doc.text)
+        except ValueError:
+            self.ent_cat_doc = None
 
 
     def get_investment_information_v1(self, threshold=-1.0, parse=True):
@@ -138,7 +154,8 @@ class Article:
         out_obj = {"metadata": self.metadata,
                    "textcat_prediction": self.textcat_prediction,
                    "parsed_info": info}
-        print(json.dumps(out_obj, indent=4))
+        print("id", self.metadata["id"])
+        print(json.dumps(info, indent=4))
         #print(out_obj)
         return out_obj
 
@@ -215,6 +232,8 @@ class Article:
         return filter_ents(self.doc.spans["sc"], "DATE")
 
     def get_ent_cats(self):
+        if self.ent_cat_doc is None:
+            return SpanGroup(self.doc)
         spans = self.ent_cat_doc.spans["sc"]
         #for span in spans:
         #    print(span.label_, span.start, span.end, span.text)
@@ -226,14 +245,29 @@ class Article:
         #return filter(lambda ent: ent.label_ in ["positive", "negative"], self.doc.spans["sc"])
 
 
+def parse_and_save_all_articles(out_path="outputs/parsed_data.jsonl", start_at_id=6001):
+    articles = read_input_file()
+    with open(out_path, "a", encoding="utf-8") as out_file:
+        for article_obj in tqdm(articles):
+            if article_obj["id"] < start_at_id:
+                continue
+            article = Article.from_article(article_obj["id"])
+            article.preprocess_spacy()
+            article.set_money_ents()
+            out = json.dumps(article.get_investment_information_v1(), ensure_ascii=False)
+            out_file.write(out + "\n")
+
+
 if __name__ == '__main__':
-    positive_ids = get_positive_article_ids()
-    id = positive_ids[-4]
-    print("id " + str(id))
-    article = Article.from_article(id, include_predictions=False) # e.g. 6389
-    article.preprocess_spacy()
+    parse_and_save_all_articles()
+
+    #positive_ids = get_positive_article_ids()
+    #id = positive_ids[-4]
+    #print("id " + str(id))
+    #article = Article.from_article(id, include_predictions=False) # e.g. 6389
+    #article.preprocess_spacy()
     #print(article.doc.text)
-    article.get_investment_information_v1()
+    #article.get_investment_information_v1()
     #article.get_financial_information()
     #print(article.text)
     #print(article.get_technology_cats())

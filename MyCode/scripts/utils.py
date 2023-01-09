@@ -189,7 +189,9 @@ def number_str_to_decimal(num):
 
 
 def parse_location(x):
-    loc_str, confidence = x
+    # TODO: weird location for United Kingdom
+    original, confidence = x
+    loc_str = original
     exceptions = {"U.S.": "US", "the United States": "US"}
     geolocator = Nominatim(user_agent="causal_carbon_bachelor")
     geocode = partial(geolocator.geocode, language='en')
@@ -200,16 +202,26 @@ def parse_location(x):
     try:
         coded = geocode(loc_str)
         name = coded.raw["display_name"]
-        return {"parsed": name, "original": loc_str, "confidence": confidence}
+        return {"parsed": name, "original": original, "confidence": confidence}
+    except AttributeError:
+        return {"parsed": None, "original": original, "confidence": confidence}
     except socket.timeout:
         print(loc_str + " not found")
-        return {"parsed": None, "original": loc_str, "confidence": confidence}
+        return {"parsed": None, "original": original, "confidence": confidence}
     except GeocoderUnavailable:
         print(loc_str + " not found")
-        return {"parsed": None, "original": loc_str, "confidence": confidence}
+        return {"parsed": None, "original": original, "confidence": confidence}
 
 
 def parse_money(x):
+    # TODO: "$30.15" not parsed in 6019. Might also exclude unsuccessfully parsed ents
+    # And "EUR 26.4227", "USD 37.8682"
+    # "U.S.$625,630,000" in 6454
+    # Numbers smaller than 100000 can be ignored anyways
+    # "C$15.5 million" in 6080 should be CAD, not USD
+    # Also: still provide value even if currency not found?
+    # look for keywords "over", "more", "at least", "greater" -> upper should be null
+    # new currencies: GBP, INR, Rs., CZK
     money_str, confidence = x
     matches = [re.findall(money_pat, money_str) for money_pat in MONEY_PATTERNS]
     magnitude2 = None
@@ -235,7 +247,8 @@ def parse_money(x):
                 magnitude2 = matches[1][1][4]
                 upper = matches[1][1][0]
     else:
-        return None
+        return {"currency": None, "lower_value": None, "upper_value": None, "original": money_str,
+            "confidence": confidence}
 
     currency = standardize_currency(currency)
     magnitude = magnitude_str_to_number(magnitude)
@@ -272,10 +285,19 @@ def parse_percent(x):
 
 
 def parse_quantity(x):
+    # TODO: "630k MT" in 6037 -> megaton?
+    # ton -> t ?
+    # better handling of square and cubic
+    # new field for type of physical quantity (weight, distance, area, volume)
     input_text, confidence = x
     quant_str = input_text
     replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ",
-                    "gigawatts": "GW", "gigawatt": "GW", "hour": "h"}
+                    "metre": "meter", "net": "",
+                    "gigawatts": "GW", "gigawatt": "GW", "hour": "h", "tonnes": "t", "tonne": "t",
+                    "tons": "t", "ton": "t", "meters": "m", "meter": "m", "kilometers": "km", "kilometer": "km",
+                    "metric tons": "t", "metric": "", "cubic": "", "square": "",
+                    "feet": "ft", "foot": "ft", "pounds": "lb", "pound": "lb", "oil-equivalent-barrel": "BOE",
+                    "kilo": "k"}
     for key, value in replacements.items():
         quant_str = quant_str.replace(key, value)
     quant_str = numerize_wrapper(quant_str)
@@ -296,12 +318,15 @@ def parse_quantity(x):
 
 
 def parse_time(x):
+    # TODO: could try parsing some standard date formats
     time_str, confidence = x
     # left out for now
     return {"original": time_str, "confidence": confidence}
 
 
 def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
+    if len(ent_cats) == 0:
+        return []
     # Create a list of tuples, where each tuple contains the span from `spans1` and the span from `spans2`
     scores = ent_cats.attrs["scores"]
     zipped_ent_cats = list(zip(ent_cats, scores))
@@ -330,7 +355,14 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
             out -= score
         return out
 
-    span_pairs = [(s1.text, order(s2.label_, score.item())) for s1, s2, score in span_pairs]
+    def convert_score(score):
+        try:
+            score = score.item()
+            return score
+        except AttributeError:
+            return score
+
+    span_pairs = [(s1.text, order(s2.label_, convert_score(score))) for s1, s2, score in span_pairs]
     span_pairs.sort(key=lambda x: x[1], reverse=True)
 
     # filter by threshold confidence
@@ -341,12 +373,13 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
     for ent_text, score in span_pairs:
         cont = False
         if spans[0] is not None and spans[0].label_ == "QUANTITY":
-            for ignore_keyword in ["degrees"]:
+            for ignore_keyword in ["degree", "mile", "acre"]: #  "meter", "feet"
                 if ignore_keyword in ent_text:
                     cont = True
                     break
         if cont:
             continue
+        # TODO: some duplicates still get through, like "US" in 6008
         for t, s in temp:
             if t in ent_text:
                 temp.remove((t, s))
