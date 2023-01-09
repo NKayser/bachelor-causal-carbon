@@ -293,6 +293,7 @@ def redo_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_dat
 def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_data2.jsonl", start_at_id=6001):
     articles = read_input_file(in_path)
     parsed_ids = []
+    units = set()
     with open(out_path, "a", encoding="utf-8") as out_file:
         for article_obj in tqdm(articles):
             article_id = article_obj["metadata"]["id"]
@@ -310,13 +311,17 @@ def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path=
             #out_file.write(out + "\n")
             parsed_ids.append(article_id)
             #print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
-            print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
+            #print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
+            for ent in article_obj["parsed_info"]["emissions_quantity"]:
+                units.add(ent["unit"])
+    print(units)
+
 
 
 if __name__ == '__main__':
     #parse_and_save_all_articles()
     redo_money_and_quantity_parse(start_at_id=6010)
-    #print(parse_money(("EUR 10.60", 0)))
+    #print(parse_quantity(("8 GW", 0)))
 
     #positive_ids = get_positive_article_ids()
     #id = positive_ids[-4]

@@ -317,7 +317,7 @@ def parse_percent(x):
 
 
 def quantity_type(unit):
-    if unit in ["kg", "t", "lb"]:
+    if unit in ["g", "t", "lb"]:
         return "mass"
     if unit in ["W"]:
         return "power"
@@ -327,6 +327,8 @@ def quantity_type(unit):
         return "distance"
     if unit in ["gal", "l"]:
         return "volume"
+    if unit in ["h"]:
+        return "time"
     return None
 
 
@@ -336,41 +338,48 @@ def parse_quantity(x):
     # better handling of square and cubic
     # new field for type of physical quantity (weight, distance, area, volume)
     input_text, confidence = x
+    ignore_kw = ["magnitude"]
+    for kw in ignore_kw:
+        if kw in input_text:
+            return None
     quant_str = numerize(input_text)
-    quantity_type = None
+    quant_type = None
     if "square" in quant_str or "acre" in quant_str:
-        quantity_type = "area"
+        quant_type = "area"
     if "cubic" in quant_str:
-        quantity_type = "volume"
-    replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ",
-                    "metre": "meter", "net": "",
-                    "gigawatts": "GW", "gigawatt": "GW", "hour": "h", "tonnes": "t", "tonne": "t",
-                    "tons": "t", "ton": "t", "meters": "m", "meter": "m", "kilometers": "km", "kilometer": "km",
+        quant_type = "volume"
+    replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ", "net": "",
+                    "gigawatts": "GW", "gigawatt": "GW", "hours": "h", "hour": "h", "tonnes": "t", "tonne": "t",
+                    "tons": "t", "ton": "t", "metre": "m", "meters": "m", "meter": "m", "kilometers": "km", "kilometer": "km",
                     "metric tons": "t", "metric": "", "cubic": "", "square": "",
-                    "feet": "ft", "foot": "ft", "pounds": "lb", "pound": "lb", "oil-equivalent-barrel": "BOE",
-                    "kilo": "k", "gallon": "gal"}
-    for key, value in replacements.items():
-        quant_str = quant_str.replace(key, value)
+                    "feet": "ft", "foot": "ft", "pounds": "lb", "pound": "lb", "lbs": "lb",
+                    "oil-equivalent-barrel": "BOE", "kilo": "k", "gallon": "gal", "gram": "g"}
+    for key, replace in replacements.items():
+        quant_str = quant_str.replace(key, replace)
     quant_str = numerize_wrapper(quant_str)
     try:
         new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
         quant = Quantity(new_quant_str)
         value, unit = quant.as_tuple()
-        if quantity_type is None:
-            quantity_type = quantity_type(unit)
-        return {"value": value, "unit": unit, "type": quantity_type, "original": input_text, "confidence": confidence}
+        if unit == "":
+            unit = None
+        if quant_type is None:
+            quant_type = quantity_type(unit)
+        return {"value": value, "unit": unit, "type": quant_type, "original": input_text, "confidence": confidence}
     except:
         try:
             new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
             new_quant_str = new_quant_str.split()
             quant = Quantity(new_quant_str[0] + " " + new_quant_str[1])
             value, unit = quant.as_tuple()
-            if quantity_type is None:
-                quantity_type = quantity_type(unit)
-            return {"value": value, "unit": unit, "original": input_text, "type": quantity_type,
+            if unit == "":
+                unit = None
+            if quant_type is None:
+                quant_type = quantity_type(unit)
+            return {"value": value, "unit": unit, "original": input_text, "type": quant_type,
                     "confidence": confidence}
         except:
-            return {"value": None,  "unit": None, "original": input_text, "confidence": confidence}
+            return {"value": None, "unit": None, "original": input_text, "confidence": confidence}
 
 
 def parse_time(x):
