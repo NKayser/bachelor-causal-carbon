@@ -15,7 +15,7 @@ from MyCode.scripts.spacy_utility_functions import apply_textcat, apply_spancat,
 from MyCode.scripts.utils import get_positive_article_ids, get_all_entities_by_label, \
     parse_location, read_input_file, ent_is_in_sent, filter_ents, get_ents_of_sent, opposite_filter_ents, \
     sort_by_ent_cat, parse_money, parse_percent, parse_quantity, parse_time, get_more_precise_locations, \
-    parse_weighted_tech
+    parse_weighted_tech, simple_loc_parse
 
 
 @registry.misc("article_all_ent_suggester.v1")
@@ -107,7 +107,7 @@ class Article:
             self.ent_cat_doc = None
 
 
-    def get_investment_information_v1(self, threshold=-1.0, parse=True):
+    def get_investment_information_v1(self, threshold=-1.0, parse=True, parse_loc=True):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
         technology_ents = self.set_technology_ents()        # "TECHWORD"
@@ -133,11 +133,15 @@ class Article:
         #print(ent_cats)
 
         if parse:
+            if parse_loc:
+                loc_parse_func = parse_location
+            else:
+                loc_parse_func = simple_loc_parse
             info = {"technology": list(map(parse_weighted_tech, weighted_tech_ents)),
                 #"fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
                 #"product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                 "money": list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold))),
-                "location": list(map(parse_location, sort_by_ent_cat(location_ents, ent_cats, threshold))),
+                "location": list(map(loc_parse_func, sort_by_ent_cat(location_ents, ent_cats, threshold))),
                 "emissions_percent": list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold))),
                 "emissions_quantity": list(map(parse_quantity, sort_by_ent_cat(quantity_ents, ent_cats, threshold))),
                 "time": list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold)))}
@@ -154,8 +158,8 @@ class Article:
         out_obj = {"metadata": self.metadata,
                    "textcat_prediction": self.textcat_prediction,
                    "parsed_info": info}
-        print("id", self.metadata["id"])
-        print(json.dumps(info, indent=4))
+        #print("id", self.metadata["id"])
+        #print(json.dumps(info, indent=4))
         #print(out_obj)
         return out_obj
 
@@ -258,8 +262,55 @@ def parse_and_save_all_articles(out_path="outputs/parsed_data.jsonl", start_at_i
             out_file.write(out + "\n")
 
 
+def redo_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_data2.jsonl", start_at_id=6001):
+    articles = read_input_file(in_path)
+    parsed_ids = []
+    with open(out_path, "a", encoding="utf-8") as out_file:
+        for article_obj in tqdm(articles):
+            article_id = article_obj["metadata"]["id"]
+            if article_id < start_at_id or article_id in parsed_ids:
+                print("skipped id", article_id)
+                continue
+            print("id", article_id)
+            locations = article_obj["parsed_info"]["location"]
+            article = Article.from_article(article_obj["metadata"]["id"])
+            article.preprocess_spacy()
+            article.set_money_ents()
+            out_obj = article.get_investment_information_v1(threshold=-1.0, parse=True, parse_loc=False)
+            out_obj["parsed_info"]["location"] = locations
+            out = json.dumps(out_obj, ensure_ascii=False)
+            out_file.write(out + "\n")
+            parsed_ids.append(article_id)
+            print(json.dumps(out_obj["parsed_info"]["money"], indent=4))
+            print(json.dumps(out_obj["parsed_info"]["emissions_quantity"], indent=4))
+
+
+def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_data2.jsonl", start_at_id=6001):
+    articles = read_input_file(in_path)
+    parsed_ids = []
+    with open(out_path, "a", encoding="utf-8") as out_file:
+        for article_obj in tqdm(articles):
+            article_id = article_obj["metadata"]["id"]
+            if article_id < start_at_id or article_id in parsed_ids:
+                print("skipped id", article_id)
+                continue
+            print("id", article_id)
+            money_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["money"]]
+            quant_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["emissions_quantity"]]
+            money = list(map(parse_money, money_arr))
+            quant = list(map(parse_quantity, quant_arr))
+            article_obj["parsed_info"]["money"] = money
+            article_obj["parsed_info"]["emissions_quantity"] = quant
+            out = json.dumps(article_obj, ensure_ascii=False)
+            out_file.write(out + "\n")
+            parsed_ids.append(article_id)
+            print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
+            print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
+
+
 if __name__ == '__main__':
-    parse_and_save_all_articles()
+    #parse_and_save_all_articles()
+    redo_money_and_quantity_parse(start_at_id=6010)
 
     #positive_ids = get_positive_article_ids()
     #id = positive_ids[-4]

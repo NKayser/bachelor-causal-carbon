@@ -128,12 +128,13 @@ def parse_weighted_tech(x):
 def standardize_currency(cur):
     currency_dict = {"EUR": "EUR", "Eur": "EUR", "eur": "EUR", "euro": "EUR", "euros": "EUR", "Euro": "EUR", "€": "EUR",
                      "USD": "USD", "Usd": "USD", "usd": "USD", "$": "USD", "US$": "USD", "us$": "USD", "Us$": "USD",
-                     "CAD": "CAD", "CAN$": "CAD", "CAN": "CAD", "CAD$": "CAD", "cad": "CAD", "cad$": "CAD",
+                     "U.S.$": "USD",
+                     "CAD": "CAD", "CAN$": "CAD", "CAN": "CAD", "CAD$": "CAD", "cad": "CAD", "cad$": "CAD", "C$": "CAD",
                      "can": "CAD", "can$": "CAD", "Cad": "CAD", "Cad$": "CAD", "Can": "CAD", "Can$": "CAD",
                      "CHF": "CHF", "Chf": "CHF", "chf": "CHF",
                      "PLN": "PLN", "pln": "PLN", "Pln": "PLN",
-                     "GBP": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP"}
-    # TODO: add these GBP synonyms to MONEY_PATTERNS
+                     "GBP": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP",
+                     "CZK": "CZK", "INR": "INR", "Rs.": "INR"}
     if cur in currency_dict.keys():
         return currency_dict[cur]
     return cur.upper()
@@ -185,7 +186,16 @@ def number_str_to_decimal(num):
     try:
         return float(numerize_wrapper(num))
     except:
-        return None
+        try:
+            shortened = re.search(r'\d[\d\.\,]*', num)
+            return float(shortened)
+        except:
+            return None
+
+
+def simple_loc_parse(x):
+    original, confidence = x
+    return {"parsed": None, "original": original, "confidence": confidence}
 
 
 def parse_location(x):
@@ -214,17 +224,15 @@ def parse_location(x):
 
 
 def parse_money(x):
-    # TODO: "$30.15" not parsed in 6019. Might also exclude unsuccessfully parsed ents
-    # And "EUR 26.4227", "USD 37.8682"
-    # "U.S.$625,630,000" in 6454
-    # Numbers smaller than 100000 can be ignored anyways
-    # "C$15.5 million" in 6080 should be CAD, not USD
-    # Also: still provide value even if currency not found?
-    # look for keywords "over", "more", "at least", "greater" -> upper should be null
-    # new currencies: GBP, INR, Rs., CZK
+    # TODO: Numbers smaller than 100000 can be ignored
     money_str, confidence = x
     matches = [re.findall(money_pat, money_str) for money_pat in MONEY_PATTERNS]
     magnitude2 = None
+    greater_kw = ["over", "more", "at least", "greater", "minimum"]
+    greater = False
+    for kw in greater_kw:
+        if kw in money_str:
+            greater = True
 
     if matches[0] is not None and len(matches[0]) > 0:
         currency = matches[0][0][0]
@@ -247,8 +255,16 @@ def parse_money(x):
                 magnitude2 = matches[1][1][4]
                 upper = matches[1][1][0]
     else:
-        return {"currency": None, "lower_value": None, "upper_value": None, "original": money_str,
-            "confidence": confidence}
+        try:
+            lower = number_str_to_decimal(money_str)
+            upper = None
+            if not greater:
+                upper = lower
+            return {"currency": None, "lower_value": lower, "upper_value": upper, "original": money_str,
+                "confidence": confidence}
+        except:
+            return {"currency": None, "lower_value": None, "upper_value": None, "original": money_str,
+                    "confidence": confidence}
 
     currency = standardize_currency(currency)
     magnitude = magnitude_str_to_number(magnitude)
@@ -266,6 +282,8 @@ def parse_money(x):
             upper *= magnitude
     else:
         upper = lower
+    if lower == upper and greater:
+        upper = None
 
     return {"currency": currency, "lower_value": lower, "upper_value": upper, "original": money_str,
             "confidence": confidence}
@@ -284,20 +302,39 @@ def parse_percent(x):
         return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
 
 
+def quantity_type(unit):
+    if unit in ["kg", "t", "lb"]:
+        return "mass"
+    if unit in ["W"]:
+        return "power"
+    if unit in ["Wh", "BOE"]:
+        return "energy"
+    if unit in ["m", "ft"]:
+        return "distance"
+    if unit in ["gal", "l"]:
+        return "volume"
+    return None
+
+
 def parse_quantity(x):
     # TODO: "630k MT" in 6037 -> megaton?
     # ton -> t ?
     # better handling of square and cubic
     # new field for type of physical quantity (weight, distance, area, volume)
     input_text, confidence = x
-    quant_str = input_text
+    quant_str = numerize(input_text)
+    quantity_type = None
+    if "square" in quant_str or "acre" in quant_str:
+        quantity_type = "area"
+    if "cubic" in quant_str:
+        quantity_type = "volume"
     replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ",
                     "metre": "meter", "net": "",
                     "gigawatts": "GW", "gigawatt": "GW", "hour": "h", "tonnes": "t", "tonne": "t",
                     "tons": "t", "ton": "t", "meters": "m", "meter": "m", "kilometers": "km", "kilometer": "km",
                     "metric tons": "t", "metric": "", "cubic": "", "square": "",
                     "feet": "ft", "foot": "ft", "pounds": "lb", "pound": "lb", "oil-equivalent-barrel": "BOE",
-                    "kilo": "k"}
+                    "kilo": "k", "gallon": "gal"}
     for key, value in replacements.items():
         quant_str = quant_str.replace(key, value)
     quant_str = numerize_wrapper(quant_str)
@@ -305,14 +342,19 @@ def parse_quantity(x):
         new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
         quant = Quantity(new_quant_str)
         value, unit = quant.as_tuple()
-        return {"value": value, "unit": unit, "original": input_text, "confidence": confidence}
+        if quantity_type is None:
+            quantity_type = quantity_type(unit)
+        return {"value": value, "unit": unit, "type": quantity_type, "original": input_text, "confidence": confidence}
     except:
         try:
             new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
             new_quant_str = new_quant_str.split()
             quant = Quantity(new_quant_str[0] + " " + new_quant_str[1])
             value, unit = quant.as_tuple()
-            return {"value": value, "unit": unit, "original": input_text, "confidence": confidence}
+            if quantity_type is None:
+                quantity_type = quantity_type(unit)
+            return {"value": value, "unit": unit, "original": input_text, "type": quantity_type,
+                    "confidence": confidence}
         except:
             return {"value": None,  "unit": None, "original": input_text, "confidence": confidence}
 
@@ -377,6 +419,14 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
                 if ignore_keyword in ent_text:
                     cont = True
                     break
+        if spans[0] is not None and spans[0].label_ == "MONEY":
+            try:
+                num = number_str_to_decimal(ent_text)
+                if num < 100000:
+                    cont = True
+                    break
+            except:
+                None
         if cont:
             continue
         # TODO: some duplicates still get through, like "US" in 6008
