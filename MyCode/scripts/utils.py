@@ -192,7 +192,7 @@ def number_str_to_decimal(num):
         return float(numerize_wrapper(num))
     except:
         try:
-            shortened = re.search(r'\d[\d\.\,]*', num)
+            shortened = re.search(r'\d[\d\.\,]*', numerize_wrapper(num))[0]
             return float(shortened)
         except:
             return None
@@ -338,48 +338,66 @@ def parse_quantity(x):
     # better handling of square and cubic
     # new field for type of physical quantity (weight, distance, area, volume)
     input_text, confidence = x
-    ignore_kw = ["magnitude"]
+    ignore_kw = ["magnitude", "barrel", "oil", "tcfe", "acre", "m2", "m3", "square", "cubic", "bar", "hectar", "°",
+                 "degree", "tph", "bps", "KB", "KT", "tpa", "DWT", "pp"]
     for kw in ignore_kw:
         if kw in input_text:
             return None
     quant_str = numerize(input_text)
+    value = number_str_to_decimal(quant_str)
+    unit = None
     quant_type = None
-    if "square" in quant_str or "acre" in quant_str:
-        quant_type = "area"
-    if "cubic" in quant_str:
-        quant_type = "volume"
-    replacements = {"kilograms": "kg", "kilogram": "kg", "megawatts": "MW", "megawatt": "MW", "-": " ", "net": "",
-                    "gigawatts": "GW", "gigawatt": "GW", "hours": "h", "hour": "h", "tonnes": "t", "tonne": "t",
-                    "tons": "t", "ton": "t", "metre": "m", "meters": "m", "meter": "m", "kilometers": "km", "kilometer": "km",
-                    "metric tons": "t", "metric": "", "cubic": "", "square": "",
-                    "feet": "ft", "foot": "ft", "pounds": "lb", "pound": "lb", "lbs": "lb",
-                    "oil-equivalent-barrel": "BOE", "kilo": "k", "gallon": "gal", "gram": "g"}
-    for key, replace in replacements.items():
-        quant_str = quant_str.replace(key, replace)
-    quant_str = numerize_wrapper(quant_str)
-    try:
-        new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
-        quant = Quantity(new_quant_str)
-        value, unit = quant.as_tuple()
-        if unit == "":
-            unit = None
-        if quant_type is None:
+    unit_dict ={"TWh": ["Wh", 1000000000000],
+                "GWh": ["Wh", 1000000000],
+                "gigawatt hour": ["Wh", 1000000000],
+                "MWh": ["MWh", 1000000],
+                "megawatt hour": ["Wh", 1000000],
+                "kWh": ["Wh", 1000],
+                "Wh": ["Wh", 1],
+                "kW": ["W", 1000],
+                "kilowatt": ["W", 1000],
+                "megawatt": ["W", 1000000],
+                "MW": ["W", 1000000],
+                "gigawatt": ["W", 1000000000],
+                "GW": ["W", 1000000000],
+                "kilogram": ["t", 0.001],
+                "kg": ["t", 0.001],
+                "kiloton": ["t", 1000],
+                "megaton": ["t", 1000000],
+                "Mt": ["t", 1000000],
+                "ton": ["t", 1],
+                "pound": ["t", 0.0004536],
+                "lb": ["t", 0.0004536],
+                "tpd": ["t/a", 0.0027397],
+                "tpa": ["t/a", 1],
+                "kilometer": ["m", 1000],
+                "metre": ["m", 1],
+                "meter": ["m", 1],
+                "m": ["m", 1],
+                "feet": ["m", 0.3],
+                "foot": ["m", 0.3],
+                "oil-equivalent": ["Wh", 1699000],
+                "boe": ["Wh", 1699000],
+                "gal": ["l", 3.78541],
+                "barrel": ["l", 158.987],
+                "l": ["l", 1],
+                "h": ["h", 1]}
+    if value is None:
+        value = 1
+    for key, val in unit_dict.items():
+        if key.lower() in quant_str.lower():
+            unit = val[0]
             quant_type = quantity_type(unit)
-        return {"value": value, "unit": unit, "type": quant_type, "original": input_text, "confidence": confidence}
-    except:
-        try:
-            new_quant_str = re.split(r'(^[^\d]+)', quant_str)[-1]
-            new_quant_str = new_quant_str.split()
-            quant = Quantity(new_quant_str[0] + " " + new_quant_str[1])
-            value, unit = quant.as_tuple()
-            if unit == "":
-                unit = None
-            if quant_type is None:
-                quant_type = quantity_type(unit)
-            return {"value": value, "unit": unit, "original": input_text, "type": quant_type,
-                    "confidence": confidence}
-        except:
-            return {"value": None, "unit": None, "original": input_text, "confidence": confidence}
+            if value:
+                value *= val[1]
+            break
+    if unit is None:
+        return None
+    # only return relevant quantities
+    if quant_type in ["mass", "power", "energy"]:
+        return {"value": value, "unit": unit, "original": input_text, "type": quant_type,
+                "confidence": confidence}
+    return None
 
 
 def parse_time(x):
