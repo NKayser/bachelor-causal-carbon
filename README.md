@@ -35,10 +35,14 @@ Crossvalidation:
 
 ## Entity Categorization
 
-* MyCode\entity_categorization> `python -m spacy train configs/config.cfg -o models-binary --gpu-id 0 --code scripts/custom_span_suggester.py`
+* MyCode\entity_categorization> ` python -m spacy init fill-config configs/base_config.cfg configs/config.cfg --code .\scripts\custom_span_suggester.py`
+* `python -m spacy train configs/config.cfg -o models-binary --gpu-id 0 --code scripts/custom_span_suggester.py`
 * `python -m spacy evaluate models-binary/model-best corpus/test.spacy -o metrics/binary_model_best_metrics.json --gpu-id 0 --code scripts/custom_span_suggester.py`
 * `python -m spacy project run package`
 * `python -m pip install .\packages\en_entity_categorization-0.0.0\`
+
+for crossvalidation (change 3 zeros after cval_), complete script in project.yml:
+* `python -m spacy train configs/config.cfg -o models-cval/cval_0 --gpu-id 0 --code scripts/custom_span_suggester.py --paths.train corpus-cval/cval_0_train.spacy --paths.dev corpus-cval/cval_0_dev.spacy`
 
 
 ## labels_and_predictions input file explained:

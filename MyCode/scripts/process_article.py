@@ -87,19 +87,14 @@ class Article:
     def apply_ner(self, ner_model=PRETRAINED_NER_MODEL):
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
 
-    def preprocess_spacy(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
-                         ner_model=PRETRAINED_NER_MODEL, ent_cat_model=ENT_MODEL_PATH):
+    def preprocess(self, textcat_model=TEXTCAT_MODEL_PATH, spancat_model=SPANCAT_MODEL_PATH,
+                   ner_model=PRETRAINED_NER_MODEL, ent_cat_model=ENT_MODEL_PATH):
         self.textcat_prediction = apply_textcat(self.doc.text, textcat_model)
         self.set_sents(apply_sentencizer(self.doc.text, spancat_model))
         self.doc.spans["sc"] = self.dict_to_charspan_array(apply_spancat(self.doc.text, spancat_model))
         self.doc.spans["sc"] += self.dict_to_charspan_array(apply_pretrained_ner(self.doc.text, ner_model))
-
-        try:
-            spacy.prefer_gpu(0)
-            nlp2 = spacy.load(ent_cat_model)
-            self.ent_cat_doc = nlp2(self.doc.text)
-        except ValueError:
-            self.ent_cat_doc = None
+        self.set_money_ents()
+        self.load_ent_cat_model(ent_cat_model)
 
 
     def get_investment_information_v1(self, threshold=-1.0, parse=True, parse_loc=True):
@@ -173,6 +168,23 @@ class Article:
 
             # weighted_sents = [(sent, weight / total) for sent, weight in weighted_sents]
 
+    def load_ent_cat_model(self, ent_cat_model):
+        config_path = ent_cat_model + "/config.cfg"
+        try:
+            with open(config_path, "r") as config:
+                lines = config.readlines()
+            with open(config_path, "w") as config:
+                for line in lines:
+                    if line.strip("\n") not in ['balance = "True"', 'input_path = "assets/labels_and_predictions.jsonl"']:
+                        config.write(line)
+
+            spacy.prefer_gpu(0)
+            nlp2 = spacy.load(ent_cat_model)
+            self.ent_cat_doc = nlp2(self.doc.text)
+        except ValueError:
+            print("Loading entity categorization failed")
+            self.ent_cat_doc = None
+
     def get_weighted_sents(self, weighted_keywords=WEIGHTED_SENT_KEYWORDS):
         weighted_sents = []
         total = 0
@@ -233,7 +245,7 @@ def parse_and_save_all_articles(out_path="outputs/parsed_data3.jsonl", start_at_
             if article_obj["id"] < start_at_id:
                 continue
             article = Article.from_article(article_obj["id"])
-            article.preprocess_spacy()
+            article.preprocess()
             article.set_money_ents()
             out = json.dumps(article.get_investment_information_v1(), ensure_ascii=False)
             out_file.write(out + "\n")
@@ -263,25 +275,11 @@ def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path=
             parsed_ids.append(article_id)
 
 
-
 if __name__ == '__main__':
-    #parse_and_save_all_articles()
-    redo_money_and_quantity_parse()
-    #print(parse_quantity(("8 GW", 0)))
-
-    #positive_ids = get_positive_article_ids()
-    #id = positive_ids[-4]
-    #print("id " + str(id))
-    #article = Article.from_article(id, include_predictions=False) # e.g. 6389
-    #article.preprocess_spacy()
-    #print(article.doc.text)
-    #article.get_investment_information_v1()
-    #article.get_financial_information()
-    #print(article.text)
-    #print(article.get_technology_cats())
-    #print(article.get_locations())  # some weird locations for number 25
-                                    # Czech Republic points to specific location in country for some reason
-                                    # error in 80
-    #print(article.textcat_prediction)
-    #print(article.spans)
-    #print(article.ents)
+    positive_ids = get_positive_article_ids()
+    article_id = positive_ids[-4]
+    article = Article.from_article(article_id, include_predictions=False)
+    article.preprocess()
+    print("id", str(article_id), "texcat", str(article.textcat_prediction))
+    print(article.doc.text)
+    print(json.dumps(article.get_investment_information_v1()["parsed_info"], indent=4))

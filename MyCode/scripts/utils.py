@@ -406,9 +406,9 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
     temp = []
     for ent, score in span_pairs:
         cont = False
-        for t, s in temp:
+        for t, s, start, end in temp:
             if t in ent.text:
-                temp.remove((t, s, t.start_char, t.end_char))
+                temp.remove((t, s, start, end))
                 break
             if ent.text in t:
                 cont = True
