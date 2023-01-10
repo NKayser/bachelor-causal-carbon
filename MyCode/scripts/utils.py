@@ -9,7 +9,8 @@ from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
 from numerizer import numerize
 
-from MyCode.scripts.consts import INPUT_PATH, MONEY_PATTERNS
+from MyCode.scripts.consts import INPUT_PATH, MONEY_PATTERNS, CURRENCY_DICT, MAGNITUDE_DICT, QUANTITY_IGNORE, UNIT_DICT, \
+    RELEVANT_QUANTITY_TYPES
 
 
 def get_positive_article_ids(path=INPUT_PATH):
@@ -125,31 +126,16 @@ def parse_weighted_tech(x):
 
 
 def standardize_currency(cur):
-    currency_dict = {"eur": "EUR", "euro": "EUR", "euros": "EUR", "€": "EUR",
-                     "usd": "USD", "$": "USD", "us$": "USD",
-                     "u.s.$": "USD", "us dollars": "USD", "us dollar": "USD", "us": "USD", "$us": "USD",
-                     "dollar": "USD",
-                     "cad": "CAD", "can$": "CAD", "can": "CAD", "cad$": "CAD", "c$": "CAD",
-                     "chf": "CHF", "swiss francs": "CHF", "swiss franc": "CHF", "francs": "CHF", "franc": "CHF",
-                     "pln": "PLN", "zloty": "PLN", "zlotych": "PLN", "zlotys": "PLN",
-                     "gbp": "GBP", "\u00a3": "GBP", "pound": "GBP", "pounds": "GBP",
-                     "czk": "CZK", "inr": "INR", "rupees": "INR", "rupee": "INR",
-                     "rs.": "INR", "zar": "ZAR", "aud": "AUD", "thb": "THB", "krw": "KRW",
-                     "cny": "CNY", "yuan": "CNY", "lfl": "LFL", "myr": "MYR", "ltl": "LTL", "sek": "SEK", "rmb": "RMB",
-                     "r": "ZAR", "south african rand": "ZAR", "rand": "ZAR"}
-    if cur.lower() in currency_dict.keys():
-        return currency_dict[cur.lower()]
+    if cur.lower() in CURRENCY_DICT.keys():
+        return CURRENCY_DICT[cur.lower()]
     if cur is None or cur == "":
         return None
     return cur.upper()
 
 
 def magnitude_str_to_number(mag):
-    magnitude_dict = {"m": 1000000, "mio": 1000000, "mln": 1000000, "million": 1000000,
-                      "b": 1000000000, "bn": 1000000000, "billion": 1000000000,
-                      "thousand": 1000}
-    if mag in magnitude_dict.keys():
-        return magnitude_dict[mag]
+    if mag in MAGNITUDE_DICT.keys():
+        return MAGNITUDE_DICT[mag]
     return 1
 
 
@@ -198,7 +184,7 @@ def number_str_to_decimal(num):
 
 
 def parse_money(x):
-    money_str, confidence = x
+    money_str, confidence, start, end = x
     try:
         # Just a float without currency, filter out
         float(money_str)
@@ -269,50 +255,55 @@ def parse_money(x):
         return None
 
     return {"currency": currency, "lower_value": lower, "upper_value": upper, "original": money_str,
-            "confidence": confidence}
+            "confidence": confidence, "start_offset": start, "end_offset": end}
 
 
 def simple_loc_parse(x):
-    original, confidence = x
-    return {"parsed": None, "original": original, "confidence": confidence}
+    original, confidence, start, end = x
+    return {"parsed": None, "original": original, "confidence": confidence, "start_offset": start, "end_offset": end}
 
 
 def parse_location(x):
-    # TODO: weird location for United Kingdom
-    original, confidence = x
+    original, confidence, start, end = x
     loc_str = original
     exceptions = {"U.S.": "US", "the United States": "US"}
     geolocator = Nominatim(user_agent="causal_carbon_bachelor")
     geocode = partial(geolocator.geocode, language='en')
     geocode = RateLimiter(geocode, min_delay_seconds=1)
 
+    standard_return = {"parsed": None, "original": original, "confidence": confidence,
+                       "start_offset": start, "end_offset": end}
+
     if loc_str in exceptions.keys():
         loc_str = exceptions[loc_str]
     try:
         coded = geocode(loc_str)
         name = coded.raw["display_name"]
-        return {"parsed": name, "original": original, "confidence": confidence}
+        return {"parsed": name, "original": original, "confidence": confidence,
+                "start_offset": start, "end_offset": end}
     except AttributeError:
-        return {"parsed": None, "original": original, "confidence": confidence}
+        return standard_return
     except socket.timeout:
         print(loc_str + " not found")
-        return {"parsed": None, "original": original, "confidence": confidence}
+        return standard_return
     except GeocoderUnavailable:
         print(loc_str + " not found")
-        return {"parsed": None, "original": original, "confidence": confidence}
+        return standard_return
 
 
 def parse_percent(x):
-    percent_str, confidence = x
+    percent_str, confidence, start, end = x
     percent_str = numerize_wrapper(percent_str)
     try:
         match = re.search("([0-9]*[.,])?[0-9]+", percent_str)
         if match is not None:
             return {"value": float(match[0].replace(",", ".")), "unit": "%", "original": percent_str,
-                    "confidence": confidence}
-        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
+                    "confidence": confidence, "start_offset": start, "end_offset": end}
+        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence, "start_offset": start,
+                "end_offset": end}
     except:
-        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence}
+        return {"value": None, "unit": "%", "original": percent_str, "confidence": confidence, "start_offset": start,
+                "end_offset": end}
 
 
 def quantity_type(unit):
@@ -332,58 +323,17 @@ def quantity_type(unit):
 
 
 def parse_quantity(x):
-    # TODO: "630k MT" in 6037 -> megaton?
-    # ton -> t ?
-    # better handling of square and cubic
-    # new field for type of physical quantity (weight, distance, area, volume)
-    input_text, confidence = x
-    ignore_kw = ["magnitude", "barrel", "oil", "tcfe", "acre", "m2", "m3", "square", "cubic", "bar", "hectar", "°",
-                 "degree", "tph", "bps", "KB", "KT", "tpa", "DWT", "pp"]
-    for kw in ignore_kw:
+    input_text, confidence, start, end = x
+    for kw in QUANTITY_IGNORE:
         if kw in input_text:
             return None
     quant_str = numerize(input_text)
     value = number_str_to_decimal(quant_str)
     unit = None
     quant_type = None
-    unit_dict ={"TWh": ["Wh", 1000000000000],
-                "GWh": ["Wh", 1000000000],
-                "gigawatt hour": ["Wh", 1000000000],
-                "MWh": ["MWh", 1000000],
-                "megawatt hour": ["Wh", 1000000],
-                "kWh": ["Wh", 1000],
-                "Wh": ["Wh", 1],
-                "kW": ["W", 1000],
-                "kilowatt": ["W", 1000],
-                "megawatt": ["W", 1000000],
-                "MW": ["W", 1000000],
-                "gigawatt": ["W", 1000000000],
-                "GW": ["W", 1000000000],
-                "kilogram": ["t", 0.001],
-                "kg": ["t", 0.001],
-                "kiloton": ["t", 1000],
-                "megaton": ["t", 1000000],
-                "Mt": ["t", 1000000],
-                "ton": ["t", 1],
-                "pound": ["t", 0.0004536],
-                "lb": ["t", 0.0004536],
-                "tpd": ["t/a", 0.0027397],
-                "tpa": ["t/a", 1],
-                "kilometer": ["m", 1000],
-                "metre": ["m", 1],
-                "meter": ["m", 1],
-                "m": ["m", 1],
-                "feet": ["m", 0.3],
-                "foot": ["m", 0.3],
-                "oil-equivalent": ["Wh", 1699000],
-                "boe": ["Wh", 1699000],
-                "gal": ["l", 3.78541],
-                "barrel": ["l", 158.987],
-                "l": ["l", 1],
-                "h": ["h", 1]}
     if value is None:
         value = 1
-    for key, val in unit_dict.items():
+    for key, val in UNIT_DICT.items():
         if key.lower() in quant_str.lower():
             unit = val[0]
             quant_type = quantity_type(unit)
@@ -393,19 +343,18 @@ def parse_quantity(x):
     if unit is None:
         return None
     # only return relevant quantities
-    if quant_type in ["mass", "power", "energy"]:
+    if quant_type in RELEVANT_QUANTITY_TYPES:
         return {"value": value, "unit": unit, "original": input_text, "type": quant_type,
-                "confidence": confidence}
+                "confidence": confidence, "start_offset": start, "end_offset": end}
     return None
 
 
 def parse_time(x):
-    time_str, confidence = x
+    time_str, confidence, start, end = x
     try:
         year = int(re.search("\d{4}", time_str)[0])
-        return {"year": year, "original": time_str, "confidence": confidence}
+        return {"year": year, "original": time_str, "confidence": confidence, "start_offset": start, "end_offset": end}
     except:
-        #return {"year": None, "original": time_str, "confidence": confidence}
         return None
 
 
@@ -425,29 +374,29 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
                 break
         if found:
             continue
-        # not clear why some suggested spans don't appear in ent_cat list at all
         s2 = s1
         s2.label_ = "neutral"
         span_pairs.append((s1, s2, 0.0))
+
     # Sort the list of tuples by the category and confidence score of the span from `spans2`
-    def order(label, score):
+    def order(label, sc):
         out = 0
         if label == "positive":
-            out += score
+            out += sc
         elif label == "neutral":
             out += 0.0
         else:
-            out -= score
+            out -= sc
         return out
 
-    def convert_score(score):
+    def convert_score(sc):
         try:
-            score = score.item()
-            return score
+            sc = sc.item()
+            return sc
         except AttributeError:
-            return score
+            return sc
 
-    span_pairs = [(s1.text, order(s2.label_, convert_score(score))) for s1, s2, score in span_pairs]
+    span_pairs = [(s1, order(s2.label_, convert_score(score))) for s1, s2, score in span_pairs]
     span_pairs.sort(key=lambda x: x[1], reverse=True)
 
     # filter by threshold confidence
@@ -455,32 +404,25 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
 
     # deduplicate, keep highest confidence span
     temp = []
-    for ent_text, score in span_pairs:
+    for ent, score in span_pairs:
         cont = False
-        if spans[0] is not None and spans[0].label_ == "QUANTITY":
-            for ignore_keyword in ["degree", "mile", "acre"]: #  "meter", "feet"
-                if ignore_keyword in ent_text:
-                    cont = True
-                    break
-        if cont:
-            continue
         for t, s in temp:
-            if t in ent_text:
-                temp.remove((t, s))
+            if t in ent.text:
+                temp.remove((t, s, t.start_char, t.end_char))
                 break
-            if ent_text in t:
+            if ent.text in t:
                 cont = True
                 break
         if cont:
             continue
-        temp.append((ent_text, score))
+        temp.append((ent.text, score, ent.start_char, ent.end_char))
 
     # Return the sorted list of spans from `spans1`
     return temp
 
 
-def filter_none(l):
-    return [x for x in l if x is not None]
+def filter_none(ls: list):
+    return [x for x in ls if x is not None]
 
 
 def read_input_file(path=INPUT_PATH):

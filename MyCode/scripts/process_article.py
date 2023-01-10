@@ -1,6 +1,5 @@
 import json
 import re
-from collections import Counter
 
 import spacy
 from spacy import registry
@@ -47,11 +46,6 @@ class Article:
             self.doc.spans["sc"] = []
         if ents is not None:
             self.doc.spans["sc"] += self.dict_to_charspan_array(ents)
-
-        # decide where this part should live
-        #spacy.prefer_gpu(0)
-        #nlp2 = spacy.load(ENT_MODEL_PATH)
-        #self.ent_cat_doc = nlp2(self.doc.text)
 
     @classmethod
     def from_dict(cls, precomputed_dict, include_predictions=True):
@@ -111,10 +105,8 @@ class Article:
     def get_investment_information_v1(self, threshold=-1.0, parse=True, parse_loc=True):
         # need to preprocess_spacy before
         finance_ents = self.set_money_ents()                # "MONEY"
-        technology_ents = self.set_technology_ents()        # "TECHWORD"
         weighted_tech_ents = self.get_weighted_technology_cats()
         location_ents = self.get_location_ents()            # "GPE"
-        #emissions_ents = self.get_emissions_ents()          # "QUANTITY", "PERCENT"
         quantity_ents = filter_ents(self.doc.spans["sc"], "QUANTITY")
         percent_ents = filter_ents(self.doc.spans["sc"], "PERCENT")
         fac_ents = filter_ents(self.doc.spans["sc"], "FAC")
@@ -131,21 +123,12 @@ class Article:
                 finance_ents.remove(ent)
                 quantity_ents.append(ent)
 
-        #print(finance_ents)
-        #print(technology_ents)
-        #print(location_ents)
-        #print([(ent.start, ent.end, ent.text) for ent in emissions_ents])
-        #print(time_ents)
-        #print(ent_cats)
-
         if parse:
             if parse_loc:
                 loc_parse_func = parse_location
             else:
                 loc_parse_func = simple_loc_parse
             info = {"technology": filter_none(list(map(parse_weighted_tech, weighted_tech_ents))),
-                #"fac": filter_none(sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats)),
-                #"product": filter_none(sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats)),
                 "money": filter_none(list(map(parse_money, sort_by_ent_cat(finance_ents, ent_cats, threshold)))),
                 "location": filter_none(list(map(loc_parse_func, sort_by_ent_cat(location_ents, ent_cats, threshold)))),
                 "emissions_percent": filter_none(list(map(parse_percent, sort_by_ent_cat(percent_ents, ent_cats, threshold)))),
@@ -153,8 +136,6 @@ class Article:
                 "time": filter_none(list(map(parse_time, sort_by_ent_cat(time_ents, ent_cats, threshold))))}
         else:
             info = {"technology": filter_none(weighted_tech_ents),
-                    # "fac": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "FAC"), ent_cats),
-                    # "product": sort_by_ent_cat(filter_ents(self.doc.spans["sc"], "PRODUCT"), ent_cats),
                     "money": filter_none(list(sort_by_ent_cat(finance_ents, ent_cats, threshold))),
                     "location": filter_none(list(sort_by_ent_cat(location_ents, ent_cats, threshold))),
                     "emissions_percent": filter_none(list(sort_by_ent_cat(percent_ents, ent_cats, threshold))),
@@ -164,9 +145,6 @@ class Article:
         out_obj = {"metadata": self.metadata,
                    "textcat_prediction": self.textcat_prediction,
                    "parsed_info": info}
-        #print("id", self.metadata["id"])
-        #print(json.dumps(info, indent=4))
-        #print(out_obj)
         return out_obj
 
     def get_investment_information_v2(self):
@@ -245,17 +223,10 @@ class Article:
         if self.ent_cat_doc is None:
             return SpanGroup(self.doc)
         spans = self.ent_cat_doc.spans["sc"]
-        #for span in spans:
-        #    print(span.label_, span.start, span.end, span.text)
         return spans
-        #spans = self.doc.spans["sc"]
-        #scores = self.doc.spans["sc"].attrs["scores"]
-        #zipped = zip(spans, scores)
-        #return list(filter(lambda span, score: span.label_ in ["positive", "negative"], zipped))
-        #return filter(lambda ent: ent.label_ in ["positive", "negative"], self.doc.spans["sc"])
 
 
-def parse_and_save_all_articles(out_path="outputs/parsed_data.jsonl", start_at_id=6001):
+def parse_and_save_all_articles(out_path="outputs/parsed_data3.jsonl", start_at_id=6001):
     articles = read_input_file()
     with open(out_path, "a", encoding="utf-8") as out_file:
         for article_obj in tqdm(articles):
@@ -290,10 +261,6 @@ def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path=
             out = json.dumps(article_obj, ensure_ascii=False)
             out_file.write(out + "\n")
             parsed_ids.append(article_id)
-            #print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
-            #print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
-            #print(Counter([x["year"] for x in time]))
-            #print(json.dumps(time, indent=4))
 
 
 
