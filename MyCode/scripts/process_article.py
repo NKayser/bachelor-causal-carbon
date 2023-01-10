@@ -1,5 +1,6 @@
 import json
 import re
+from collections import Counter
 
 import spacy
 from spacy import registry
@@ -267,29 +268,6 @@ def parse_and_save_all_articles(out_path="outputs/parsed_data.jsonl", start_at_i
             out_file.write(out + "\n")
 
 
-def redo_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_data2.jsonl", start_at_id=6001):
-    articles = read_input_file(in_path)
-    parsed_ids = []
-    with open(out_path, "a", encoding="utf-8") as out_file:
-        for article_obj in tqdm(articles):
-            article_id = article_obj["metadata"]["id"]
-            if article_id < start_at_id or article_id in parsed_ids:
-                print("skipped id", article_id)
-                continue
-            print("id", article_id)
-            locations = article_obj["parsed_info"]["location"]
-            article = Article.from_article(article_obj["metadata"]["id"])
-            article.preprocess_spacy()
-            article.set_money_ents()
-            out_obj = article.get_investment_information_v1(threshold=-1.0, parse=True, parse_loc=False)
-            out_obj["parsed_info"]["location"] = locations
-            out = json.dumps(out_obj, ensure_ascii=False)
-            out_file.write(out + "\n")
-            parsed_ids.append(article_id)
-            print(json.dumps(out_obj["parsed_info"]["money"], indent=4))
-            print(json.dumps(out_obj["parsed_info"]["emissions_quantity"], indent=4))
-
-
 def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path="outputs/parsed_data2.jsonl", start_at_id=6001):
     articles = read_input_file(in_path)
     parsed_ids = []
@@ -302,21 +280,26 @@ def redo_money_and_quantity_parse(in_path="outputs/parsed_data.jsonl", out_path=
             #print("id", article_id)
             money_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["money"]]
             quant_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["emissions_quantity"]]
+            time_arr = [(x["original"], x["confidence"]) for x in article_obj["parsed_info"]["time"]]
             money = filter_none(list(map(parse_money, money_arr)))
             quant = filter_none(list(map(parse_quantity, quant_arr)))
+            time = filter_none(list(map(parse_time, time_arr)))
             article_obj["parsed_info"]["money"] = money
             article_obj["parsed_info"]["emissions_quantity"] = quant
-            #out = json.dumps(article_obj, ensure_ascii=False)
-            #out_file.write(out + "\n")
+            article_obj["parsed_info"]["time"] = time
+            out = json.dumps(article_obj, ensure_ascii=False)
+            out_file.write(out + "\n")
             parsed_ids.append(article_id)
             #print(json.dumps(article_obj["parsed_info"]["money"], indent=4))
-            print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
+            #print(json.dumps(article_obj["parsed_info"]["emissions_quantity"], indent=4))
+            #print(Counter([x["year"] for x in time]))
+            #print(json.dumps(time, indent=4))
 
 
 
 if __name__ == '__main__':
     #parse_and_save_all_articles()
-    redo_money_and_quantity_parse(start_at_id=6010)
+    redo_money_and_quantity_parse()
     #print(parse_quantity(("8 GW", 0)))
 
     #positive_ids = get_positive_article_ids()

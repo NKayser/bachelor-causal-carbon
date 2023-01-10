@@ -7,7 +7,6 @@ from functools import partial
 from geopy.exc import GeocoderUnavailable
 from geopy.geocoders import Nominatim
 from geopy.extra.rate_limiter import RateLimiter
-from quantiphy import Quantity
 from numerizer import numerize
 
 from MyCode.scripts.consts import INPUT_PATH, MONEY_PATTERNS
@@ -401,10 +400,13 @@ def parse_quantity(x):
 
 
 def parse_time(x):
-    # TODO: could try parsing some standard date formats
     time_str, confidence = x
-    # left out for now
-    return {"original": time_str, "confidence": confidence}
+    try:
+        year = int(re.search("\d{4}", time_str)[0])
+        return {"year": year, "original": time_str, "confidence": confidence}
+    except:
+        #return {"year": None, "original": time_str, "confidence": confidence}
+        return None
 
 
 def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
@@ -462,7 +464,6 @@ def sort_by_ent_cat(spans, ent_cats, threshold=-1.0):
                     break
         if cont:
             continue
-        # TODO: some duplicates still get through, like "US" in 6008
         for t, s in temp:
             if t in ent_text:
                 temp.remove((t, s))
